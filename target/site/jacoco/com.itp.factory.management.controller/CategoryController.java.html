@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CategoryController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.controller</a> &gt; <span class="el_source">CategoryController.java</span></div><h1>CategoryController.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.controller;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.itp.factory.management.base.MessagePropertyBase;
+import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.enums.CommonStatus;
+import com.itp.factory.management.exception.ValidateRecordException;
+import com.itp.factory.management.resource.CategoryAddResource;
+import com.itp.factory.management.resource.CategoryUpdateResource;
+import com.itp.factory.management.resource.SuccessAndErrorDetailsResource;
+import com.itp.factory.management.service.CategoryService;
+	
+
+/**
+ * Category Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   01-08-2020                             MenukaJ        Created
+ *    
+ ********************************************************************************************************
+ */
+
+@RestController
+@RequestMapping(value = &quot;/category&quot;)
+@CrossOrigin(origins = &quot;*&quot;)
+<span class="fc" id="L46">public class CategoryController extends MessagePropertyBase {</span>
+	
+	@Autowired
+	private CategoryService categoryService;
+	
+	/*
+	 * get all category
+	 * @param @PathVariable{tenantId}
+	 * @param @PathVariable{all}
+	 * @return List
+	 **/
+	@GetMapping(&quot;/all&quot;)
+	public ResponseEntity&lt;Object&gt; getAllCategory(){
+<span class="nc" id="L59">		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L60">		List&lt;Category&gt;isPresentCategory = categoryService.getAll();</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">		if(!isPresentCategory.isEmpty()) {</span>
+<span class="nc" id="L62">			return new ResponseEntity&lt;&gt;((Collection&lt;Category&gt;)isPresentCategory,HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L65">			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L66">			return new ResponseEntity&lt;&gt;(responseMessage, HttpStatus.NO_CONTENT);</span>
+		}
+	}
+	
+	/**
+	 * get category by ID
+	 * @param @pathVariable{tenantId}
+	 * @param @pathVariable {id}
+	 * @return Optional
+	 **/
+	@GetMapping(value = &quot;/id/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; getCategoryById(@PathVariable(value = &quot;id&quot;, required = true) Long id){
+<span class="nc" id="L78">		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L79">		Optional&lt;Category&gt; isPresentCategory = categoryService.getById(id);</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		if(isPresentCategory.isPresent()) {</span>
+<span class="nc" id="L81">			return new ResponseEntity&lt;&gt;(isPresentCategory.get(), HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L84">			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L85">			return new ResponseEntity&lt;&gt;(responseMessage, HttpStatus.NO_CONTENT);</span>
+		}
+	}
+	
+	/**
+	 * get category by name
+	 * @param @pathVariable{tenantId}
+	 * @param @pathVariable {name}
+	 * @return List
+	 **/
+	@GetMapping(value = &quot;/name/{name}&quot;)
+	public ResponseEntity&lt;Object&gt; getCategoryByName(@PathVariable(value = &quot;name&quot;, required = true) String name){
+<span class="nc" id="L97">		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L98">		Optional&lt;Category&gt; isPresentCategory = categoryService.getByName(name);</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">		if(isPresentCategory.isPresent()) {</span>
+<span class="nc" id="L100">			return new ResponseEntity&lt;&gt;(isPresentCategory.get(), HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L103">			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L104">			return new ResponseEntity&lt;&gt;(responseMessage, HttpStatus.NO_CONTENT);</span>
+		}
+	}
+	
+	/**
+	 * get category by status
+	 * @param @pathVariable{tenantId}
+	 * @param @pathVariable {status}
+	 * @return List
+	 **/
+	@GetMapping(value = &quot;/status/{status}&quot;)
+	public ResponseEntity&lt;Object&gt; getCategoryByStatus(@PathVariable(value = &quot;status&quot;, required = true) String status){
+<span class="nc" id="L116">		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();</span>
+<span class="nc bnc" id="L117" title="All 4 branches missed.">		if(status.equals(CommonStatus.ACTIVE.toString()) || status.equals(CommonStatus.INACTIVE.toString())) {</span>
+<span class="nc" id="L118">			List&lt;Category&gt; isPresentCategory = categoryService.getByStatus(status);</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">			if(!isPresentCategory.isEmpty()) {</span>
+<span class="nc" id="L120">				return new ResponseEntity&lt;&gt;(isPresentCategory, HttpStatus.OK);</span>
+			}
+			else {
+<span class="nc" id="L123">				responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L124">				return new ResponseEntity&lt;&gt;(responseMessage, HttpStatus.NO_CONTENT);</span>
+			}
+		}
+		else {
+<span class="nc" id="L128">			responseMessage.setMessages(RECORD_NOT_FOUND);</span>
+<span class="nc" id="L129">	        throw new ValidateRecordException(environment.getProperty(&quot;common-status.pattern&quot;), &quot;message&quot;);</span>
+		}
+	}
+	
+	/**
+     * save category
+     * @param @PathVariable{tenantId}
+     * @param @RequestBody{CategoryAddResource}
+     * @return SuccessAndErrorDetailsDto
+     */
+	@PostMapping(&quot;/add&quot;)
+	public ResponseEntity&lt;Object&gt; addCategory(@Valid @RequestBody CategoryAddResource categoryAddResource){
+<span class="nc" id="L141">		Category Category = categoryService.addCategory(categoryAddResource);</span>
+<span class="nc" id="L142">		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_CREATED), Long.toString(Category.getId()));</span>
+<span class="nc" id="L143">		return new ResponseEntity&lt;&gt;(responseMessage,HttpStatus.CREATED);</span>
+	}
+	
+	/**
+     * update category
+     * @param @PathVariable{tenantId}
+     * @param @RequestBody{CategoryUpdateResource}
+     * @return SuccessAndErrorDetailsDto
+     */
+	@PutMapping(value = &quot;update/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; updateCategory(@PathVariable(value = &quot;id&quot;, required = true) Long id, 
+												                 @Valid @RequestBody CategoryUpdateResource categoryUpdateResource){
+<span class="nc" id="L155">		SuccessAndErrorDetailsResource successAndErrorDetailsResource=new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L156">		Optional&lt;Category&gt;isPresentCategory = categoryService.getById(id);		</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">		if(isPresentCategory.isPresent()) {</span>
+<span class="nc" id="L158">			categoryUpdateResource.setId(id.toString());</span>
+<span class="nc" id="L159">			Category Category = categoryService.updateCategory(categoryUpdateResource);</span>
+<span class="nc" id="L160">			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_UPDATED), Category.getId().toString());</span>
+<span class="nc" id="L161">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource,HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L164">			successAndErrorDetailsResource.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L165">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+		}
+	}
+	
+	/**
+	 * get category by ID
+	 * @param @pathVariable{tenantId}
+	 * @param @pathVariable {id}
+	 **/
+	@DeleteMapping(value = &quot;/id/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; deleteCategoryById(@PathVariable(value = &quot;id&quot;, required = true) Long id){
+<span class="nc" id="L176">		SuccessAndErrorDetailsResource successAndErrorDetailsResource=new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L177">		Optional&lt;Category&gt;isPresentCategory = categoryService.getById(id);		</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">		if(isPresentCategory.isPresent()) {</span>
+<span class="nc" id="L179">			categoryService.deleteCategory(id);</span>
+<span class="nc" id="L180">			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_DELETED), id.toString());</span>
+<span class="nc" id="L181">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource,HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L184">			successAndErrorDetailsResource.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L185">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+		}
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

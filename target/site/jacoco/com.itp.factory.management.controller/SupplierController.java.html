@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SupplierController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.controller</a> &gt; <span class="el_source">SupplierController.java</span></div><h1>SupplierController.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.controller;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.itp.factory.management.base.MessagePropertyBase;
+import com.itp.factory.management.domain.Supplier;
+import com.itp.factory.management.resource.SuccessAndErrorDetailsResource;
+import com.itp.factory.management.resource.SupplierAddResource;
+import com.itp.factory.management.resource.SupplierUpdateResource;
+import com.itp.factory.management.service.SupplierService;
+
+/**
+ * Supplier Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   06-09-2020                            Anushka        Created
+ *    
+ ********************************************************************************************************
+ */
+
+@RestController
+@RequestMapping(&quot;/suppliers&quot;)
+<span class="fc" id="L41">public class SupplierController extends MessagePropertyBase{</span>
+	@Autowired
+	private SupplierService supplierService;
+	
+	//get all Suppliers
+	@GetMapping(value =&quot;/all&quot;)
+	public ResponseEntity&lt;Object&gt; getAllSuppliers(){
+<span class="nc" id="L48">			SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L49">			List&lt;Supplier&gt;isPresentSupplier = supplierService.getAll();</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">			if(!isPresentSupplier.isEmpty()) {</span>
+<span class="nc" id="L51">				return new ResponseEntity&lt;&gt;((Collection&lt;Supplier&gt;)isPresentSupplier,HttpStatus.OK);</span>
+			}else {
+<span class="nc" id="L53">				responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L54">				return new ResponseEntity&lt;&gt;(responseMessage, HttpStatus.NO_CONTENT);</span>
+			}
+			
+	}
+	/**
+	 * get supplier by ID
+	 * @param @pathVariable {id}
+	 * @return Optional
+	 **/
+	@GetMapping(value = &quot;/id/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; getSupplierById(@PathVariable(value = &quot;id&quot;, required = true) Long id){
+<span class="nc" id="L65">		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L66">		Optional&lt;Supplier&gt; isPresentSupplier = supplierService.getById(id);</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">		if(isPresentSupplier.isPresent()) {</span>
+<span class="nc" id="L68">			return new ResponseEntity&lt;&gt;(isPresentSupplier.get(), HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L71">			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L72">			return new ResponseEntity&lt;&gt;(responseMessage, HttpStatus.NO_CONTENT);</span>
+		}
+	}
+	/**
+	 * get Supplier by name
+	 * @param @pathVariable {name}
+	 * @return List
+	 **/
+	@GetMapping(value = &quot;/name/{name}&quot;)
+	public ResponseEntity&lt;Object&gt; getSupplierByName(@PathVariable(value = &quot;name&quot;, required = true) String name){
+<span class="nc" id="L82">		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L83">		Optional&lt;Supplier&gt; isPresentSupplier = supplierService.getByName(name);</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">		if(isPresentSupplier.isPresent()) {</span>
+<span class="nc" id="L85">			return new ResponseEntity&lt;&gt;(isPresentSupplier.get(), HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L88">			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L89">			return new ResponseEntity&lt;&gt;(responseMessage, HttpStatus.NO_CONTENT);</span>
+		}
+	}
+	/**
+     * save Supplier
+     * @param @RequestBody{SupplierAddResource}
+     * @return SuccessAndErrorDetailsDto
+     */
+	@PostMapping(&quot;/add&quot;)
+	public ResponseEntity&lt;Object&gt; addSupplier(@Valid @RequestBody SupplierAddResource supplierAddResource){
+<span class="nc" id="L99">		Supplier Supplier = supplierService.addSupplier(supplierAddResource);</span>
+<span class="nc" id="L100">		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_CREATED), Long.toString(Supplier.getId()));</span>
+<span class="nc" id="L101">		return new ResponseEntity&lt;&gt;(responseMessage,HttpStatus.CREATED);</span>
+	}
+	
+	/**
+     * update Supplier
+     * @param @RequestBody{SupplierUpdateResource}
+     * @return SuccessAndErrorDetailsDto
+     */
+	@PutMapping(value = &quot;update/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; updateSupplier(@PathVariable(value = &quot;id&quot;, required = true) Long id, 
+		@Valid @RequestBody SupplierUpdateResource supplierUpdateResource){
+<span class="nc" id="L112">		SuccessAndErrorDetailsResource successAndErrorDetailsResource=new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L113">		Optional&lt;Supplier&gt;isPresentSupplier = supplierService.getById(id);		</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">		if(isPresentSupplier.isPresent()) {</span>
+<span class="nc" id="L115">			supplierUpdateResource.setId(id.toString());</span>
+<span class="nc" id="L116">			Supplier Supplier = supplierService.updateSupplier(supplierUpdateResource);</span>
+<span class="nc" id="L117">			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_UPDATED), Long.toString(Supplier.getId()));</span>
+<span class="nc" id="L118">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource,HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L121">			successAndErrorDetailsResource.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L122">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+		}
+	}
+	
+	/**
+	 * delete supplier by ID
+	 * @param @pathVariable {id}
+	 **/
+	@DeleteMapping(value = &quot;/id/{id}&quot;)
+	public ResponseEntity&lt;Object&gt; deleteSupplierById(@PathVariable(value = &quot;id&quot;, required = true) Long id){
+<span class="nc" id="L132">		SuccessAndErrorDetailsResource successAndErrorDetailsResource=new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L133">		Optional&lt;Supplier&gt;isPresentSupplier = supplierService.getById(id);		</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">		if(isPresentSupplier.isPresent()) {</span>
+<span class="nc" id="L135">			supplierService.deleteSupplier(id);</span>
+<span class="nc" id="L136">			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_DELETED), id.toString());</span>
+<span class="nc" id="L137">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource,HttpStatus.OK);</span>
+		}
+		else {
+<span class="nc" id="L140">			successAndErrorDetailsResource.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));</span>
+<span class="nc" id="L141">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+		}
+	}
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

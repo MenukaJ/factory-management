@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DeliveryInfoServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.service.impl</a> &gt; <span class="el_source">DeliveryInfoServiceImpl.java</span></div><h1>DeliveryInfoServiceImpl.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.service.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.itp.factory.management.base.MessagePropertyBase;
+import com.itp.factory.management.core.LogginAuthentcation;
+import com.itp.factory.management.domain.DeliveryInfo;
+import com.itp.factory.management.domain.Supplier;
+import com.itp.factory.management.exception.ValidateRecordException;
+import com.itp.factory.management.repository.DeliveryInfoRepository;
+import com.itp.factory.management.resource.DeliveryInfoAddResource;
+import com.itp.factory.management.resource.DeliveryInfoUpdateResource;
+import com.itp.factory.management.service.DeliveryInfoService;
+
+
+
+
+@Component
+@Transactional(rollbackFor=Exception.class)
+<span class="fc" id="L25">public class DeliveryInfoServiceImpl extends MessagePropertyBase  implements DeliveryInfoService{</span>
+
+	@Autowired
+	private DeliveryInfoRepository deliveryInfoRepository;
+	
+	@Override
+	public List&lt;DeliveryInfo&gt; getAll() {
+<span class="nc" id="L32">		return deliveryInfoRepository.findAll();</span>
+	}
+	
+	@Override
+	public Optional&lt;DeliveryInfo&gt; getById(Long id) {
+		
+<span class="nc" id="L38">		Optional&lt;DeliveryInfo&gt; isDelivery = deliveryInfoRepository.findById(id);</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">		if (isDelivery.isPresent()) {</span>
+<span class="nc" id="L40">			return Optional.ofNullable(isDelivery.get());</span>
+		}
+		else {
+<span class="nc" id="L43">			return Optional.empty();</span>
+		}
+	}
+
+	@Override
+	public DeliveryInfo addDelivery(DeliveryInfoAddResource deliveryInfoAddResource) {
+		
+<span class="nc bnc" id="L50" title="All 4 branches missed.">		if (LogginAuthentcation.getInstance().getUserName()==null || LogginAuthentcation.getInstance().getUserName().isEmpty())</span>
+<span class="nc" id="L51">			throw new ValidateRecordException(getEnvironment().getProperty(COMMON_NOT_NULL), &quot;username&quot;);</span>
+		
+<span class="nc" id="L53">        DeliveryInfo delivery = new DeliveryInfo();</span>
+<span class="nc" id="L54">        delivery.setAmount(deliveryInfoAddResource.getAmount());</span>
+<span class="nc" id="L55">        delivery = deliveryInfoRepository.save(delivery);</span>
+<span class="nc" id="L56">    	return delivery;</span>
+	}
+
+	@Override
+	public DeliveryInfo updateDelivery(DeliveryInfoUpdateResource deliveryInfoUpdateResource) {
+		
+		
+<span class="nc bnc" id="L63" title="All 4 branches missed.">		if (LogginAuthentcation.getInstance().getUserName()==null || LogginAuthentcation.getInstance().getUserName().isEmpty())</span>
+<span class="nc" id="L64">			throw new ValidateRecordException(getEnvironment().getProperty(COMMON_NOT_NULL), &quot;username&quot;);</span>
+		
+<span class="nc" id="L66">		Optional&lt;DeliveryInfo&gt; isDelivery = deliveryInfoRepository.findById(Long.parseLong(deliveryInfoUpdateResource.getQty()));</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">		if (!isDelivery.isPresent()) </span>
+<span class="nc" id="L68">			throw new ValidateRecordException(getEnvironment().getProperty(RECORD_NOT_FOUND), &quot;message&quot;);</span>
+	
+		
+<span class="nc" id="L71">		DeliveryInfo deliveryInfo = isDelivery.get();</span>
+<span class="nc" id="L72">		deliveryInfo = deliveryInfoRepository.saveAndFlush(deliveryInfo);</span>
+<span class="nc" id="L73">    	return deliveryInfo;</span>
+	}
+
+	@Override
+	public void deleteDelivery(long id) {
+		
+<span class="nc" id="L79">		Optional&lt;DeliveryInfo&gt; isDelivery = deliveryInfoRepository.findById(id);</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		if (!isDelivery.isPresent()) </span>
+<span class="nc" id="L81">			throw new ValidateRecordException(getEnvironment().getProperty(RECORD_NOT_FOUND), &quot;message&quot;);</span>
+		else
+<span class="nc" id="L83">			deliveryInfoRepository.deleteById(id);</span>
+<span class="nc" id="L84">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

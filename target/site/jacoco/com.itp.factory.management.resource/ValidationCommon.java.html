@@ -1,0 +1,2538 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValidationCommon.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.resource</a> &gt; <span class="el_source">ValidationCommon.java</span></div><h1>ValidationCommon.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.resource;
+ 
+/**
+ * Service - Validation Class
+ * @author     Amal
+ * @Dat     21-08-2019
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1    21-08-2019   FX-1508     FX-1600    Amal      Created
+ *    
+ ********************************************************************************************************
+ */
+ 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+ 
+import lombok.Data;
+<span class="nc bnc" id="L20" title="All 1822 branches missed.">@Data</span>
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+public class ValidationCommon{
+ 
+    @JsonProperty(&quot;message&quot;)
+    private String message;
+ 
+    @JsonProperty(&quot;overdraftbalanceamount&quot;)
+    private String overdraftbalanceamount;
+ 
+    @JsonProperty(&quot;includedInMonthlyChargeIndicator&quot;)
+    private String includedInMonthlyChargeIndicator;
+ 
+    @JsonProperty(&quot;code&quot;)
+    private String code;
+ 
+    @JsonProperty(&quot;name&quot;)
+    private String name;
+ 
+    @JsonProperty(&quot;description&quot;)
+    private String description;
+ 
+    @JsonProperty(&quot;createdUser&quot;)
+    private String createdUser;
+ 
+    @JsonProperty(&quot;modifiedUser&quot;)
+    private String modifiedUser;
+ 
+    @JsonProperty(&quot;status&quot;)
+    private String status;
+ 
+    @JsonProperty(&quot;referenceCode&quot;)
+    private String referenceCode;
+ 
+    @JsonProperty(&quot;tierBandMethodId&quot;)
+    private String tierBandMethodId;
+ 
+    @JsonProperty(&quot;tierBandMethod&quot;)
+    private String tierBandMethod;
+ 
+    @JsonProperty(&quot;calculationMethodId&quot;)
+    private String calculationMethodId;
+ 
+    @JsonProperty(&quot;calculationMethod&quot;)
+    private String calculationMethod;
+ 
+    @JsonProperty(&quot;destinationId&quot;)
+    private String destinationId;
+ 
+    @JsonProperty(&quot;destination&quot;)
+    private String destination;
+ 
+    @JsonProperty(&quot;feeCategoryId&quot;)
+    private String feeCategoryId;
+ 
+    @JsonProperty(&quot;feeCategory&quot;)
+    private String feeCategory;
+ 
+    @JsonProperty(&quot;maxAllowedNoOfWithdrawals&quot;)
+    private String maxAllowedNoOfWithdrawals;
+ 
+    @JsonProperty(&quot;maxAllowedLimitForWithdrawals&quot;)
+    private String maxAllowedLimitForWithdrawals;
+ 
+    @JsonProperty(&quot;maxAllowedNoOfWithdrawalsPeriodId&quot;)
+    private String maxAllowedNoOfWithdrawalsPeriodId ;
+ 
+    @JsonProperty(&quot;maxAllowedNoOfWithdrawalsPeriod&quot;)
+    private String maxAllowedNoOfWithdrawalsPeriod ;
+ 
+    @JsonProperty(&quot;maxAllowedLimitForWithdrawalsPeriodId&quot;)
+    private String maxAllowedLimitForWithdrawalsPeriodId ;
+ 
+    @JsonProperty(&quot;maxAllowedLimitForWithdrawalsPeriod&quot;)
+    private String maxAllowedLimitForWithdrawalsPeriod ;
+ 
+    @JsonProperty(&quot;minBalanceForInterest&quot;)
+    private String minBalanceForInterest;
+ 
+    @JsonProperty(&quot;identification&quot;)
+    private String identification;
+ 
+    @JsonProperty(&quot;effectiveDate&quot;)
+    private String effectiveDate;
+ 
+    @JsonProperty(&quot;tierValueMinimum&quot;)
+    private String tierValueMinimum;
+ 
+    @JsonProperty(&quot;tierValueMaximum&quot;)
+    private String tierValueMaximum; 
+ 
+    @JsonProperty(&quot;overdraftFeesChargesId&quot;)
+    private String overdraftFeesChargesId; 
+ 
+    @JsonProperty(&quot;calculationFrequencyId&quot;)
+    private String calculationFrequencyId;
+ 
+    @JsonProperty(&quot;calculationFrequency&quot;)
+    private String calculationFrequency;
+ 
+    @JsonProperty(&quot;applicationFrequencyId&quot;)
+    private String applicationFrequencyId;
+ 
+    @JsonProperty(&quot;applicationFrequency&quot;)
+    private String applicationFrequency;
+ 
+    @JsonProperty(&quot;depositInterestAppliedCoverageId&quot;)
+    private String depositInterestAppliedCoverageId;
+ 
+    @JsonProperty(&quot;depositInterestAppliedCoverage&quot;)
+    private String depositInterestAppliedCoverage;
+ 
+    @JsonProperty(&quot;authorisedIndicator&quot;)
+    private String authorisedIndicator;
+ 
+    @JsonProperty(&quot;aer&quot;)
+    private String aer;
+ 
+    @JsonProperty(&quot;ear&quot;)
+    private String ear;
+ 
+    @JsonProperty(&quot;bankInterestRateTypeId&quot;)
+    private String bankInterestRateTypeId;    
+ 
+    @JsonProperty(&quot;bankInterestRateType&quot;)
+    private String bankInterestRateType;
+ 
+    @JsonProperty(&quot;bankInterestRate&quot;)
+    private String bankInterestRate;
+ 
+    @JsonProperty(&quot;depositInterestApplicableBaseId&quot;)
+    private String depositInterestApplicableBaseId;
+ 
+    @JsonProperty(&quot;depositInterestApplicableBase&quot;)
+    private String depositInterestApplicableBase;
+ 
+    @JsonProperty(&quot;bankInterestCalBasisId&quot;)
+    private String bankInterestCalBasisId;    
+ 
+    @JsonProperty(&quot;bankInterestCalBasis&quot;)
+    private String bankInterestCalBasis;    
+ 
+    @JsonProperty(&quot;fixedVariableInterestRateTypeId&quot;)
+    private String fixedVariableInterestRateTypeId;
+ 
+    @JsonProperty(&quot;fixedVariableInterestRateType&quot;)
+    private String fixedVariableInterestRateType;
+ 
+    @JsonProperty(&quot;segmentId&quot;)
+    private String segmentId;
+ 
+    @JsonProperty(&quot;segment&quot;)
+    private String segment;
+ 
+    @JsonProperty(&quot;minimumBalance&quot;)
+    private String minimumBalance;
+ 
+    @JsonProperty(&quot;minimumAmountforAccountOpening&quot;)
+    private String minimumAmountforAccountOpening;
+ 
+    @JsonProperty(&quot;borrowerLimit&quot;)
+    private String borrowerLimit;
+ 
+    @JsonProperty(&quot;dormantPeriod&quot;)
+    private String dormantPeriod;
+ 
+    @JsonProperty(&quot;schemeName&quot;)
+    private String schemeName;
+ 
+    @JsonProperty(&quot;cardName&quot;)
+    private String cardName;
+ 
+    @JsonProperty(&quot;dormantPeriodTypeId&quot;)
+    private String dormantPeriodTypeId;
+ 
+    @JsonProperty(&quot;dormantPeriodType&quot;)
+    private String dormantPeriodType;
+ 
+    @JsonProperty(&quot;feeFreeLength&quot;)
+    private String feeFreeLength;
+ 
+    @JsonProperty(&quot;feeFreeLengthPeriodId&quot;)
+    private String feeFreeLengthPeriodId;
+ 
+    @JsonProperty(&quot;feeFreeLengthPeriod&quot;)
+    private String feeFreeLengthPeriod;
+ 
+    @JsonProperty(&quot;withdrawalsAllowedAfter&quot;)
+    private String withdrawalsAllowedAfter;
+ 
+    @JsonProperty(&quot;withdrawalsAllowedAfterPeriodId&quot;)
+    private String withdrawalsAllowedAfterPeriodId;
+ 
+    @JsonProperty(&quot;withdrawalsAllowedAfterPeriod&quot;)
+    private String withdrawalsAllowedAfterPeriod;
+ 
+    @JsonProperty(&quot;feeCategoryTypeId&quot;)
+    private String feeCategoryTypeId;
+ 
+    @JsonProperty(&quot;version&quot;)
+    private String version;
+ 
+    @JsonProperty(&quot;feeCategoryType&quot;)
+    private String feeCategoryType;
+ 
+    @JsonProperty(&quot;feeType&quot;)
+    private String feeType;
+ 
+    @JsonProperty(&quot;feeTypeId&quot;)
+    private String feeTypeId;
+ 
+    @JsonProperty(&quot;feeRateType&quot;)
+    private String feeRateType;
+ 
+    @JsonProperty(&quot;overdraftFeeChargeCapId&quot;)
+    private String overdraftFeeChargeCapId;
+ 
+    @JsonProperty(&quot; overdraftControlIndicator&quot;)
+    private String overdraftControlIndicator;
+ 
+    @JsonProperty(&quot;feeRateTypeId&quot;)
+    private String feeRateTypeId;
+ 
+    @JsonProperty(&quot;feeRate&quot;)
+    private String feeRate;
+ 
+    @JsonProperty(&quot;feeAmount&quot;)
+    private String feeAmount;
+ 
+    @JsonProperty(&quot;negotiableIndicator&quot;)
+    private String negotiableIndicator;
+ 
+    @JsonProperty(&quot;minimumAmount&quot;)
+    private String minimumAmount;
+ 
+    @JsonProperty(&quot;maximumAmount&quot;)
+    private String maximumAmount;
+ 
+    @JsonProperty(&quot;minimumRate&quot;)
+    private String minimumRate;
+ 
+    @JsonProperty(&quot;maximumRate&quot;)
+    private String maximumRate;
+ 
+    @JsonProperty(&quot;minimumArrangedOverdraftAmount&quot;)
+    private String minimumArrangedOverdraftAmount;
+ 
+    @JsonProperty(&quot;attribute1&quot;)
+    private String attribute1;
+ 
+    @JsonProperty(&quot;attribute2&quot;)
+    private String attribute2;
+ 
+    @JsonProperty(&quot;attribute3&quot;)
+    private String attribute3;
+ 
+    @JsonProperty(&quot;attribute4&quot;)
+    private String attribute4;
+ 
+    @JsonProperty(&quot;attribute5&quot;)
+    private String attribute5;
+ 
+    @JsonProperty(&quot;notes&quot;)
+    private String notes;
+ 
+    @JsonProperty(&quot;tariffTypeId&quot;)
+    private String tariffTypeId;
+ 
+    @JsonProperty(&quot;tariffType&quot;)
+    private String tariffType;
+ 
+    @JsonProperty(&quot;typeName&quot;)
+    private String typeName;
+ 
+    @JsonProperty(&quot;typeId&quot;)
+    private String typeId;
+ 
+    @JsonProperty(&quot;amount&quot;)
+    private String amount;
+ 
+    @JsonProperty(&quot;periodId&quot;)
+    private String periodId;
+ 
+    @JsonProperty(&quot;period&quot;)
+    private String period;
+ 
+    @JsonProperty(&quot;indicator&quot;)
+    private String indicator;
+ 
+    @JsonProperty(&quot;tierBandSetId&quot;)
+    private String tierBandSetId;
+ 
+    @JsonProperty(&quot;creditInterestEligibilityId&quot;)
+    private String creditInterestEligibilityId;
+ 
+    @JsonProperty(&quot;onSaleIndicator&quot;)
+    private String onSaleIndicator;
+ 
+    @JsonProperty(&quot;productCategoryId&quot;)
+    private String productCategoryId;
+ 
+    @JsonProperty(&quot;productCategory&quot;)
+    private String productCategory;
+ 
+    @JsonProperty(&quot;brandId&quot;)
+    private String brandId;
+ 
+    @JsonProperty(&quot;tcsAndCsUrl&quot;)
+    private String tcsAndCsUrl;
+ 
+    @JsonProperty(&quot;monthlyCharge&quot;)
+    private String monthlyCharge;
+ 
+    @JsonProperty(&quot;currencyId&quot;)
+    private String currencyId;
+ 
+    @JsonProperty(&quot;currencyCode&quot;)
+    private String currencyCode;
+ 
+    @JsonProperty(&quot;productDescription&quot;)
+    private String productDescription;
+ 
+    @JsonProperty(&quot;productUrl&quot;)
+    private String productUrl;
+ 
+    @JsonProperty(&quot;servicingChannelId&quot;)
+    private String servicingChannelId;
+ 
+    @JsonProperty(&quot;servicingChannel&quot;)
+    private String servicingChannel;
+ 
+    @JsonProperty(&quot;salesAccessChannelId&quot;)
+    private String salesAccessChannelId;
+ 
+    @JsonProperty(&quot;salesAccessChannel&quot;)
+    private String salesAccessChannel;
+ 
+    @JsonProperty(&quot;coreProductId&quot;)
+    private String coreProductId;
+ 
+    @JsonProperty(&quot;creditInterestId&quot;)
+    private String creditInterestId;
+ 
+    @JsonProperty(&quot;marketingState&quot;)
+    private String marketingState;
+ 
+    @JsonProperty(&quot;feeChargeCapId&quot;)
+    private String feeChargeCapId;
+ 
+    @JsonProperty(&quot;marketingStateId&quot;)
+    private String marketingStateId;
+ 
+    @JsonProperty(&quot;stateTenurePeriod&quot;)
+    private String stateTenurePeriod;
+ 
+    @JsonProperty(&quot;stateTenurePeriodId&quot;)
+    private String stateTenurePeriodId;
+ 
+    @JsonProperty(&quot;accountTypeId&quot;)
+    private String accountTypeId;
+ 
+    @JsonProperty(&quot;accountType&quot;)
+    private String accountType;
+ 
+    @JsonProperty(&quot;lastMarketedDate&quot;)
+    private String lastMarketedDate;
+ 
+    @JsonProperty(&quot;firstMarketedDate&quot;)
+    private String firstMarketedDate;
+ 
+    @JsonProperty(&quot;restrictedStatus&quot;)
+    private String restrictedStatus;
+ 
+    @JsonProperty(&quot;stateTenureLength&quot;)
+    private String stateTenureLength;
+ 
+    @JsonProperty(&quot;productId&quot;)
+    private String productId;
+ 
+    @JsonProperty(&quot;subProductId&quot;)
+    private String subProductId;
+ 
+    @JsonProperty(&quot;otherFeesChargesId&quot;)
+    private String otherFeesChargesId;
+ 
+    @JsonProperty(&quot;overdraftTierBandId&quot;)
+    private String overdraftTierBandId;
+ 
+    @JsonProperty(&quot;deductIndicator&quot;)
+    private String deductIndicator;
+ 
+    @JsonProperty(&quot;feeIndicator&quot;)
+    private String feeIndicator; 
+ 
+    @JsonProperty(&quot;chargesId&quot;)
+    private String chargesId; 
+ 
+    @JsonProperty(&quot;minimumAge&quot;)
+    private String minimumAge;
+ 
+    @JsonProperty(&quot;maximumAge&quot;)
+    private String maximumAge;
+ 
+    @JsonProperty(&quot;predecessorId&quot;)
+    private String predecessorId;
+ 
+    @JsonProperty(&quot;featureBenefitItemId&quot;)
+    private String featureBenefitItemId;
+ 
+    @JsonProperty(&quot;featureBenefitEligibilityId&quot;)
+    private String featureBenefitEligibilityId;
+ 
+    @JsonProperty(&quot;url&quot;)
+    private String url;
+ 
+    @JsonProperty(&quot;benefitGroupNominalValue&quot;)
+    private String benefitGroupNominalValue;
+ 
+    @JsonProperty(&quot;fee&quot;)
+    private String fee;
+ 
+    @JsonProperty(&quot;featuresBenefitsId&quot;)
+    private String featuresBenefitsId;
+ 
+    @JsonProperty(&quot;featureBenefitGroupId&quot;)
+    private String featureBenefitGroupId;
+ 
+    @JsonProperty(&quot;type&quot;)
+    private String type;
+ 
+    @JsonProperty(&quot;unit&quot;)
+    private String unit;
+ 
+    @JsonProperty(&quot;ageEligibilityId&quot;)
+    private String ageEligibilityId;
+ 
+    @JsonProperty(&quot;idEligibilityId&quot;)
+    private String idEligibilityId;
+ 
+    @JsonProperty(&quot;creditCheckEligibilityId&quot;)
+    private String creditCheckEligibilityId;
+ 
+    @JsonProperty(&quot;industryEligibilityId&quot;)
+    private String industryEligibilityId;
+ 
+    @JsonProperty(&quot;otherEligibilityTypeId&quot;)
+    private String otherEligibilityTypeId;
+ 
+    @JsonProperty(&quot;textual&quot;)
+    private String textual;
+ 
+    @JsonProperty(&quot;eligibilityId&quot;)
+    private String eligibilityId;
+ 
+    @JsonProperty(&quot;otherEligibilityId&quot;)
+    private String otherEligibilityId;
+ 
+    @JsonProperty(&quot;residencyTypeId&quot;)
+    private String residencyTypeId;
+ 
+    @JsonProperty(&quot;residencyEligibilityId&quot;)
+    private String residencyEligibilityId;
+ 
+    @JsonProperty(&quot;residencyIncludeCountryId&quot;)
+    private String residencyIncludeCountryId;
+ 
+    @JsonProperty(&quot;countryName&quot;)
+    private String countryName;
+ 
+    @JsonProperty(&quot;otherSciCode&quot;)
+    private String otherSciCode;
+ 
+    @JsonProperty(&quot;transactionCodeId&quot;)
+    private String transactionCodeId;
+ 
+    @JsonProperty(&quot;transactionSubCodeId&quot;)
+    private String transactionSubCodeId;
+ 
+    @JsonProperty(&quot;transactionSubCodeDescription&quot;)
+    private String transactionSubCodeDescription;
+ 
+    @JsonProperty(&quot;scoringType&quot;)
+    private String scoringType;
+ 
+    @JsonProperty(&quot;calculationFrequencyCode&quot;)
+    private String calculationFrequencyCode;
+ 
+    @JsonProperty(&quot;applicationFrequencyCode&quot;)
+    private String applicationFrequencyCode;
+ 
+    @JsonProperty(&quot;subProductCode&quot;)
+    private String subProductCode;
+ 
+    @JsonProperty(&quot;chargeBaseAmount&quot;)
+    private String chargeBaseAmount;
+ 
+    @JsonProperty(&quot;legalStructureId&quot;)
+    private String legalStructureId;
+ 
+    @JsonProperty(&quot;overdraftId&quot;)
+    private String overdraftId;
+ 
+    @JsonProperty(&quot;officerTypeDesignationId&quot;)
+    private String officerTypeDesignationId;
+ 
+    @JsonProperty(&quot;designationName&quot;)
+    private String designationName;
+ 
+    @JsonProperty(&quot;minAmount&quot;)
+    private String minAmount;
+ 
+    @JsonProperty(&quot;overdraftTypeId&quot;)
+    private String overdraftTypeId;
+ 
+    @JsonProperty(&quot;maxAmount&quot;)
+    private String maxAmount;
+ 
+    @JsonProperty(&quot;bankGuaranteedIndicator&quot;)
+    private String bankGuaranteedIndicator;
+ 
+    @JsonProperty(&quot;featureBenefitsMobileWalletTypeId&quot;)
+    private String featureBenefitsMobileWalletTypeId;
+ 
+    @JsonProperty(&quot;featureBenefitsMobileWalletId&quot;)
+    private String featureBenefitsMobileWalletId;
+ 
+    @JsonProperty(&quot;featureBenefitsCardTypeId&quot;)
+    private String featureBenefitsCardTypeId;
+ 
+    @JsonProperty(&quot;featureBenefitsCardSchemeId&quot;)
+    private String featureBenefitsCardSchemeId;
+ 
+    @JsonProperty(&quot;agreementLengthMaximum&quot;)
+    private String agreementLengthMaximum;
+ 
+    @JsonProperty(&quot;agreementLengthMinimum&quot;)
+    private String agreementLengthMinimum;
+ 
+    @JsonProperty(&quot;overdraftTierBandSetId&quot;)
+    private String overdraftTierBandSetId;
+ 
+    @JsonProperty(&quot;overdraftType&quot;)
+    private String overdraftType;
+ 
+    @JsonProperty(&quot;contactlessIndicator&quot;)
+    private String contactlessIndicator;
+ 
+    @JsonProperty(&quot;maxDailyCardWithdrawalLimit&quot;)
+    private String maxDailyCardWithdrawalLimit;
+ 
+    @JsonProperty(&quot;officerEligibilityId&quot;)
+    private String officerEligibilityId;
+ 
+    @JsonProperty(&quot;trdingTypeId&quot;)
+    private String trdingTypeId;
+ 
+    @JsonProperty(&quot;minMaxType&quot;)
+    private String minMaxType;
+ 
+    @JsonProperty(&quot;tradingEligibilityId&quot;)
+    private String tradingEligibilityId;
+ 
+    @JsonProperty(&quot;stoFullPeriodType&quot;)
+    private String stoFullPeriodType;
+ 
+    @JsonProperty(&quot;stoFullPeriodLength&quot;)
+    private String stoFullPeriodLength;
+ 
+    @JsonProperty(&quot;stoFullPeriodTypeId&quot;)
+    private String stoFullPeriodTypeId;
+ 
+    @JsonProperty(&quot;stoPartialPeriodTypeId&quot;)
+    private String stoPartialPeriodTypeId;
+ 
+    @JsonProperty(&quot;stoPartialPeriodType&quot;)
+    private String stoPartialPeriodType;
+ 
+    @JsonProperty(&quot;stoPartialPeriodLength&quot;)
+    private String stoPartialPeriodLength;
+ 
+    @JsonProperty(&quot;periodName&quot;)
+    private String periodName;
+ 
+    @JsonProperty(&quot;legalStructureName&quot;)
+    private String legalStructureName;
+ 
+    @JsonProperty(&quot;residencyTypeName&quot;)
+    private String residencyTypeName;
+ 
+    @JsonProperty(&quot;cappingPeriodId&quot;)
+    private String cappingPeriodId;
+ 
+    @JsonProperty(&quot;cappingPeriod&quot;)
+    private String cappingPeriod;
+ 
+    @JsonProperty(&quot;feeCapOccurance&quot;)
+    private String feeCapOccurance;
+ 
+    @JsonProperty(&quot;feeCapAmount&quot;)
+    private String feeCapAmount;
+ 
+    @JsonProperty(&quot;cardTypeId&quot;)
+    private String cardTypeId;
+ 
+    @JsonProperty(&quot;cardSchemeId&quot;)
+    private String cardSchemeId;
+ 
+    @JsonProperty(&quot;schemeId&quot;)
+    private String schemeId;
+ 
+    @JsonProperty(&quot;walletTypeId&quot;)
+    private String walletTypeId;
+ 
+    @JsonProperty(&quot;featureBenefitMobileWalletId&quot;)
+    private String featureBenefitMobileWalletId;
+ 
+    @JsonProperty(&quot;featureBenefitCardId&quot;)
+    private String featureBenefitCardId;
+ 
+    @JsonProperty(&quot;featureBenefitMobileWalletMapId&quot;)
+    private String featureBenefitMobileWalletMapId;
+ 
+    @JsonProperty(&quot;featureBenefitCardMapId&quot;)
+    private String featureBenefitCardMapId;
+ 
+    @JsonProperty(&quot;featureBenefitCardSchemeId&quot;)
+    private String featureBenefitCardSchemeId;
+ 
+    @JsonProperty(&quot;bonusInterestEligibilityId&quot;)
+    private String bonusInterestEligibilityId;
+ 
+    @JsonProperty(&quot;bonusTierBandSetId&quot;)
+    private String bonusTierBandSetId;
+ 
+    @JsonProperty(&quot;bonusInterestId&quot;)
+    private String bonusInterestId;
+ 
+    @JsonProperty(&quot;frquencyTypeId&quot;)
+    private String frquencyTypeId;
+ 
+    @JsonProperty(&quot;rateType&quot;)
+    private String rateType;
+ 
+    @JsonProperty(&quot;rate&quot;)
+    private String rate;
+    
+    @JsonProperty(&quot;productType&quot;)
+    private String productType;
+ 
+   /* @JsonProperty(&quot;accountType&quot;)
+    private String accountType;*/
+ 
+    @JsonProperty(&quot;texual&quot;)
+    private String texual;
+
+    @JsonProperty(&quot;chargeRecoveryMethod&quot;)
+    private String chargeRecoveryMethod;
+    
+    // Added by Senitha
+    @JsonProperty(&quot;otherEligibilityCode&quot;)
+    private String otherEligibilityCode;
+    
+    @JsonProperty(&quot;eligibilityCode&quot;)
+    private String eligibilityCode;
+    
+    @JsonProperty(&quot;residencyEligibilityCode&quot;)
+    private String residencyEligibilityCode;
+    
+    @JsonProperty(&quot;tradingEligibilityHistoryCode&quot;)
+    private String tradingEligibilityHistoryCode;
+    
+    @JsonProperty(&quot;legalStructureEligibility&quot;)
+    private String legalStructureEligibility;
+    
+    @JsonProperty(&quot;officerEligibilityCode&quot;)
+    private String officerEligibilityCode;
+    
+    @JsonProperty(&quot;otherFeesChargesCode&quot;)
+    private String otherFeesChargesCode;
+    
+    @JsonProperty(&quot;feeChargeDetailCode&quot;)
+    private String feeChargeDetailCode;
+    
+    @JsonProperty(&quot;feeChargeCapCode&quot;)
+    private String feeChargeCapCode;
+    
+    public String getFeeChargeCapCode() {
+<span class="nc" id="L707">		return feeChargeCapCode;</span>
+	}
+
+	public void setFeeChargeCapCode(String feeChargeCapCode) {
+<span class="nc" id="L711">		this.feeChargeCapCode = feeChargeCapCode;</span>
+<span class="nc" id="L712">	}</span>
+
+	public String getOtherFeesChargesCode() {
+<span class="nc" id="L715">		return otherFeesChargesCode;</span>
+	}
+
+	public void setOtherFeesChargesCode(String otherFeesChargesCode) {
+<span class="nc" id="L719">		this.otherFeesChargesCode = otherFeesChargesCode;</span>
+<span class="nc" id="L720">	}</span>
+
+	public String getFeeChargeDetailCode() {
+<span class="nc" id="L723">		return feeChargeDetailCode;</span>
+	}
+
+	public void setFeeChargeDetailCode(String feeChargeDetailCode) {
+<span class="nc" id="L727">		this.feeChargeDetailCode = feeChargeDetailCode;</span>
+<span class="nc" id="L728">	}</span>
+
+	public String getLegalStructureEligibility() {
+<span class="nc" id="L731">		return legalStructureEligibility;</span>
+	}
+
+	public void setLegalStructureEligibility(String legalStructureEligibility) {
+<span class="nc" id="L735">		this.legalStructureEligibility = legalStructureEligibility;</span>
+<span class="nc" id="L736">	}</span>
+
+	public String getOfficerEligibilityCode() {
+<span class="nc" id="L739">		return officerEligibilityCode;</span>
+	}
+
+	public void setOfficerEligibilityCode(String officerEligibilityCode) {
+<span class="nc" id="L743">		this.officerEligibilityCode = officerEligibilityCode;</span>
+<span class="nc" id="L744">	}</span>
+
+	public String getTradingEligibilityHistoryCode() {
+<span class="nc" id="L747">		return tradingEligibilityHistoryCode;</span>
+	}
+
+	public void setTradingEligibilityHistoryCode(String tradingEligibilityHistoryCode) {
+<span class="nc" id="L751">		this.tradingEligibilityHistoryCode = tradingEligibilityHistoryCode;</span>
+<span class="nc" id="L752">	}</span>
+
+	public String getResidencyEligibilityCode() {
+<span class="nc" id="L755">		return residencyEligibilityCode;</span>
+	}
+
+	public void setResidencyEligibilityCode(String residencyEligibilityCode) {
+<span class="nc" id="L759">		this.residencyEligibilityCode = residencyEligibilityCode;</span>
+<span class="nc" id="L760">	}</span>
+
+	public String getEligibilityCode() {
+<span class="nc" id="L763">		return eligibilityCode;</span>
+	}
+
+	public void setEligibilityCode(String eligibilityCode) {
+<span class="nc" id="L767">		this.eligibilityCode = eligibilityCode;</span>
+<span class="nc" id="L768">	}</span>
+
+	public String getOtherEligibilityCode() {
+<span class="nc" id="L771">		return otherEligibilityCode;</span>
+	}
+
+	public void setOtherEligibilityCode(String otherEligibilityCode) {
+<span class="nc" id="L775">		this.otherEligibilityCode = otherEligibilityCode;</span>
+<span class="nc" id="L776">	}</span>
+	
+	/////////////////////////////
+
+	public String getOverdraftFeesChargesId() {
+<span class="nc" id="L781">        return overdraftFeesChargesId;</span>
+    }
+ 
+    public String getProductType() {
+<span class="nc" id="L785">        return productType;</span>
+    }
+ 
+    public void setProductType(String productType) {
+<span class="nc" id="L789">        this.productType = productType;</span>
+<span class="nc" id="L790">    }</span>
+ 
+    public void setOverdraftFeesChargesId(String overdraftFeesChargesId) {
+<span class="nc" id="L793">        this.overdraftFeesChargesId = overdraftFeesChargesId;</span>
+<span class="nc" id="L794">    }</span>
+ 
+    public String getOverdraftFeeChargeCapId() {
+<span class="nc" id="L797">        return overdraftFeeChargeCapId;</span>
+    }
+ 
+    public void setOverdraftFeeChargeCapId(String overdraftFeeChargeCapId) {
+<span class="nc" id="L801">        this.overdraftFeeChargeCapId = overdraftFeeChargeCapId;</span>
+<span class="nc" id="L802">    }</span>
+ 
+    public String getAgreementLengthMaximum() {
+<span class="nc" id="L805">        return agreementLengthMaximum;</span>
+    }
+ 
+    public void setAgreementLengthMaximum(String agreementLengthMaximum) {
+<span class="nc" id="L809">        this.agreementLengthMaximum = agreementLengthMaximum;</span>
+<span class="nc" id="L810">    }</span>
+ 
+    public String getEar() {
+<span class="nc" id="L813">        return ear;</span>
+    }
+ 
+    public void setEar(String ear) {
+<span class="nc" id="L817">        this.ear = ear;</span>
+<span class="nc" id="L818">    }</span>
+ 
+ 
+    public String getAgreementLengthMinimum() {
+<span class="nc" id="L822">        return agreementLengthMinimum;</span>
+    }
+ 
+    public void setAgreementLengthMinimum(String agreementLengthMinimum) {
+<span class="nc" id="L826">        this.agreementLengthMinimum = agreementLengthMinimum;</span>
+<span class="nc" id="L827">    }</span>
+ 
+    public String getBankGuaranteedIndicator() {
+<span class="nc" id="L830">        return bankGuaranteedIndicator;</span>
+    }
+ 
+    public void setBankGuaranteedIndicator(String bankGuaranteedIndicator) {
+<span class="nc" id="L834">        this.bankGuaranteedIndicator = bankGuaranteedIndicator;</span>
+<span class="nc" id="L835">    }</span>
+ 
+    public String getOverdraftTierBandSetId() {
+<span class="nc" id="L838">        return overdraftTierBandSetId;</span>
+    }
+ 
+    public void setOverdraftTierBandSetId(String overdraftTierBandSetId) {
+<span class="nc" id="L842">        this.overdraftTierBandSetId = overdraftTierBandSetId;</span>
+<span class="nc" id="L843">    }</span>
+ 
+ 
+ 
+ 
+    public String getFeatureBenefitCardSchemeId() {
+<span class="nc" id="L849">        return featureBenefitCardSchemeId;</span>
+    }
+ 
+    public void setFeatureBenefitCardSchemeId(String featureBenefitCardSchemeId) {
+<span class="nc" id="L853">        this.featureBenefitCardSchemeId = featureBenefitCardSchemeId;</span>
+<span class="nc" id="L854">    }</span>
+ 
+    public String getFeatureBenefitMobileWalletId() {
+<span class="nc" id="L857">        return featureBenefitMobileWalletId;</span>
+    }
+ 
+    public void setFeatureBenefitMobileWalletId(String featureBenefitMobileWalletId) {
+<span class="nc" id="L861">        this.featureBenefitMobileWalletId = featureBenefitMobileWalletId;</span>
+<span class="nc" id="L862">    }</span>
+ 
+    public String getFeatureBenefitCardId() {
+<span class="nc" id="L865">        return featureBenefitCardId;</span>
+    }
+ 
+    public void setFeatureBenefitCardId(String featureBenefitCardId) {
+<span class="nc" id="L869">        this.featureBenefitCardId = featureBenefitCardId;</span>
+<span class="nc" id="L870">    }</span>
+ 
+    public String getFeatureBenefitMobileWalletMapId() {
+<span class="nc" id="L873">        return featureBenefitMobileWalletMapId;</span>
+    }
+ 
+    public void setFeatureBenefitMobileWalletMapId(String featureBenefitMobileWalletMapId) {
+<span class="nc" id="L877">        this.featureBenefitMobileWalletMapId = featureBenefitMobileWalletMapId;</span>
+<span class="nc" id="L878">    }</span>
+ 
+    public String getFeatureBenefitCardMapId() {
+<span class="nc" id="L881">        return featureBenefitCardMapId;</span>
+    }
+ 
+    public void setFeatureBenefitCardMapId(String featureBenefitCardMapId) {
+<span class="nc" id="L885">        this.featureBenefitCardMapId = featureBenefitCardMapId;</span>
+<span class="nc" id="L886">    }</span>
+ 
+    public String getStoFullPeriodType() {
+<span class="nc" id="L889">        return stoFullPeriodType;</span>
+    }
+ 
+    public void setStoFullPeriodType(String stoFullPeriodType) {
+<span class="nc" id="L893">        this.stoFullPeriodType = stoFullPeriodType;</span>
+<span class="nc" id="L894">    }</span>
+ 
+    public String getStoFullPeriodLength() {
+<span class="nc" id="L897">        return stoFullPeriodLength;</span>
+    }
+ 
+    public void setStoFullPeriodLength(String stoFullPeriodLength) {
+<span class="nc" id="L901">        this.stoFullPeriodLength = stoFullPeriodLength;</span>
+<span class="nc" id="L902">    }</span>
+ 
+    public String getStoFullPeriodTypeId() {
+<span class="nc" id="L905">        return stoFullPeriodTypeId;</span>
+    }
+ 
+    public void setStoFullPeriodTypeId(String stoFullPeriodTypeId) {
+<span class="nc" id="L909">        this.stoFullPeriodTypeId = stoFullPeriodTypeId;</span>
+<span class="nc" id="L910">    }</span>
+ 
+    public String getStoPartialPeriodTypeId() {
+<span class="nc" id="L913">        return stoPartialPeriodTypeId;</span>
+    }
+ 
+    public void setStoPartialPeriodTypeId(String stoPartialPeriodTypeId) {
+<span class="nc" id="L917">        this.stoPartialPeriodTypeId = stoPartialPeriodTypeId;</span>
+<span class="nc" id="L918">    }</span>
+ 
+    public String getStoPartialPeriodType() {
+<span class="nc" id="L921">        return stoPartialPeriodType;</span>
+    }
+ 
+    public void setStoPartialPeriodType(String stoPartialPeriodType) {
+<span class="nc" id="L925">        this.stoPartialPeriodType = stoPartialPeriodType;</span>
+<span class="nc" id="L926">    }</span>
+ 
+    public String getStoPartialPeriodLength() {
+<span class="nc" id="L929">        return stoPartialPeriodLength;</span>
+    }
+ 
+    public void setStoPartialPeriodLength(String stoPartialPeriodLength) {
+<span class="nc" id="L933">        this.stoPartialPeriodLength = stoPartialPeriodLength;</span>
+<span class="nc" id="L934">    }</span>
+ 
+    public String getSchemeId() {
+<span class="nc" id="L937">        return schemeId;</span>
+    }
+ 
+    public void setSchemeId(String schemeId) {
+<span class="nc" id="L941">        this.schemeId = schemeId;</span>
+<span class="nc" id="L942">    }</span>
+ 
+    public String getFeeChargeCapId() {
+<span class="nc" id="L945">        return feeChargeCapId;</span>
+    }
+ 
+    public void setFeeChargeCapId(String feeChargeCapId) {
+<span class="nc" id="L949">        this.feeChargeCapId = feeChargeCapId;</span>
+<span class="nc" id="L950">    }</span>
+ 
+    public String getWalletTypeId() {
+<span class="nc" id="L953">        return walletTypeId;</span>
+    }
+ 
+    public void setWalletTypeId(String walletTypeId) {
+<span class="nc" id="L957">        this.walletTypeId = walletTypeId;</span>
+<span class="nc" id="L958">    }</span>
+ 
+    public String getMinimumArrangedOverdraftAmount() {
+<span class="nc" id="L961">        return minimumArrangedOverdraftAmount;</span>
+    }
+ 
+    public void setMinimumArrangedOverdraftAmount(String minimumArrangedOverdraftAmount) {
+<span class="nc" id="L965">        this.minimumArrangedOverdraftAmount = minimumArrangedOverdraftAmount;</span>
+<span class="nc" id="L966">    }</span>
+ 
+    public String getFeatureBenefitsMobileWalletTypeId() {
+<span class="nc" id="L969">        return featureBenefitsMobileWalletTypeId;</span>
+    }
+ 
+    public void setFeatureBenefitsMobileWalletTypeId(String featureBenefitsMobileWalletTypeId) {
+<span class="nc" id="L973">        this.featureBenefitsMobileWalletTypeId = featureBenefitsMobileWalletTypeId;</span>
+<span class="nc" id="L974">    }</span>
+ 
+    public String getFeatureBenefitsMobileWalletId() {
+<span class="nc" id="L977">        return featureBenefitsMobileWalletId;</span>
+    }
+ 
+    public void setFeatureBenefitsMobileWalletId(String featureBenefitsMobileWalletId) {
+<span class="nc" id="L981">        this.featureBenefitsMobileWalletId = featureBenefitsMobileWalletId;</span>
+<span class="nc" id="L982">    }</span>
+ 
+    public String getFeatureBenefitsCardTypeId() {
+<span class="nc" id="L985">        return featureBenefitsCardTypeId;</span>
+    }
+ 
+    public void setFeatureBenefitsCardTypeId(String featureBenefitsCardTypeId) {
+<span class="nc" id="L989">        this.featureBenefitsCardTypeId = featureBenefitsCardTypeId;</span>
+<span class="nc" id="L990">    }</span>
+ 
+    public String getFeatureBenefitsCardSchemeId() {
+<span class="nc" id="L993">        return featureBenefitsCardSchemeId;</span>
+    }
+ 
+    public void setFeatureBenefitsCardSchemeId(String featureBenefitsCardSchemeId) {
+<span class="nc" id="L997">        this.featureBenefitsCardSchemeId = featureBenefitsCardSchemeId;</span>
+<span class="nc" id="L998">    }</span>
+ 
+ 
+    public String getContactlessIndicator() {
+<span class="nc" id="L1002">        return contactlessIndicator;</span>
+    }
+ 
+    public void setContactlessIndicator(String contactlessIndicator) {
+<span class="nc" id="L1006">        this.contactlessIndicator = contactlessIndicator;</span>
+<span class="nc" id="L1007">    }</span>
+ 
+    public String getMaxDailyCardWithdrawalLimit() {
+<span class="nc" id="L1010">        return maxDailyCardWithdrawalLimit;</span>
+    }
+ 
+    public void setMaxDailyCardWithdrawalLimit(String maxDailyCardWithdrawalLimit) {
+<span class="nc" id="L1014">        this.maxDailyCardWithdrawalLimit = maxDailyCardWithdrawalLimit;</span>
+<span class="nc" id="L1015">    }</span>
+ 
+    public String getOverdraftId() {
+<span class="nc" id="L1018">        return overdraftId;</span>
+    }
+ 
+    public void setOverdraftId(String overdraftId) {
+<span class="nc" id="L1022">        this.overdraftId = overdraftId;</span>
+<span class="nc" id="L1023">    }</span>
+ 
+ 
+    public String getCardTypeId() {
+<span class="nc" id="L1027">        return cardTypeId;</span>
+    }
+ 
+    public void setCardTypeId(String cardTypeId) {
+<span class="nc" id="L1031">        this.cardTypeId = cardTypeId;</span>
+<span class="nc" id="L1032">    }</span>
+ 
+    public String getCardSchemeId() {
+<span class="nc" id="L1035">        return cardSchemeId;</span>
+    }
+ 
+    public void setCardSchemeId(String cardSchemeId) {
+<span class="nc" id="L1039">        this.cardSchemeId = cardSchemeId;</span>
+<span class="nc" id="L1040">    }</span>
+ 
+ 
+    @JsonProperty(&quot;legalStructureEligibilityId&quot;)
+    private String legalStructureEligibilityId;
+ 
+ 
+    public String getCalculationFrequencyCode() {
+<span class="nc" id="L1048">        return calculationFrequencyCode;</span>
+    }
+ 
+    public void setCalculationFrequencyCode(String calculationFrequencyCode) {
+<span class="nc" id="L1052">        this.calculationFrequencyCode = calculationFrequencyCode;</span>
+<span class="nc" id="L1053">    }</span>
+ 
+    public String getApplicationFrequencyCode() {
+<span class="nc" id="L1056">        return applicationFrequencyCode;</span>
+    }
+ 
+    public void setApplicationFrequencyCode(String applicationFrequencyCode) {
+<span class="nc" id="L1060">        this.applicationFrequencyCode = applicationFrequencyCode;</span>
+<span class="nc" id="L1061">    }</span>
+ 
+    public String getSubProductCode() {
+<span class="nc" id="L1064">        return subProductCode;</span>
+    }
+ 
+    public void setSubProductCode(String subProductCode) {
+<span class="nc" id="L1068">        this.subProductCode = subProductCode;</span>
+<span class="nc" id="L1069">    }</span>
+ 
+    public String getChargeBaseAmount() {
+<span class="nc" id="L1072">        return chargeBaseAmount;</span>
+    }
+ 
+    public void setChargeBaseAmount(String chargeBaseAmount) {
+<span class="nc" id="L1076">        this.chargeBaseAmount = chargeBaseAmount;</span>
+<span class="nc" id="L1077">    }</span>
+ 
+    public String getTransactionCodeId() {
+<span class="nc" id="L1080">        return transactionCodeId;</span>
+    }
+ 
+    public void setTransactionCodeId(String transactionCodeId) {
+<span class="nc" id="L1084">        this.transactionCodeId = transactionCodeId;</span>
+<span class="nc" id="L1085">    }</span>
+ 
+    public String getTransactionSubCodeId() {
+<span class="nc" id="L1088">        return transactionSubCodeId;</span>
+    }
+ 
+    public void setTransactionSubCodeId(String transactionSubCodeId) {
+<span class="nc" id="L1092">        this.transactionSubCodeId = transactionSubCodeId;</span>
+<span class="nc" id="L1093">    }</span>
+ 
+    public String getTransactionSubCodeDescription() {
+<span class="nc" id="L1096">        return transactionSubCodeDescription;</span>
+    }
+ 
+    public void setTransactionSubCodeDescription(String transactionSubCodeDescription) {
+<span class="nc" id="L1100">        this.transactionSubCodeDescription = transactionSubCodeDescription;</span>
+<span class="nc" id="L1101">    }</span>
+ 
+    public String getIncludedInMonthlyChargeIndicator() {
+<span class="nc" id="L1104">        return includedInMonthlyChargeIndicator;</span>
+    }
+ 
+    public void setIncludedInMonthlyChargeIndicator(String includedInMonthlyChargeIndicator) {
+<span class="nc" id="L1108">        this.includedInMonthlyChargeIndicator = includedInMonthlyChargeIndicator;</span>
+<span class="nc" id="L1109">    }</span>
+ 
+    public String getFeatureBenefitGroupId() {
+<span class="nc" id="L1112">        return featureBenefitGroupId;</span>
+    }
+ 
+    public void setFeatureBenefitGroupId(String featureBenefitGroupId) {
+<span class="nc" id="L1116">        this.featureBenefitGroupId = featureBenefitGroupId;</span>
+<span class="nc" id="L1117">    }</span>
+ 
+    public String getFeaturesBenefitsId() {
+<span class="nc" id="L1120">        return featuresBenefitsId;</span>
+    }
+ 
+    public void setFeaturesBenefitsId(String featuresBenefitsId) {
+<span class="nc" id="L1124">        this.featuresBenefitsId = featuresBenefitsId;</span>
+<span class="nc" id="L1125">    }</span>
+ 
+    public String getCappingPeriodId() {
+<span class="nc" id="L1128">        return cappingPeriodId;</span>
+    }
+ 
+    public void setCappingPeriodId(String cappingPeriodId) {
+<span class="nc" id="L1132">        this.cappingPeriodId = cappingPeriodId;</span>
+<span class="nc" id="L1133">    }</span>
+ 
+    public String getCappingPeriod() {
+<span class="nc" id="L1136">        return cappingPeriod;</span>
+    }
+ 
+    public void setCappingPeriod(String cappingPeriod) {
+<span class="nc" id="L1140">        this.cappingPeriod = cappingPeriod;</span>
+<span class="nc" id="L1141">    }</span>
+ 
+    public String getFeeCapOccurance() {
+<span class="nc" id="L1144">        return feeCapOccurance;</span>
+    }
+ 
+    public void setFeeCapOccurance(String feeCapOccurance) {
+<span class="nc" id="L1148">        this.feeCapOccurance = feeCapOccurance;</span>
+<span class="nc" id="L1149">    }</span>
+ 
+    public String getFeeCapAmount() {
+<span class="nc" id="L1152">        return feeCapAmount;</span>
+    }
+ 
+    public void setFeeCapAmount(String feeCapAmount) {
+<span class="nc" id="L1156">        this.feeCapAmount = feeCapAmount;</span>
+<span class="nc" id="L1157">    }</span>
+ 
+    public String getBenefitGroupNominalValue() {
+<span class="nc" id="L1160">        return benefitGroupNominalValue;</span>
+    }
+ 
+    public void setBenefitGroupNominalValue(String benefitGroupNominalValue) {
+<span class="nc" id="L1164">        this.benefitGroupNominalValue = benefitGroupNominalValue;</span>
+<span class="nc" id="L1165">    }</span>
+ 
+    public String getFee() {
+<span class="nc" id="L1168">        return fee;</span>
+    }
+ 
+    public void setFee(String fee) {
+<span class="nc" id="L1172">        this.fee = fee;</span>
+<span class="nc" id="L1173">    }</span>
+ 
+    public String getFeatureBenefitItemId() {
+<span class="nc" id="L1176">        return featureBenefitItemId;</span>
+    }
+ 
+    public void setFeatureBenefitItemId(String featureBenefitItemId) {
+<span class="nc" id="L1180">        this.featureBenefitItemId = featureBenefitItemId;</span>
+<span class="nc" id="L1181">    }</span>
+ 
+    public String getFeatureBenefitEligibilityId() {
+<span class="nc" id="L1184">        return featureBenefitEligibilityId;</span>
+    }
+ 
+    public void setFeatureBenefitEligibilityId(String featureBenefitEligibilityId) {
+<span class="nc" id="L1188">        this.featureBenefitEligibilityId = featureBenefitEligibilityId;</span>
+<span class="nc" id="L1189">    }</span>
+ 
+ 
+ 
+    public String getChargesId() {
+<span class="nc" id="L1194">        return chargesId;</span>
+    }
+ 
+    public void setChargesId(String chargesId) {
+<span class="nc" id="L1198">        this.chargesId = chargesId;</span>
+<span class="nc" id="L1199">    }</span>
+ 
+    public String getProductId() {
+<span class="nc" id="L1202">        return productId;</span>
+    }
+ 
+    public void setProductId(String productId) {
+<span class="nc" id="L1206">        this.productId = productId;</span>
+<span class="nc" id="L1207">    }</span>
+ 
+    public String getDeductIndicator() {
+<span class="nc" id="L1210">        return deductIndicator;</span>
+    }
+ 
+    public void setDeductIndicator(String deductIndicator) {
+<span class="nc" id="L1214">        this.deductIndicator = deductIndicator;</span>
+<span class="nc" id="L1215">    }</span>
+ 
+    public String getFeeIndicator() {
+<span class="nc" id="L1218">        return feeIndicator;</span>
+    }
+ 
+    public void setFeeIndicator(String feeIndicator) {
+<span class="nc" id="L1222">        this.feeIndicator = feeIndicator;</span>
+<span class="nc" id="L1223">    }</span>
+ 
+    public String getSubProductId() {
+<span class="nc" id="L1226">        return subProductId;</span>
+    }
+ 
+    public void setSubProductId(String subProductId) {
+<span class="nc" id="L1230">        this.subProductId = subProductId;</span>
+<span class="nc" id="L1231">    }</span>
+ 
+    public String getOtherFeesChargesId() {
+<span class="nc" id="L1234">        return otherFeesChargesId;</span>
+    }
+ 
+    public void setOtherFeesChargesId(String otherFeesChargesId) {
+<span class="nc" id="L1238">        this.otherFeesChargesId = otherFeesChargesId;</span>
+<span class="nc" id="L1239">    }</span>
+ 
+    public String getRestrictedStatus() {
+<span class="nc" id="L1242">        return restrictedStatus;</span>
+    }
+ 
+    public void setRestrictedStatus(String restrictedStatus) {
+<span class="nc" id="L1246">        this.restrictedStatus = restrictedStatus;</span>
+<span class="nc" id="L1247">    }</span>
+ 
+    public String getLastMarketedDate() {
+<span class="nc" id="L1250">        return lastMarketedDate;</span>
+    }
+ 
+    public void setLastMarketedDate(String lastMarketedDate) {
+<span class="nc" id="L1254">        this.lastMarketedDate = lastMarketedDate;</span>
+<span class="nc" id="L1255">    }</span>
+ 
+    public String getFirstMarketedDate() {
+<span class="nc" id="L1258">        return firstMarketedDate;</span>
+    }
+ 
+    public void setFirstMarketedDate(String firstMarketedDate) {
+<span class="nc" id="L1262">        this.firstMarketedDate = firstMarketedDate;</span>
+<span class="nc" id="L1263">    }</span>
+ 
+    public String getAccountTypeId() {
+<span class="nc" id="L1266">        return accountTypeId;</span>
+    }
+ 
+    public void setAccountTypeId(String accountTypeId) {
+<span class="nc" id="L1270">        this.accountTypeId = accountTypeId;</span>
+<span class="nc" id="L1271">    }</span>
+ 
+    public String getSchemeName() {
+<span class="nc" id="L1274">        return schemeName;</span>
+    }
+ 
+    public void setSchemeName(String schemeName) {
+<span class="nc" id="L1278">        this.schemeName = schemeName;</span>
+<span class="nc" id="L1279">    }</span>
+ 
+    public String getCardName() {
+<span class="nc" id="L1282">        return cardName;</span>
+    }
+ 
+    public void setCardName(String cardName) {
+<span class="nc" id="L1286">        this.cardName = cardName;</span>
+<span class="nc" id="L1287">    }</span>
+ 
+    public String getAccountType() {
+<span class="nc" id="L1290">        return accountType;</span>
+    }
+ 
+    public void setAccountType(String accountType) {
+<span class="nc" id="L1294">        this.accountType = accountType;</span>
+<span class="nc" id="L1295">    }</span>
+ 
+    public String getStateTenurePeriod() {
+<span class="nc" id="L1298">        return stateTenurePeriod;</span>
+    }
+ 
+    public void setStateTenurePeriod(String stateTenurePeriod) {
+<span class="nc" id="L1302">        this.stateTenurePeriod = stateTenurePeriod;</span>
+<span class="nc" id="L1303">    }</span>
+ 
+    public String getStateTenurePeriodId() {
+<span class="nc" id="L1306">        return stateTenurePeriodId;</span>
+    }
+ 
+    public void setStateTenurePeriodId(String stateTenurePeriodId) {
+<span class="nc" id="L1310">        this.stateTenurePeriodId = stateTenurePeriodId;</span>
+<span class="nc" id="L1311">    }</span>
+ 
+ 
+    public String getMarketingState() {
+<span class="nc" id="L1315">        return marketingState;</span>
+    }
+ 
+    public void setMarketingState(String marketingState) {
+<span class="nc" id="L1319">        this.marketingState = marketingState;</span>
+<span class="nc" id="L1320">    }</span>
+ 
+    public String getMarketingStateId() {
+<span class="nc" id="L1323">        return marketingStateId;</span>
+    }
+ 
+    public String getStateTenureLength() {
+<span class="nc" id="L1327">        return stateTenureLength;</span>
+    }
+ 
+    public void setStateTenureLength(String stateTenureLength) {
+<span class="nc" id="L1331">        this.stateTenureLength = stateTenureLength;</span>
+<span class="nc" id="L1332">    }</span>
+ 
+    public void setMarketingStateId(String marketingStateId) {
+<span class="nc" id="L1335">        this.marketingStateId = marketingStateId;</span>
+<span class="nc" id="L1336">    }</span>
+ 
+    public String getCreditInterestId() {
+<span class="nc" id="L1339">        return creditInterestId;</span>
+    }
+ 
+    public void setCreditInterestId(String creditInterestId) {
+<span class="nc" id="L1343">        this.creditInterestId = creditInterestId;</span>
+<span class="nc" id="L1344">    }</span>
+ 
+    public String getServicingChannelId() {
+<span class="nc" id="L1347">        return servicingChannelId;</span>
+    }
+ 
+    public void setServicingChannelId(String servicingChannelId) {
+<span class="nc" id="L1351">        this.servicingChannelId = servicingChannelId;</span>
+<span class="nc" id="L1352">    }</span>
+ 
+    public String getServicingChannel() {
+<span class="nc" id="L1355">        return servicingChannel;</span>
+    }
+ 
+    public void setServicingChannel(String servicingChannel) {
+<span class="nc" id="L1359">        this.servicingChannel = servicingChannel;</span>
+<span class="nc" id="L1360">    }</span>
+ 
+    public String getSalesAccessChannelId() {
+<span class="nc" id="L1363">        return salesAccessChannelId;</span>
+    }
+ 
+    public void setSalesAccessChannelId(String salesAccessChannelId) {
+<span class="nc" id="L1367">        this.salesAccessChannelId = salesAccessChannelId;</span>
+<span class="nc" id="L1368">    }</span>
+ 
+    public String getSalesAccessChannel() {
+<span class="nc" id="L1371">        return salesAccessChannel;</span>
+    }
+ 
+    public void setSalesAccessChannel(String salesAccessChannel) {
+<span class="nc" id="L1375">        this.salesAccessChannel = salesAccessChannel;</span>
+<span class="nc" id="L1376">    }</span>
+ 
+    public String getCoreProductId() {
+<span class="nc" id="L1379">        return coreProductId;</span>
+    }
+ 
+    public void setCoreProductId(String coreProductId) {
+<span class="nc" id="L1383">        this.coreProductId = coreProductId;</span>
+<span class="nc" id="L1384">    }</span>
+ 
+    public String getTcsAndCsUrl() {
+<span class="nc" id="L1387">        return tcsAndCsUrl;</span>
+    }
+ 
+    public void setTcsAndCsUrl(String tcsAndCsUrl) {
+<span class="nc" id="L1391">        this.tcsAndCsUrl = tcsAndCsUrl;</span>
+<span class="nc" id="L1392">    }</span>
+ 
+    public String getMonthlyCharge() {
+<span class="nc" id="L1395">        return monthlyCharge;</span>
+    }
+ 
+    public void setMonthlyCharge(String monthlyCharge) {
+<span class="nc" id="L1399">        this.monthlyCharge = monthlyCharge;</span>
+<span class="nc" id="L1400">    }</span>
+ 
+    public String getCurrencyId() {
+<span class="nc" id="L1403">        return currencyId;</span>
+    }
+ 
+    public void setCurrencyId(String currencyId) {
+<span class="nc" id="L1407">        this.currencyId = currencyId;</span>
+<span class="nc" id="L1408">    }</span>
+ 
+    public String getCurrencyCode() {
+<span class="nc" id="L1411">        return currencyCode;</span>
+    }
+ 
+    public void setCurrencyCode(String currencyCode) {
+<span class="nc" id="L1415">        this.currencyCode = currencyCode;</span>
+<span class="nc" id="L1416">    }</span>
+ 
+    public String getProductDescription() {
+<span class="nc" id="L1419">        return productDescription;</span>
+    }
+ 
+    public void setProductDescription(String productDescription) {
+<span class="nc" id="L1423">        this.productDescription = productDescription;</span>
+<span class="nc" id="L1424">    }</span>
+ 
+    public String getProductUrl() {
+<span class="nc" id="L1427">        return productUrl;</span>
+    }
+ 
+    public void setProductUrl(String productUrl) {
+<span class="nc" id="L1431">        this.productUrl = productUrl;</span>
+<span class="nc" id="L1432">    }</span>
+ 
+    public String getBrandId() {
+<span class="nc" id="L1435">        return brandId;</span>
+    }
+ 
+    public void setBrandId(String brandId) {
+<span class="nc" id="L1439">        this.brandId = brandId;</span>
+<span class="nc" id="L1440">    }</span>
+ 
+    public String getProductCategoryId() {
+<span class="nc" id="L1443">        return productCategoryId;</span>
+    }
+ 
+    public void setProductCategoryId(String productCategoryId) {
+<span class="nc" id="L1447">        this.productCategoryId = productCategoryId;</span>
+<span class="nc" id="L1448">    }</span>
+ 
+    public String getProductCategory() {
+<span class="nc" id="L1451">        return productCategory;</span>
+    }
+ 
+    public void setProductCategory(String productCategory) {
+<span class="nc" id="L1455">        this.productCategory = productCategory;</span>
+<span class="nc" id="L1456">    }</span>
+ 
+    public String getOnSaleIndicator() {
+<span class="nc" id="L1459">        return onSaleIndicator;</span>
+    }
+ 
+    public void setOnSaleIndicator(String onSaleIndicator) {
+<span class="nc" id="L1463">        this.onSaleIndicator = onSaleIndicator;</span>
+<span class="nc" id="L1464">    }</span>
+ 
+    public String getTierBandSetId() {
+<span class="nc" id="L1467">        return tierBandSetId;</span>
+    }
+ 
+    public void setTierBandSetId(String tierBandSetId) {
+<span class="nc" id="L1471">        this.tierBandSetId = tierBandSetId;</span>
+<span class="nc" id="L1472">    }</span>
+ 
+    public String getCreditInterestEligibilityId() {
+<span class="nc" id="L1475">        return creditInterestEligibilityId;</span>
+    }
+ 
+    public void setCreditInterestEligibilityId(String creditInterestEligibilityId) {
+<span class="nc" id="L1479">        this.creditInterestEligibilityId = creditInterestEligibilityId;</span>
+<span class="nc" id="L1480">    }</span>
+ 
+    public String getTypeName() {
+<span class="nc" id="L1483">        return typeName;</span>
+    }
+ 
+    public void setTypeName(String typeName) {
+<span class="nc" id="L1487">        this.typeName = typeName;</span>
+<span class="nc" id="L1488">    }</span>
+ 
+    public String getTypeId() {
+<span class="nc" id="L1491">        return typeId;</span>
+    }
+ 
+    public void setTypeId(String typeId) {
+<span class="nc" id="L1495">        this.typeId = typeId;</span>
+<span class="nc" id="L1496">    }</span>
+ 
+    public String getAmount() {
+<span class="nc" id="L1499">        return amount;</span>
+    }
+ 
+    public void setAmount(String amount) {
+<span class="nc" id="L1503">        this.amount = amount;</span>
+<span class="nc" id="L1504">    }</span>
+ 
+    public String getPeriodId() {
+<span class="nc" id="L1507">        return periodId;</span>
+    }
+ 
+    public void setPeriodId(String periodId) {
+<span class="nc" id="L1511">        this.periodId = periodId;</span>
+<span class="nc" id="L1512">    }</span>
+ 
+    public String getPeriod() {
+<span class="nc" id="L1515">        return period;</span>
+    }
+ 
+    public void setPeriod(String period) {
+<span class="nc" id="L1519">        this.period = period;</span>
+<span class="nc" id="L1520">    }</span>
+ 
+    public String getIndicator() {
+<span class="nc" id="L1523">        return indicator;</span>
+    }
+ 
+    public void setIndicator(String indicator) {
+<span class="nc" id="L1527">        this.indicator = indicator;</span>
+<span class="nc" id="L1528">    }</span>
+ 
+    public String getTariffTypeId() {
+<span class="nc" id="L1531">        return tariffTypeId;</span>
+    }
+ 
+    public void setTariffTypeId(String tariffTypeId) {
+<span class="nc" id="L1535">        this.tariffTypeId = tariffTypeId;</span>
+<span class="nc" id="L1536">    }</span>
+ 
+    public String getTariffType() {
+<span class="nc" id="L1539">        return tariffType;</span>
+    }
+ 
+    public void setTariffType(String tariffType) {
+<span class="nc" id="L1543">        this.tariffType = tariffType;</span>
+<span class="nc" id="L1544">    }</span>
+ 
+    public String getFeeCategoryTypeId() {
+<span class="nc" id="L1547">        return feeCategoryTypeId;</span>
+    }
+ 
+    public void setFeeCategoryTypeId(String feeCategoryTypeId) {
+<span class="nc" id="L1551">        this.feeCategoryTypeId = feeCategoryTypeId;</span>
+<span class="nc" id="L1552">    }</span>
+ 
+    public String getFeeCategoryType() {
+<span class="nc" id="L1555">        return feeCategoryType;</span>
+    }
+ 
+    public void setFeeCategoryType(String feeCategoryType) {
+<span class="nc" id="L1559">        this.feeCategoryType = feeCategoryType;</span>
+<span class="nc" id="L1560">    }</span>
+ 
+    public String getFeeType() {
+<span class="nc" id="L1563">        return feeType;</span>
+    }
+ 
+    public void setFeeType(String feeType) {
+<span class="nc" id="L1567">        this.feeType = feeType;</span>
+<span class="nc" id="L1568">    }</span>
+ 
+    public String getFeeTypeId() {
+<span class="nc" id="L1571">        return feeTypeId;</span>
+    }
+ 
+    public void setFeeTypeId(String feeTypeId) {
+<span class="nc" id="L1575">        this.feeTypeId = feeTypeId;</span>
+<span class="nc" id="L1576">    }</span>
+ 
+    public String getFeeRateType() {
+<span class="nc" id="L1579">        return feeRateType;</span>
+    }
+ 
+    public void setFeeRateType(String feeRateType) {
+<span class="nc" id="L1583">        this.feeRateType = feeRateType;</span>
+<span class="nc" id="L1584">    }</span>
+ 
+    public String getFeeRateTypeId() {
+<span class="nc" id="L1587">        return feeRateTypeId;</span>
+    }
+ 
+    public void setFeeRateTypeId(String feeRateTypeId) {
+<span class="nc" id="L1591">        this.feeRateTypeId = feeRateTypeId;</span>
+<span class="nc" id="L1592">    }</span>
+ 
+    public String getFeeRate() {
+<span class="nc" id="L1595">        return feeRate;</span>
+    }
+ 
+    public void setFeeRate(String feeRate) {
+<span class="nc" id="L1599">        this.feeRate = feeRate;</span>
+<span class="nc" id="L1600">    }</span>
+ 
+    public String getFeeAmount() {
+<span class="nc" id="L1603">        return feeAmount;</span>
+    }
+ 
+    public void setFeeAmount(String feeAmount) {
+<span class="nc" id="L1607">        this.feeAmount = feeAmount;</span>
+<span class="nc" id="L1608">    }</span>
+ 
+    public String getNegotiableIndicator() {
+<span class="nc" id="L1611">        return negotiableIndicator;</span>
+    }
+ 
+    public void setNegotiableIndicator(String negotiableIndicator) {
+<span class="nc" id="L1615">        this.negotiableIndicator = negotiableIndicator;</span>
+<span class="nc" id="L1616">    }</span>
+ 
+    public String getMinimumAmount() {
+<span class="nc" id="L1619">        return minimumAmount;</span>
+    }
+ 
+    public void setMinimumAmount(String minimumAmount) {
+<span class="nc" id="L1623">        this.minimumAmount = minimumAmount;</span>
+<span class="nc" id="L1624">    }</span>
+ 
+    public String getMaximumAmount() {
+<span class="nc" id="L1627">        return maximumAmount;</span>
+    }
+ 
+    public void setMaximumAmount(String maximumAmount) {
+<span class="nc" id="L1631">        this.maximumAmount = maximumAmount;</span>
+<span class="nc" id="L1632">    }</span>
+ 
+    public String getMinimumRate() {
+<span class="nc" id="L1635">        return minimumRate;</span>
+    }
+ 
+    public void setMinimumRate(String minimumRate) {
+<span class="nc" id="L1639">        this.minimumRate = minimumRate;</span>
+<span class="nc" id="L1640">    }</span>
+ 
+    public String getMaximumRate() {
+<span class="nc" id="L1643">        return maximumRate;</span>
+    }
+ 
+    public void setMaximumRate(String maximumRate) {
+<span class="nc" id="L1647">        this.maximumRate = maximumRate;</span>
+<span class="nc" id="L1648">    }</span>
+ 
+    public String getAer() {
+<span class="nc" id="L1651">        return aer;</span>
+    }
+ 
+    public void setAer(String aer) {
+<span class="nc" id="L1655">        this.aer = aer;</span>
+<span class="nc" id="L1656">    }</span>
+ 
+    public String getCode() {
+<span class="nc" id="L1659">        return code;</span>
+    }
+ 
+    public void setCode(String code) {
+<span class="nc" id="L1663">        this.code = code;</span>
+<span class="nc" id="L1664">    }</span>
+ 
+    public String getName() {
+<span class="nc" id="L1667">        return name;</span>
+    }
+ 
+    public void setName(String name) {
+<span class="nc" id="L1671">        this.name = name;</span>
+<span class="nc" id="L1672">    }</span>
+ 
+    public String getDescription() {
+<span class="nc" id="L1675">        return description;</span>
+    }
+ 
+    public void setDescription(String description) {
+<span class="nc" id="L1679">        this.description = description;</span>
+<span class="nc" id="L1680">    }</span>
+ 
+    public String getCreatedUser() {
+<span class="nc" id="L1683">        return createdUser;</span>
+    }
+ 
+    public void setCreatedUser(String createdUser) {
+<span class="nc" id="L1687">        this.createdUser = createdUser;</span>
+<span class="nc" id="L1688">    }</span>
+ 
+    public String getModifiedUser() {
+<span class="nc" id="L1691">        return modifiedUser;</span>
+    }
+ 
+    public void setModifiedUser(String modifiedUser) {
+<span class="nc" id="L1695">        this.modifiedUser = modifiedUser;</span>
+<span class="nc" id="L1696">    }</span>
+ 
+    public String getStatus() {
+<span class="nc" id="L1699">        return status;</span>
+    }
+ 
+    public void setStatus(String status) {
+<span class="nc" id="L1703">        this.status = status;</span>
+<span class="nc" id="L1704">    }</span>
+ 
+    public String getReferenceCode() {
+<span class="nc" id="L1707">        return referenceCode;</span>
+    }
+ 
+    public void setReferenceCode(String referenceCode) {
+<span class="nc" id="L1711">        this.referenceCode = referenceCode;</span>
+<span class="nc" id="L1712">    }</span>
+ 
+    public String getTierBandMethodId() {
+<span class="nc" id="L1715">        return tierBandMethodId;</span>
+    }
+ 
+    public void setTierBandMethodId(String tierBandMethodId) {
+<span class="nc" id="L1719">        this.tierBandMethodId = tierBandMethodId;</span>
+<span class="nc" id="L1720">    }</span>
+ 
+    public String getTierBandMethod() {
+<span class="nc" id="L1723">        return tierBandMethod;</span>
+    }
+ 
+    public void setTierBandMethod(String tierBandMethod) {
+<span class="nc" id="L1727">        this.tierBandMethod = tierBandMethod;</span>
+<span class="nc" id="L1728">    }</span>
+ 
+    public String getCalculationMethodId() {
+<span class="nc" id="L1731">        return calculationMethodId;</span>
+    }
+ 
+    public void setCalculationMethodId(String calculationMethodId) {
+<span class="nc" id="L1735">        this.calculationMethodId = calculationMethodId;</span>
+<span class="nc" id="L1736">    }</span>
+ 
+    public String getCalculationMethod() {
+<span class="nc" id="L1739">        return calculationMethod;</span>
+    }
+ 
+    public void setCalculationMethod(String calculationMethod) {
+<span class="nc" id="L1743">        this.calculationMethod = calculationMethod;</span>
+<span class="nc" id="L1744">    }</span>
+ 
+    public String getDestinationId() {
+<span class="nc" id="L1747">        return destinationId;</span>
+    }
+ 
+    public void setDestinationId(String destinationId) {
+<span class="nc" id="L1751">        this.destinationId = destinationId;</span>
+<span class="nc" id="L1752">    }</span>
+ 
+    public String getDestination() {
+<span class="nc" id="L1755">        return destination;</span>
+    }
+ 
+    public void setDestination(String destination) {
+<span class="nc" id="L1759">        this.destination = destination;</span>
+<span class="nc" id="L1760">    }</span>
+ 
+    public String getFeeCategoryId() {
+<span class="nc" id="L1763">        return feeCategoryId;</span>
+    }
+ 
+    public void setFeeCategoryId(String feeCategoryId) {
+<span class="nc" id="L1767">        this.feeCategoryId = feeCategoryId;</span>
+<span class="nc" id="L1768">    }</span>
+ 
+    public String getFeeCategory() {
+<span class="nc" id="L1771">        return feeCategory;</span>
+    }
+ 
+    public void setFeeCategory(String feeCategory) {
+<span class="nc" id="L1775">        this.feeCategory = feeCategory;</span>
+<span class="nc" id="L1776">    }</span>
+ 
+    public String getMaxAllowedNoOfWithdrawals() {
+<span class="nc" id="L1779">        return maxAllowedNoOfWithdrawals;</span>
+    }
+ 
+    public void setMaxAllowedNoOfWithdrawals(String maxAllowedNoOfWithdrawals) {
+<span class="nc" id="L1783">        this.maxAllowedNoOfWithdrawals = maxAllowedNoOfWithdrawals;</span>
+<span class="nc" id="L1784">    }</span>
+ 
+    public String getMaxAllowedLimitForWithdrawals() {
+<span class="nc" id="L1787">        return maxAllowedLimitForWithdrawals;</span>
+    }
+ 
+    public void setMaxAllowedLimitForWithdrawals(String maxAllowedLimitForWithdrawals) {
+<span class="nc" id="L1791">        this.maxAllowedLimitForWithdrawals = maxAllowedLimitForWithdrawals;</span>
+<span class="nc" id="L1792">    }</span>
+ 
+    public String getMaxAllowedNoOfWithdrawalsPeriodId() {
+<span class="nc" id="L1795">        return maxAllowedNoOfWithdrawalsPeriodId;</span>
+    }
+ 
+    public void setMaxAllowedNoOfWithdrawalsPeriodId(String maxAllowedNoOfWithdrawalsPeriodId) {
+<span class="nc" id="L1799">        this.maxAllowedNoOfWithdrawalsPeriodId = maxAllowedNoOfWithdrawalsPeriodId;</span>
+<span class="nc" id="L1800">    }</span>
+ 
+    public String getMaxAllowedLimitForWithdrawalsPeriodId() {
+<span class="nc" id="L1803">        return maxAllowedLimitForWithdrawalsPeriodId;</span>
+    }
+ 
+    public void setMaxAllowedLimitForWithdrawalsPeriodId(String maxAllowedLimitForWithdrawalsPeriodId) {
+<span class="nc" id="L1807">        this.maxAllowedLimitForWithdrawalsPeriodId = maxAllowedLimitForWithdrawalsPeriodId;</span>
+<span class="nc" id="L1808">    }</span>
+ 
+    public String getMaxAllowedNoOfWithdrawalsPeriod() {
+<span class="nc" id="L1811">        return maxAllowedNoOfWithdrawalsPeriod;</span>
+    }
+ 
+    public void setMaxAllowedNoOfWithdrawalsPeriod(String maxAllowedNoOfWithdrawalsPeriod) {
+<span class="nc" id="L1815">        this.maxAllowedNoOfWithdrawalsPeriod = maxAllowedNoOfWithdrawalsPeriod;</span>
+<span class="nc" id="L1816">    }</span>
+ 
+    public String getMaxAllowedLimitForWithdrawalsPeriod() {
+<span class="nc" id="L1819">        return maxAllowedLimitForWithdrawalsPeriod;</span>
+    }
+ 
+    public void setMaxAllowedLimitForWithdrawalsPeriod(String maxAllowedLimitForWithdrawalsPeriod) {
+<span class="nc" id="L1823">        this.maxAllowedLimitForWithdrawalsPeriod = maxAllowedLimitForWithdrawalsPeriod;</span>
+<span class="nc" id="L1824">    }</span>
+ 
+    public String getMinBalanceForInterest() {
+<span class="nc" id="L1827">        return minBalanceForInterest;</span>
+    }
+ 
+    public void setMinBalanceForInterest(String minBalanceForInterest) {
+<span class="nc" id="L1831">        this.minBalanceForInterest = minBalanceForInterest;</span>
+<span class="nc" id="L1832">    }</span>
+ 
+    public String getIdentification() {
+<span class="nc" id="L1835">        return identification;</span>
+    }
+ 
+    public void setIdentification(String identification) {
+<span class="nc" id="L1839">        this.identification = identification;</span>
+<span class="nc" id="L1840">    }</span>
+ 
+    public String getEffectiveDate() {
+<span class="nc" id="L1843">        return effectiveDate;</span>
+    }
+ 
+    public void setEffectiveDate(String effectiveDate) {
+<span class="nc" id="L1847">        this.effectiveDate = effectiveDate;</span>
+<span class="nc" id="L1848">    }</span>
+ 
+    public String getTierValueMinimum() {
+<span class="nc" id="L1851">        return tierValueMinimum;</span>
+    }
+ 
+    public void setTierValueMinimum(String tierValueMinimum) {
+<span class="nc" id="L1855">        this.tierValueMinimum = tierValueMinimum;</span>
+<span class="nc" id="L1856">    }</span>
+ 
+    public String getTierValueMaximum() {
+<span class="nc" id="L1859">        return tierValueMaximum;</span>
+    }
+ 
+    public void setTierValueMaximum(String tierValueMaximum) {
+<span class="nc" id="L1863">        this.tierValueMaximum = tierValueMaximum;</span>
+<span class="nc" id="L1864">    }</span>
+ 
+    public String getCalculationFrequencyId() {
+<span class="nc" id="L1867">        return calculationFrequencyId;</span>
+    }
+ 
+    public void setCalculationFrequencyId(String calculationFrequencyId) {
+<span class="nc" id="L1871">        this.calculationFrequencyId = calculationFrequencyId;</span>
+<span class="nc" id="L1872">    }</span>
+ 
+    public String getCalculationFrequency() {
+<span class="nc" id="L1875">        return calculationFrequency;</span>
+    }
+ 
+    public void setCalculationFrequency(String calculationFrequency) {
+<span class="nc" id="L1879">        this.calculationFrequency = calculationFrequency;</span>
+<span class="nc" id="L1880">    }</span>
+ 
+    public String getApplicationFrequencyId() {
+<span class="nc" id="L1883">        return applicationFrequencyId;</span>
+    }
+ 
+    public void setApplicationFrequencyId(String applicationFrequencyId) {
+<span class="nc" id="L1887">        this.applicationFrequencyId = applicationFrequencyId;</span>
+<span class="nc" id="L1888">    }</span>
+ 
+    public String getApplicationFrequency() {
+<span class="nc" id="L1891">        return applicationFrequency;</span>
+    }
+ 
+    public void setApplicationFrequency(String applicationFrequency) {
+<span class="nc" id="L1895">        this.applicationFrequency = applicationFrequency;</span>
+<span class="nc" id="L1896">    }</span>
+    public String getDepositInterestAppliedCoverage() {
+<span class="nc" id="L1898">        return depositInterestAppliedCoverage;</span>
+    }
+ 
+    public void setDepositInterestAppliedCoverage(String depositInterestAppliedCoverage) {
+<span class="nc" id="L1902">        this.depositInterestAppliedCoverage = depositInterestAppliedCoverage;</span>
+<span class="nc" id="L1903">    }</span>
+ 
+    public String getBankInterestRateTypeId() {
+<span class="nc" id="L1906">        return bankInterestRateTypeId;</span>
+    }
+ 
+    public void setBankInterestRateTypeId(String bankInterestRateTypeId) {
+<span class="nc" id="L1910">        this.bankInterestRateTypeId = bankInterestRateTypeId;</span>
+<span class="nc" id="L1911">    }</span>
+ 
+    public String getBankInterestRateType() {
+<span class="nc" id="L1914">        return bankInterestRateType;</span>
+    }
+ 
+    public void setBankInterestRateType(String bankInterestRateType) {
+<span class="nc" id="L1918">        this.bankInterestRateType = bankInterestRateType;</span>
+<span class="nc" id="L1919">    }</span>
+ 
+    public String getBankInterestRate() {
+<span class="nc" id="L1922">        return bankInterestRate;</span>
+    }
+ 
+    public void setBankInterestRate(String bankInterestRate) {
+<span class="nc" id="L1926">        this.bankInterestRate = bankInterestRate;</span>
+<span class="nc" id="L1927">    }</span>
+ 
+    public String getDepositInterestApplicableBase() {
+<span class="nc" id="L1930">        return depositInterestApplicableBase;</span>
+    }
+ 
+    public void setDepositInterestApplicableBase(String depositInterestApplicableBase) {
+<span class="nc" id="L1934">        this.depositInterestApplicableBase = depositInterestApplicableBase;</span>
+<span class="nc" id="L1935">    }</span>
+ 
+    public String getBankInterestCalBasisId() {
+<span class="nc" id="L1938">        return bankInterestCalBasisId;</span>
+    }
+ 
+    public void setBankInterestCalBasisId(String bankInterestCalBasisId) {
+<span class="nc" id="L1942">        this.bankInterestCalBasisId = bankInterestCalBasisId;</span>
+<span class="nc" id="L1943">    }</span>
+ 
+    public String getBankInterestCalBasis() {
+<span class="nc" id="L1946">        return bankInterestCalBasis;</span>
+    }
+ 
+    public void setBankInterestCalBasis(String bankInterestCalBasis) {
+<span class="nc" id="L1950">        this.bankInterestCalBasis = bankInterestCalBasis;</span>
+<span class="nc" id="L1951">    }</span>
+ 
+    public String getDepositInterestAppliedCoverageId() {
+<span class="nc" id="L1954">        return depositInterestAppliedCoverageId;</span>
+    }
+ 
+    public void setDepositInterestAppliedCoverageId(String depositInterestAppliedCoverageId) {
+<span class="nc" id="L1958">        this.depositInterestAppliedCoverageId = depositInterestAppliedCoverageId;</span>
+<span class="nc" id="L1959">    }</span>
+ 
+    public String getDepositInterestApplicableBaseId() {
+<span class="nc" id="L1962">        return depositInterestApplicableBaseId;</span>
+    }
+ 
+    public void setDepositInterestApplicableBaseId(String depositInterestApplicableBaseId) {
+<span class="nc" id="L1966">        this.depositInterestApplicableBaseId = depositInterestApplicableBaseId;</span>
+<span class="nc" id="L1967">    }</span>
+ 
+    public String getFixedVariableInterestRateTypeId() {
+<span class="nc" id="L1970">        return fixedVariableInterestRateTypeId;</span>
+    }
+ 
+    public void setFixedVariableInterestRateTypeId(String fixedVariableInterestRateTypeId) {
+<span class="nc" id="L1974">        this.fixedVariableInterestRateTypeId = fixedVariableInterestRateTypeId;</span>
+<span class="nc" id="L1975">    }</span>
+ 
+    public String getFixedVariableInterestRateType() {
+<span class="nc" id="L1978">        return fixedVariableInterestRateType;</span>
+    }
+ 
+    public void setFixedVariableInterestRateType(String fixedVariableInterestRateType) {
+<span class="nc" id="L1982">        this.fixedVariableInterestRateType = fixedVariableInterestRateType;</span>
+<span class="nc" id="L1983">    }</span>
+ 
+    public String getVersion() {
+<span class="nc" id="L1986">        return version;</span>
+    }
+ 
+    public void setVersion(String version) {
+<span class="nc" id="L1990">        this.version = version;</span>
+<span class="nc" id="L1991">    }</span>
+ 
+    public String getSegmentId() {
+<span class="nc" id="L1994">        return segmentId;</span>
+    }
+ 
+    public void setSegmentId(String segmentId) {
+<span class="nc" id="L1998">        this.segmentId = segmentId;</span>
+<span class="nc" id="L1999">    }</span>
+ 
+    public String getSegment() {
+<span class="nc" id="L2002">        return segment;</span>
+    }
+ 
+    public void setSegment(String segment) {
+<span class="nc" id="L2006">        this.segment = segment;</span>
+<span class="nc" id="L2007">    }</span>
+ 
+    public String getMinimumBalance() {
+<span class="nc" id="L2010">        return minimumBalance;</span>
+    }
+ 
+    public void setMinimumBalance(String minimumBalance) {
+<span class="nc" id="L2014">        this.minimumBalance = minimumBalance;</span>
+<span class="nc" id="L2015">    }</span>
+ 
+    public String getMinimumAmountforAccountOpening() {
+<span class="nc" id="L2018">        return minimumAmountforAccountOpening;</span>
+    }
+ 
+    public void setMinimumAmountforAccountOpening(String minimumAmountforAccountOpening) {
+<span class="nc" id="L2022">        this.minimumAmountforAccountOpening = minimumAmountforAccountOpening;</span>
+<span class="nc" id="L2023">    }</span>
+ 
+    public String getWithdrawalsAllowedAfter() {
+<span class="nc" id="L2026">        return withdrawalsAllowedAfter;</span>
+    }
+ 
+    public void setWithdrawalsAllowedAfter(String withdrawalsAllowedAfter) {
+<span class="nc" id="L2030">        this.withdrawalsAllowedAfter = withdrawalsAllowedAfter;</span>
+<span class="nc" id="L2031">    }</span>
+ 
+    public String getWithdrawalsAllowedAfterPeriodId() {
+<span class="nc" id="L2034">        return withdrawalsAllowedAfterPeriodId;</span>
+    }
+ 
+    public void setWithdrawalsAllowedAfterPeriodId(String withdrawalsAllowedAfterPeriodId) {
+<span class="nc" id="L2038">        this.withdrawalsAllowedAfterPeriodId = withdrawalsAllowedAfterPeriodId;</span>
+<span class="nc" id="L2039">    }</span>
+ 
+    public String getBorrowerLimit() {
+<span class="nc" id="L2042">        return borrowerLimit;</span>
+    }
+ 
+    public void setBorrowerLimit(String borrowerLimit) {
+<span class="nc" id="L2046">        this.borrowerLimit = borrowerLimit;</span>
+<span class="nc" id="L2047">    }</span>
+ 
+    public String getDormantPeriod() {
+<span class="nc" id="L2050">        return dormantPeriod;</span>
+    }
+ 
+    public void setDormantPeriod(String dormantPeriod) {
+<span class="nc" id="L2054">        this.dormantPeriod = dormantPeriod;</span>
+<span class="nc" id="L2055">    }</span>
+ 
+    public String getDormantPeriodTypeId() {
+<span class="nc" id="L2058">        return dormantPeriodTypeId;</span>
+    }
+ 
+    public void setDormantPeriodTypeId(String dormantPeriodTypeId) {
+<span class="nc" id="L2062">        this.dormantPeriodTypeId = dormantPeriodTypeId;</span>
+<span class="nc" id="L2063">    }</span>
+ 
+    public String getDormantPeriodType() {
+<span class="nc" id="L2066">        return dormantPeriodType;</span>
+    }
+ 
+    public void setDormantPeriodType(String dormantPeriodType) {
+<span class="nc" id="L2070">        this.dormantPeriodType = dormantPeriodType;</span>
+<span class="nc" id="L2071">    }</span>
+ 
+    public String getFeeFreeLength() {
+<span class="nc" id="L2074">        return feeFreeLength;</span>
+    }
+ 
+    public void setFeeFreeLength(String feeFreeLength) {
+<span class="nc" id="L2078">        this.feeFreeLength = feeFreeLength;</span>
+<span class="nc" id="L2079">    }</span>
+ 
+    public String getFeeFreeLengthPeriodId() {
+<span class="nc" id="L2082">        return feeFreeLengthPeriodId;</span>
+    }
+ 
+    public void setFeeFreeLengthPeriodId(String feeFreeLengthPeriodId) {
+<span class="nc" id="L2086">        this.feeFreeLengthPeriodId = feeFreeLengthPeriodId;</span>
+<span class="nc" id="L2087">    }</span>
+ 
+    public String getFeeFreeLengthPeriod() {
+<span class="nc" id="L2090">        return feeFreeLengthPeriod;</span>
+    }
+ 
+    public void setFeeFreeLengthPeriod(String feeFreeLengthPeriod) {
+<span class="nc" id="L2094">        this.feeFreeLengthPeriod = feeFreeLengthPeriod;</span>
+<span class="nc" id="L2095">    }</span>
+ 
+    public String getWithdrawalsAllowedAfterPeriod() {
+<span class="nc" id="L2098">        return withdrawalsAllowedAfterPeriod;</span>
+    }
+ 
+    public void setWithdrawalsAllowedAfterPeriod(String withdrawalsAllowedAfterPeriod) {
+<span class="nc" id="L2102">        this.withdrawalsAllowedAfterPeriod = withdrawalsAllowedAfterPeriod;</span>
+<span class="nc" id="L2103">    }</span>
+ 
+    public String getAttribute1() {
+<span class="nc" id="L2106">        return attribute1;</span>
+    }
+ 
+    public void setAttribute1(String attribute1) {
+<span class="nc" id="L2110">        this.attribute1 = attribute1;</span>
+<span class="nc" id="L2111">    }</span>
+ 
+    public String getAttribute2() {
+<span class="nc" id="L2114">        return attribute2;</span>
+    }
+ 
+    public void setAttribute2(String attribute2) {
+<span class="nc" id="L2118">        this.attribute2 = attribute2;</span>
+<span class="nc" id="L2119">    }</span>
+ 
+    public String getAttribute3() {
+<span class="nc" id="L2122">        return attribute3;</span>
+    }
+ 
+    public void setAttribute3(String attribute3) {
+<span class="nc" id="L2126">        this.attribute3 = attribute3;</span>
+<span class="nc" id="L2127">    }</span>
+ 
+    public String getAttribute4() {
+<span class="nc" id="L2130">        return attribute4;</span>
+    }
+ 
+    public void setAttribute4(String attribute4) {
+<span class="nc" id="L2134">        this.attribute4 = attribute4;</span>
+<span class="nc" id="L2135">    }</span>
+ 
+    public String getAttribute5() {
+<span class="nc" id="L2138">        return attribute5;</span>
+    }
+ 
+    public void setAttribute5(String attribute5) {
+<span class="nc" id="L2142">        this.attribute5 = attribute5;</span>
+<span class="nc" id="L2143">    }</span>
+ 
+    public String getNotes() {
+<span class="nc" id="L2146">        return notes;</span>
+    }
+ 
+    public void setNotes(String notes) {
+<span class="nc" id="L2150">        this.notes = notes;</span>
+<span class="nc" id="L2151">    }</span>
+ 
+    public String getMinimumAge() {
+<span class="nc" id="L2154">        return minimumAge;</span>
+    }
+ 
+    public void setMinimumAge(String minimumAge) {
+<span class="nc" id="L2158">        this.minimumAge = minimumAge;</span>
+<span class="nc" id="L2159">    }</span>
+ 
+    public String getMaximumAge() {
+<span class="nc" id="L2162">        return maximumAge;</span>
+    }
+ 
+    public void setMaximumAge(String maximumAge) {
+<span class="nc" id="L2166">        this.maximumAge = maximumAge;</span>
+<span class="nc" id="L2167">    }</span>
+ 
+    public String getUrl() {
+<span class="nc" id="L2170">        return url;</span>
+    }
+ 
+    public void setUrl(String url) {
+<span class="nc" id="L2174">        this.url = url;</span>
+<span class="nc" id="L2175">    }</span>
+ 
+    public String getMessage() {
+<span class="nc" id="L2178">        return message;</span>
+    }
+ 
+    public void setMessage(String message) {
+<span class="nc" id="L2182">        this.message = message;</span>
+<span class="nc" id="L2183">    }</span>
+ 
+    public String getScoringType() {
+<span class="nc" id="L2186">        return scoringType;</span>
+    }
+ 
+    public void setScoringType(String scoringType) {
+<span class="nc" id="L2190">        this.scoringType = scoringType;</span>
+<span class="nc" id="L2191">    }</span>
+ 
+    public String getType() {
+<span class="nc" id="L2194">        return type;</span>
+    }
+ 
+    public void setType(String type) {
+<span class="nc" id="L2198">        this.type = type;</span>
+<span class="nc" id="L2199">    }</span>
+ 
+    public String getUnit() {
+<span class="nc" id="L2202">        return unit;</span>
+    }
+ 
+    public void setUnit(String unit) {
+<span class="nc" id="L2206">        this.unit = unit;</span>
+<span class="nc" id="L2207">    }</span>
+ 
+    public String getAgeEligibilityId() {
+<span class="nc" id="L2210">        return ageEligibilityId;</span>
+    }
+ 
+    public void setAgeEligibilityId(String ageEligibilityId) {
+<span class="nc" id="L2214">        this.ageEligibilityId = ageEligibilityId;</span>
+<span class="nc" id="L2215">    }</span>
+ 
+    public String getIdEligibilityId() {
+<span class="nc" id="L2218">        return idEligibilityId;</span>
+    }
+ 
+    public void setIdEligibilityId(String idEligibilityId) {
+<span class="nc" id="L2222">        this.idEligibilityId = idEligibilityId;</span>
+<span class="nc" id="L2223">    }</span>
+ 
+    public String getCreditCheckEligibilityId() {
+<span class="nc" id="L2226">        return creditCheckEligibilityId;</span>
+    }
+ 
+    public void setCreditCheckEligibilityId(String creditCheckEligibilityId) {
+<span class="nc" id="L2230">        this.creditCheckEligibilityId = creditCheckEligibilityId;</span>
+<span class="nc" id="L2231">    }</span>
+ 
+    public String getIndustryEligibilityId() {
+<span class="nc" id="L2234">        return industryEligibilityId;</span>
+    }
+ 
+    public void setIndustryEligibilityId(String industryEligibilityId) {
+<span class="nc" id="L2238">        this.industryEligibilityId = industryEligibilityId;</span>
+<span class="nc" id="L2239">    }</span>
+ 
+    public String getOtherEligibilityTypeId() {
+<span class="nc" id="L2242">        return otherEligibilityTypeId;</span>
+    }
+ 
+    public void setOtherEligibilityTypeId(String otherEligibilityTypeId) {
+<span class="nc" id="L2246">        this.otherEligibilityTypeId = otherEligibilityTypeId;</span>
+<span class="nc" id="L2247">    }</span>
+ 
+    public String getTextual() {
+<span class="nc" id="L2250">        return textual;</span>
+    }
+ 
+    public void setTextual(String textual) {
+<span class="nc" id="L2254">        this.textual = textual;</span>
+<span class="nc" id="L2255">    }</span>
+ 
+    public String getEligibilityId() {
+<span class="nc" id="L2258">        return eligibilityId;</span>
+    }
+ 
+    public void setEligibilityId(String eligibilityId) {
+<span class="nc" id="L2262">        this.eligibilityId = eligibilityId;</span>
+<span class="nc" id="L2263">    }</span>
+ 
+    public String getOtherEligibilityId() {
+<span class="nc" id="L2266">        return otherEligibilityId;</span>
+    }
+ 
+    public void setOtherEligibilityId(String otherEligibilityId) {
+<span class="nc" id="L2270">        this.otherEligibilityId = otherEligibilityId;</span>
+<span class="nc" id="L2271">    }</span>
+ 
+    public String getResidencyTypeId() {
+<span class="nc" id="L2274">        return residencyTypeId;</span>
+    }
+ 
+    public void setResidencyTypeId(String residencyTypeId) {
+<span class="nc" id="L2278">        this.residencyTypeId = residencyTypeId;</span>
+<span class="nc" id="L2279">    }</span>
+ 
+    public String getResidencyEligibilityId() {
+<span class="nc" id="L2282">        return residencyEligibilityId;</span>
+    }
+ 
+    public void setResidencyEligibilityId(String residencyEligibilityId) {
+<span class="nc" id="L2286">        this.residencyEligibilityId = residencyEligibilityId;</span>
+<span class="nc" id="L2287">    }</span>
+ 
+    public String getResidencyIncludeCountryId() {
+<span class="nc" id="L2290">        return residencyIncludeCountryId;</span>
+    }
+ 
+    public void setResidencyIncludeCountryId(String residencyIncludeCountryId) {
+<span class="nc" id="L2294">        this.residencyIncludeCountryId = residencyIncludeCountryId;</span>
+<span class="nc" id="L2295">    }</span>
+ 
+    public String getCountryName() {
+<span class="nc" id="L2298">        return countryName;</span>
+    }
+ 
+    public void setCountryName(String countryName) {
+<span class="nc" id="L2302">        this.countryName = countryName;</span>
+<span class="nc" id="L2303">    }</span>
+ 
+    public String getPredecessorId() {
+<span class="nc" id="L2306">        return predecessorId;</span>
+    }
+ 
+    public void setPredecessorId(String predecessorId) {
+<span class="nc" id="L2310">        this.predecessorId = predecessorId;</span>
+<span class="nc" id="L2311">    }</span>
+ 
+    public String getOtherSciCode() {
+<span class="nc" id="L2314">        return otherSciCode;</span>
+    }
+ 
+    public void setOtherSciCode(String otherSciCode) {
+<span class="nc" id="L2318">        this.otherSciCode = otherSciCode;</span>
+<span class="nc" id="L2319">    }</span>
+ 
+    public String getLegalStructureId() {
+<span class="nc" id="L2322">        return legalStructureId;</span>
+    }
+ 
+    public void setLegalStructureId(String legalStructureId) {
+<span class="nc" id="L2326">        this.legalStructureId = legalStructureId;</span>
+<span class="nc" id="L2327">    }</span>
+ 
+    public String getLegalStructureEligibilityId() {
+<span class="nc" id="L2330">        return legalStructureEligibilityId;</span>
+    }
+ 
+    public void setLegalStructureEligibilityId(String legalStructureEligibilityId) {
+<span class="nc" id="L2334">        this.legalStructureEligibilityId = legalStructureEligibilityId;</span>
+<span class="nc" id="L2335">    }</span>
+ 
+    public String getOfficerTypeDesignationId() {
+<span class="nc" id="L2338">        return officerTypeDesignationId;</span>
+    }
+ 
+    public void setOfficerTypeDesignationId(String officerTypeDesignationId) {
+<span class="nc" id="L2342">        this.officerTypeDesignationId = officerTypeDesignationId;</span>
+<span class="nc" id="L2343">    }</span>
+ 
+    public String getDesignationName() {
+<span class="nc" id="L2346">        return designationName;</span>
+    }
+ 
+    public void setDesignationName(String designationName) {
+<span class="nc" id="L2350">        this.designationName = designationName;</span>
+<span class="nc" id="L2351">    }</span>
+ 
+    public String getMinAmount() {
+<span class="nc" id="L2354">        return minAmount;</span>
+    }
+ 
+    public void setMinAmount(String minAmount) {
+<span class="nc" id="L2358">        this.minAmount = minAmount;</span>
+<span class="nc" id="L2359">    }</span>
+ 
+    public String getMaxAmount() {
+<span class="nc" id="L2362">        return maxAmount;</span>
+    }
+ 
+    public void setMaxAmount(String maxAmount) {
+<span class="nc" id="L2366">        this.maxAmount = maxAmount;</span>
+<span class="nc" id="L2367">    }</span>
+ 
+    public String getOfficerEligibilityId() {
+<span class="nc" id="L2370">        return officerEligibilityId;</span>
+    }
+ 
+    public void setOfficerEligibilityId(String officerEligibilityId) {
+<span class="nc" id="L2374">        this.officerEligibilityId = officerEligibilityId;</span>
+<span class="nc" id="L2375">    }</span>
+ 
+    public String getTrdingTypeId() {
+<span class="nc" id="L2378">        return trdingTypeId;</span>
+    }
+ 
+    public void setTrdingTypeId(String trdingTypeId) {
+<span class="nc" id="L2382">        this.trdingTypeId = trdingTypeId;</span>
+<span class="nc" id="L2383">    }</span>
+ 
+    public String getMinMaxType() {
+<span class="nc" id="L2386">        return minMaxType;</span>
+    }
+ 
+    public void setMinMaxType(String minMaxType) {
+<span class="nc" id="L2390">        this.minMaxType = minMaxType;</span>
+<span class="nc" id="L2391">    }</span>
+ 
+    public String getTradingEligibilityId() {
+<span class="nc" id="L2394">        return tradingEligibilityId;</span>
+    }
+ 
+    public void setTradingEligibilityId(String tradingEligibilityId) {
+<span class="nc" id="L2398">        this.tradingEligibilityId = tradingEligibilityId;</span>
+<span class="nc" id="L2399">    }</span>
+ 
+    public String getPeriodName() {
+<span class="nc" id="L2402">        return periodName;</span>
+    }
+ 
+    public void setPeriodName(String periodName) {
+<span class="nc" id="L2406">        this.periodName = periodName;</span>
+<span class="nc" id="L2407">    }</span>
+ 
+    public String getLegalStructureName() {
+<span class="nc" id="L2410">        return legalStructureName;</span>
+    }
+ 
+    public void setLegalStructureName(String legalStructureName) {
+<span class="nc" id="L2414">        this.legalStructureName = legalStructureName;</span>
+<span class="nc" id="L2415">    }</span>
+ 
+    public String getResidencyTypeName() {
+<span class="nc" id="L2418">        return residencyTypeName;</span>
+    }
+ 
+    public void setResidencyTypeName(String residencyTypeName) {
+<span class="nc" id="L2422">        this.residencyTypeName = residencyTypeName;</span>
+<span class="nc" id="L2423">    }</span>
+ 
+    public String getOverdraftTypeId() {
+<span class="nc" id="L2426">        return overdraftTypeId;</span>
+    }
+ 
+    public void setOverdraftTypeId(String overdraftTypeId) {
+<span class="nc" id="L2430">        this.overdraftTypeId = overdraftTypeId;</span>
+<span class="nc" id="L2431">    }</span>
+ 
+    public String getOverdraftType() {
+<span class="nc" id="L2434">        return overdraftType;</span>
+    }
+ 
+    public void setOverdraftType(String overdraftType) {
+<span class="nc" id="L2438">        this.overdraftType = overdraftType;</span>
+<span class="nc" id="L2439">    }</span>
+ 
+    public String getOverdraftTierBandId() {
+<span class="nc" id="L2442">        return overdraftTierBandId;</span>
+    }
+ 
+    public void setOverdraftTierBandId(String overdraftTierBandId) {
+<span class="nc" id="L2446">        this.overdraftTierBandId = overdraftTierBandId;</span>
+<span class="nc" id="L2447">    }</span>
+ 
+    public String getOverdraftControlIndicator() {
+<span class="nc" id="L2450">        return overdraftControlIndicator;</span>
+    }
+ 
+    public void setOverdraftControlIndicator(String overdraftControlIndicator) {
+<span class="nc" id="L2454">        this.overdraftControlIndicator = overdraftControlIndicator;</span>
+<span class="nc" id="L2455">    }</span>
+ 
+    public String getBonusInterestEligibilityId() {
+<span class="nc" id="L2458">        return bonusInterestEligibilityId;</span>
+    }
+ 
+    public void setBonusInterestEligibilityId(String bonusInterestEligibilityId) {
+<span class="nc" id="L2462">        this.bonusInterestEligibilityId = bonusInterestEligibilityId;</span>
+<span class="nc" id="L2463">    }</span>
+ 
+    public String getBonusTierBandSetId() {
+<span class="nc" id="L2466">        return bonusTierBandSetId;</span>
+    }
+ 
+    public void setBonusTierBandSetId(String bonusTierBandSetId) {
+<span class="nc" id="L2470">        this.bonusTierBandSetId = bonusTierBandSetId;</span>
+<span class="nc" id="L2471">    }</span>
+ 
+    public String getBonusInterestId() {
+<span class="nc" id="L2474">        return bonusInterestId;</span>
+    }
+ 
+    public void setBonusInterestId(String bonusInterestId) {
+<span class="nc" id="L2478">        this.bonusInterestId = bonusInterestId;</span>
+<span class="nc" id="L2479">    }</span>
+ 
+    public String getFrquencyTypeId() {
+<span class="nc" id="L2482">        return frquencyTypeId;</span>
+    }
+ 
+    public void setFrquencyTypeId(String frquencyTypeId) {
+<span class="nc" id="L2486">        this.frquencyTypeId = frquencyTypeId;</span>
+<span class="nc" id="L2487">    }</span>
+ 
+    public String getAuthorisedIndicator() {
+<span class="nc" id="L2490">        return authorisedIndicator;</span>
+    }
+ 
+    public void setAuthorisedIndicator(String authorisedIndicator) {
+<span class="nc" id="L2494">        this.authorisedIndicator = authorisedIndicator;</span>
+<span class="nc" id="L2495">    }</span>
+ 
+    public String getRateType() {
+<span class="nc" id="L2498">        return rateType;</span>
+    }
+ 
+    public void setRateType(String rateType) {
+<span class="nc" id="L2502">        this.rateType = rateType;</span>
+<span class="nc" id="L2503">    }</span>
+ 
+    public String getRate() {
+<span class="nc" id="L2506">        return rate;</span>
+    }
+ 
+    public void setRate(String rate) {
+<span class="nc" id="L2510">        this.rate = rate;</span>
+<span class="nc" id="L2511">    }</span>
+ 
+    public String getTexual() {
+<span class="nc" id="L2514">        return texual;</span>
+    }
+ 
+    public void setTexual(String texual) {
+<span class="nc" id="L2518">        this.texual = texual;</span>
+<span class="nc" id="L2519">    }</span>
+ 
+    public String getOverdraftbalanceamount() {
+<span class="nc" id="L2522">        return overdraftbalanceamount;</span>
+    }
+ 
+    public void setOverdraftbalanceamount(String overdraftbalanceamount) {
+<span class="nc" id="L2526">        this.overdraftbalanceamount = overdraftbalanceamount;</span>
+<span class="nc" id="L2527">    }</span>
+
+	public String getChargeRecoveryMethod() {
+<span class="nc" id="L2530">		return chargeRecoveryMethod;</span>
+	}
+
+	public void setChargeRecoveryMethod(String chargeRecoveryMethod) {
+<span class="nc" id="L2534">		this.chargeRecoveryMethod = chargeRecoveryMethod;</span>
+<span class="nc" id="L2535">	}</span>
+    
+ }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QDeliveryInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.domain</a> &gt; <span class="el_source">QDeliveryInfo.java</span></div><h1>QDeliveryInfo.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.domain;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.Generated;
+import com.querydsl.core.types.Path;
+
+
+/**
+ * QDeliveryInfo is a Querydsl query type for DeliveryInfo
+ */
+@Generated(&quot;com.querydsl.codegen.EntitySerializer&quot;)
+public class QDeliveryInfo extends EntityPathBase&lt;DeliveryInfo&gt; {
+
+    private static final long serialVersionUID = 2045624059L;
+
+<span class="nc" id="L20">    public static final QDeliveryInfo deliveryInfo = new QDeliveryInfo(&quot;deliveryInfo&quot;);</span>
+
+<span class="nc" id="L22">    public final StringPath amount = createString(&quot;amount&quot;);</span>
+
+<span class="nc" id="L24">    public final StringPath deliveryDate = createString(&quot;deliveryDate&quot;);</span>
+
+<span class="nc" id="L26">    public final StringPath description = createString(&quot;description&quot;);</span>
+
+<span class="nc" id="L28">    public final NumberPath&lt;Long&gt; id = createNumber(&quot;id&quot;, Long.class);</span>
+
+<span class="nc" id="L30">    public final StringPath lodingPlace = createString(&quot;lodingPlace&quot;);</span>
+
+<span class="nc" id="L32">    public final StringPath materials = createString(&quot;materials&quot;);</span>
+
+<span class="nc" id="L34">    public final StringPath qty = createString(&quot;qty&quot;);</span>
+
+<span class="nc" id="L36">    public final StringPath rate = createString(&quot;rate&quot;);</span>
+
+<span class="nc" id="L38">    public final StringPath remarks = createString(&quot;remarks&quot;);</span>
+
+<span class="nc" id="L40">    public final StringPath vehicalNo = createString(&quot;vehicalNo&quot;);</span>
+
+    public QDeliveryInfo(String variable) {
+<span class="nc" id="L43">        super(DeliveryInfo.class, forVariable(variable));</span>
+<span class="nc" id="L44">    }</span>
+
+    public QDeliveryInfo(Path&lt;? extends DeliveryInfo&gt; path) {
+<span class="nc" id="L47">        super(path.getType(), path.getMetadata());</span>
+<span class="nc" id="L48">    }</span>
+
+    public QDeliveryInfo(PathMetadata metadata) {
+<span class="nc" id="L51">        super(DeliveryInfo.class, metadata);</span>
+<span class="nc" id="L52">    }</span>
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

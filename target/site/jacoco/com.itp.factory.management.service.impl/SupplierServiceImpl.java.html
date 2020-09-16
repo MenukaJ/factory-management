@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SupplierServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.service.impl</a> &gt; <span class="el_source">SupplierServiceImpl.java</span></div><h1>SupplierServiceImpl.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.service.impl;
+
+/**
+ * Supplier Service Implementation
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   07-09-2020                            Anushka        Created
+ *    
+ ********************************************************************************************************
+ */
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.itp.factory.management.base.MessagePropertyBase;
+import com.itp.factory.management.core.LogginAuthentcation;
+import com.itp.factory.management.domain.Supplier;
+import com.itp.factory.management.exception.ValidateRecordException;
+import com.itp.factory.management.repository.SupplierReppository;
+import com.itp.factory.management.resource.SupplierAddResource;
+import com.itp.factory.management.resource.SupplierUpdateResource;
+import com.itp.factory.management.service.SupplierService;
+/**
+ * Supplier Service
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   02-09-2020                            Anushka        Created
+ *    
+ ********************************************************************************************************
+ */
+
+@Component
+@Transactional(rollbackFor=Exception.class)
+<span class="fc" id="L42">public class SupplierServiceImpl extends MessagePropertyBase implements SupplierService {</span>
+	
+	@Autowired
+	private SupplierReppository supplierRepository;
+	
+	@Override
+	public List&lt;Supplier&gt; getAll() {
+<span class="nc" id="L49">		return supplierRepository.findAll();</span>
+	}
+
+	@Override
+	public Optional&lt;Supplier&gt; getById(Long id) {
+		
+<span class="nc" id="L55">		Optional&lt;Supplier&gt; currentSupplier = supplierRepository.findById(id);</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">		if (currentSupplier.isPresent()) {</span>
+<span class="nc" id="L57">			return currentSupplier;</span>
+		}
+		else {
+<span class="nc" id="L60">			return Optional.empty();</span>
+		}
+	}
+
+	@Override
+	public Optional&lt;Supplier&gt; getByName(String name) {
+		
+<span class="nc" id="L67">		Optional&lt;Supplier&gt; isSupplier = supplierRepository.findByName(name);</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">		if (isSupplier.isPresent()) {</span>
+<span class="nc" id="L69">			return Optional.ofNullable(isSupplier.get());</span>
+		}
+		else {
+<span class="nc" id="L72">			return Optional.empty();</span>
+		}
+	}
+
+	@Override
+	public Supplier addSupplier(SupplierAddResource supplierAddResource) {
+	    
+		
+<span class="nc bnc" id="L80" title="All 4 branches missed.">		if (LogginAuthentcation.getInstance().getUserName()==null || LogginAuthentcation.getInstance().getUserName().isEmpty())</span>
+<span class="nc" id="L81">			throw new ValidateRecordException(getEnvironment().getProperty(COMMON_NOT_NULL), &quot;username&quot;);</span>
+		
+<span class="nc" id="L83">        Optional&lt;Supplier&gt; isSupplier = supplierRepository.findByName(supplierAddResource.getName());</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (isSupplier.isPresent()) </span>
+<span class="nc" id="L85">        	throw new ValidateRecordException(environment.getProperty(&quot;common.unique&quot;), &quot;Name&quot;);</span>
+		
+<span class="nc" id="L87">        Supplier supplier = new Supplier();</span>
+<span class="nc" id="L88">        supplier.setName(supplierAddResource.getName());</span>
+<span class="nc" id="L89">        supplier = supplierRepository.save(supplier);</span>
+<span class="nc" id="L90">    	return supplier;</span>
+	}
+	
+	
+
+	@Override
+	public Supplier updateSupplier(SupplierUpdateResource supplierUpdateResource) {
+		
+		
+<span class="nc bnc" id="L99" title="All 4 branches missed.">		if (LogginAuthentcation.getInstance().getUserName()==null || LogginAuthentcation.getInstance().getUserName().isEmpty())</span>
+<span class="nc" id="L100">			throw new ValidateRecordException(getEnvironment().getProperty(COMMON_NOT_NULL), &quot;username&quot;);</span>
+		
+<span class="nc" id="L102">		Optional&lt;Supplier&gt; isSupplier = supplierRepository.findById(Long.parseLong(supplierUpdateResource.getId()));</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">		if (!isSupplier.isPresent()) </span>
+<span class="nc" id="L104">			throw new ValidateRecordException(getEnvironment().getProperty(RECORD_NOT_FOUND), &quot;message&quot;);</span>
+		
+		
+<span class="nc" id="L107">		Optional&lt;Supplier&gt; isSupplierName = supplierRepository.findByName(supplierUpdateResource.getName());</span>
+<span class="nc bnc" id="L108" title="All 4 branches missed.">		if (isSupplierName.isPresent() &amp;&amp; isSupplierName.get().getId() != isSupplierName.get().getId())			</span>
+<span class="nc" id="L109">			throw new ValidateRecordException(environment.getProperty(&quot;common.unique&quot;), &quot;name&quot;);</span>
+		
+<span class="nc" id="L111">		Supplier supplier = isSupplier.get();</span>
+<span class="nc" id="L112">		supplier.setName(supplierUpdateResource.getName());</span>
+<span class="nc" id="L113">		supplier = supplierRepository.saveAndFlush(supplier);</span>
+<span class="nc" id="L114">    	return supplier;</span>
+	}
+
+	@Override
+	public void deleteSupplier(long id) {
+<span class="nc" id="L119">		Optional&lt;Supplier&gt; isSupplier = supplierRepository.findById(id);</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">		if (!isSupplier.isPresent()) </span>
+<span class="nc" id="L121">			throw new ValidateRecordException(getEnvironment().getProperty(RECORD_NOT_FOUND), &quot;message&quot;);</span>
+		else
+<span class="nc" id="L123">			supplierRepository.deleteById(id);</span>
+		
+<span class="nc" id="L125">	}</span>
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

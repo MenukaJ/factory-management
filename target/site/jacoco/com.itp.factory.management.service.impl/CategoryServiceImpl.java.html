@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CategoryServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.service.impl</a> &gt; <span class="el_source">CategoryServiceImpl.java</span></div><h1>CategoryServiceImpl.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.service.impl;
+
+import java.util.Calendar;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.itp.factory.management.base.MessagePropertyBase;
+import com.itp.factory.management.core.LogginAuthentcation;
+import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.enums.CommonStatus;
+import com.itp.factory.management.exception.ValidateRecordException;
+import com.itp.factory.management.repository.CategoryRepository;
+import com.itp.factory.management.resource.CategoryAddResource;
+import com.itp.factory.management.resource.CategoryUpdateResource;
+import com.itp.factory.management.service.CategoryService;
+
+
+/**
+ * Insurance Type Service Impl
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   09-07-2020       						  MenukaJ        Created
+ *    
+ ********************************************************************************************************
+ */
+
+@Component
+@Transactional(rollbackFor=Exception.class)
+<span class="fc" id="L35">public class CategoryServiceImpl extends MessagePropertyBase implements CategoryService {</span>
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
+
+	@Override
+	public List&lt;Category&gt; getAll() {
+<span class="nc" id="L42">		return categoryRepository.findAll();</span>
+	}
+
+	@Override
+	public Optional&lt;Category&gt; getById(Long id) {
+<span class="nc" id="L47">		Optional&lt;Category&gt; isPresentCategory = categoryRepository.findById(id);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		if (isPresentCategory.isPresent()) {</span>
+<span class="nc" id="L49">			return Optional.ofNullable(isPresentCategory.get());</span>
+		}
+		else {
+<span class="nc" id="L52">			return Optional.empty();</span>
+		}
+	}
+
+	@Override
+	public Optional&lt;Category&gt; getByName(String name) {
+<span class="nc" id="L58">		Optional&lt;Category&gt; isPresentCategory = categoryRepository.findByName(name);</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">		if (isPresentCategory.isPresent()) {</span>
+<span class="nc" id="L60">			return Optional.ofNullable(isPresentCategory.get());</span>
+		}
+		else {
+<span class="nc" id="L63">			return Optional.empty();</span>
+		}
+	}
+
+	@Override
+	public List&lt;Category&gt; getByStatus(String status) {
+<span class="nc" id="L69">		return categoryRepository.findByStatus(CommonStatus.valueOf(status));</span>
+	}
+
+	@Override
+	public Category addCategory(CategoryAddResource categoryAddResource) {
+<span class="nc" id="L74">		Calendar calendar = Calendar.getInstance();</span>
+<span class="nc" id="L75">        java.util.Date now = calendar.getTime();</span>
+<span class="nc" id="L76">        java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());</span>
+        
+<span class="nc bnc" id="L78" title="All 4 branches missed.">        if(LogginAuthentcation.getInstance().getUserName() == null || LogginAuthentcation.getInstance().getUserName().isEmpty())</span>
+<span class="nc" id="L79">        	throw new ValidateRecordException(environment.getProperty(&quot;common.not-null&quot;), &quot;username&quot;);</span>
+        
+<span class="nc" id="L81">        Optional&lt;Category&gt; isPresentCategory = categoryRepository.findByName(categoryAddResource.getName());</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (isPresentCategory.isPresent()) {</span>
+<span class="nc" id="L83">        	throw new ValidateRecordException(environment.getProperty(&quot;common.unique&quot;), &quot;name&quot;);</span>
+		}
+        
+<span class="nc" id="L86">        Category category = new Category();</span>
+<span class="nc" id="L87">        category.setName(categoryAddResource.getName());;</span>
+<span class="nc" id="L88">        category.setStatus(CommonStatus.valueOf(categoryAddResource.getStatus()));</span>
+<span class="nc" id="L89">        category.setCreatedDate(currentTimestamp);</span>
+<span class="nc" id="L90">        category.setCreatedUser(LogginAuthentcation.getInstance().getUserName());</span>
+<span class="nc" id="L91">        category = categoryRepository.save(category);</span>
+<span class="nc" id="L92">    	return category;</span>
+	}
+
+	@Override
+	public Category updateCategory(CategoryUpdateResource categoryUpdateResource) {
+<span class="nc" id="L97">		Calendar calendar = Calendar.getInstance();</span>
+<span class="nc" id="L98">		java.util.Date now = calendar.getTime();</span>
+<span class="nc" id="L99">		java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());</span>
+		
+<span class="nc bnc" id="L101" title="All 4 branches missed.">		if (LogginAuthentcation.getInstance().getUserName()==null || LogginAuthentcation.getInstance().getUserName().isEmpty())</span>
+<span class="nc" id="L102">			throw new ValidateRecordException(getEnvironment().getProperty(COMMON_NOT_NULL), &quot;username&quot;);</span>
+		
+<span class="nc" id="L104">		Optional&lt;Category&gt; isPresentCategory = categoryRepository.findById(Long.parseLong(categoryUpdateResource.getId()));</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">		if (!isPresentCategory.isPresent()) </span>
+<span class="nc" id="L106">			throw new ValidateRecordException(getEnvironment().getProperty(RECORD_NOT_FOUND), &quot;message&quot;);</span>
+		
+<span class="nc bnc" id="L108" title="All 2 branches missed.">		if(!isPresentCategory.get().getVersion().equals(Long.parseLong(categoryUpdateResource.getVersion())))</span>
+<span class="nc" id="L109">			throw new ValidateRecordException(environment.getProperty(&quot;common.invalid-value&quot;), &quot;version&quot;);</span>
+		
+<span class="nc" id="L111">		Optional&lt;Category&gt; isPresentCategoryName = categoryRepository.findByName(categoryUpdateResource.getName());</span>
+<span class="nc bnc" id="L112" title="All 4 branches missed.">		if (isPresentCategoryName.isPresent() &amp;&amp; isPresentCategoryName.get().getId() != isPresentCategory.get().getId())			</span>
+<span class="nc" id="L113">			throw new ValidateRecordException(environment.getProperty(&quot;common.unique&quot;), &quot;name&quot;);</span>
+		
+<span class="nc" id="L115">		Category category = isPresentCategory.get();</span>
+<span class="nc" id="L116">		category.setName(categoryUpdateResource.getName());</span>
+<span class="nc" id="L117">		category.setStatus(CommonStatus.valueOf(categoryUpdateResource.getStatus()));</span>
+<span class="nc" id="L118">		category.setModifiedDate(currentTimestamp);</span>
+<span class="nc" id="L119">		category.setModifiedUser(LogginAuthentcation.getInstance().getUserName());</span>
+<span class="nc" id="L120">		category = categoryRepository.saveAndFlush(category);</span>
+<span class="nc" id="L121">    	return category;</span>
+	}
+
+	@Override
+	public void deleteCategory(Long id) {
+<span class="nc" id="L126">		Optional&lt;Category&gt; isPresentCategory = categoryRepository.findById(id);</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">		if (!isPresentCategory.isPresent()) </span>
+<span class="nc" id="L128">			throw new ValidateRecordException(getEnvironment().getProperty(RECORD_NOT_FOUND), &quot;message&quot;);</span>
+		else
+<span class="nc" id="L130">			categoryRepository.deleteById(id);	</span>
+<span class="nc" id="L131">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

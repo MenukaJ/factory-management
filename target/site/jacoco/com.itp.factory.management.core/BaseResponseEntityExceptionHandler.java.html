@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseResponseEntityExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.core</a> &gt; <span class="el_source">BaseResponseEntityExceptionHandler.java</span></div><h1>BaseResponseEntityExceptionHandler.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (c) 2018. LOLC Technology Services Ltd.
+ * Author: Ranjith Kodikara
+ * Date: 12/12/18 10:45
+ */
+
+package com.itp.factory.management.core;
+
+import java.lang.reflect.Field;
+import java.text.MessageFormat;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.CannotCreateTransactionException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import com.itp.factory.management.exception.CodeCannotChangeException;
+import com.itp.factory.management.exception.CodeUniqueException;
+import com.itp.factory.management.exception.NoRecordFoundException;
+import com.itp.factory.management.exception.OtherCommonException;
+import com.itp.factory.management.exception.OtherException;
+import com.itp.factory.management.exception.TenantNotFoundException;
+import com.itp.factory.management.exception.UserNotFound;
+import com.itp.factory.management.exception.ValidateRecordException;
+import com.itp.factory.management.resource.CategoryAddResource;
+import com.itp.factory.management.resource.CategoryUpdateResource;
+import com.itp.factory.management.resource.SuccessAndErrorDetailsResource;
+import com.itp.factory.management.resource.ValidateResource;
+
+
+
+
+/**
+ * 
+ * This will return the relevant object based on the caught exception
+ * 
+ * @author menukaj
+ * @since 2018-12-13 s
+ * @version 1.0
+ * 
+ */
+@RestControllerAdvice
+<span class="fc" id="L55">public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {</span>
+
+<span class="fc" id="L57">	private static final Logger logger_bre = LoggerFactory.getLogger(BaseResponseEntityExceptionHandler.class);</span>
+<span class="fc" id="L58">	private String tenantNotFound=&quot;common.tenant-not-found&quot;;</span>
+<span class="fc" id="L59">	private String commonError=&quot;common.error&quot;;</span>
+<span class="fc" id="L60">	private String eventIdNotFound = &quot;eventIdNotFound&quot;;</span>
+<span class="fc" id="L61">	private String commonInternalServerError=&quot;common.internal-server-error&quot;;</span>
+<span class="fc" id="L62">	private String userNotFound=&quot;common.user-not-found&quot;;</span>
+	
+	@Autowired
+	private Environment environment;
+
+	
+	@Override 
+	protected ResponseEntity&lt;Object&gt; handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) { 
+<span class="nc" id="L70">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L71">		successAndErrorDetailsDataObject.setMessages(environment.getProperty(&quot;common.invalid-url-pattern&quot;));</span>
+<span class="nc" id="L72">		successAndErrorDetailsDataObject.setDetails(ex.getMessage());</span>
+		//TenantHolder.clear();
+<span class="nc" id="L74">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.NOT_FOUND);</span>
+	}
+//	
+	@ExceptionHandler({MethodArgumentTypeMismatchException.class})
+	public ResponseEntity&lt;Object&gt; methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex, WebRequest request) {
+<span class="nc" id="L79">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L80">		successAndErrorDetailsDataObject.setMessages(environment.getProperty(&quot;common.argument-type-mismatch&quot;));</span>
+<span class="nc" id="L81">		successAndErrorDetailsDataObject.setDetails(ex.getMessage());</span>
+		//TenantHolder.clear();
+<span class="nc" id="L83">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.NOT_FOUND);</span>
+	}
+	
+	@ExceptionHandler({TenantNotFoundException.class})
+	public ResponseEntity&lt;Object&gt; tenantNotFoundException(TenantNotFoundException ex, WebRequest request) {
+<span class="nc" id="L88">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L89">		successAndErrorDetailsDataObject.setMessages(environment.getProperty(tenantNotFound));</span>
+<span class="nc" id="L90">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	}
+	@ExceptionHandler({UserNotFound.class})
+	public ResponseEntity&lt;Object&gt; userNotFoundException(UserNotFound ex, WebRequest request) {
+<span class="nc" id="L94">		SuccessAndErrorDetailsResource successAndErrorDetailsResource = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L95">		successAndErrorDetailsResource.setMessages(environment.getProperty(userNotFound));</span>
+<span class="nc" id="L96">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	}
+	@ExceptionHandler({CannotCreateTransactionException.class})
+	public ResponseEntity&lt;Object&gt; cannotCreateTransactionException(CannotCreateTransactionException ex, WebRequest request) {
+<span class="nc" id="L100">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L101">		successAndErrorDetailsDataObject.setMessages(environment.getProperty(tenantNotFound));</span>
+		//TenantHolder.clear();
+<span class="nc" id="L103">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	}
+	
+	@ExceptionHandler({CodeUniqueException.class})
+	public ResponseEntity&lt;Object&gt; codeUniqueException(CodeUniqueException ex, WebRequest request) {
+<span class="nc" id="L108">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L109">		successAndErrorDetailsDataObject.setMessages(environment.getProperty(&quot;common.code-duplicate&quot;));</span>
+<span class="nc" id="L110">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	}
+	
+	@ExceptionHandler({NoRecordFoundException.class})
+	public ResponseEntity&lt;Object&gt; noRecordFoundException(NoRecordFoundException ex, WebRequest request) {
+<span class="nc" id="L115">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L116">		successAndErrorDetailsDataObject.setMessages(environment.getProperty(&quot;common.record-not-found&quot;));</span>
+<span class="nc" id="L117">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	}
+	
+	@ExceptionHandler({CodeCannotChangeException.class})
+	public ResponseEntity&lt;Object&gt; codeCannotChangeException(CodeCannotChangeException ex, WebRequest request) {
+<span class="nc" id="L122">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L123">		successAndErrorDetailsDataObject.setMessages(environment.getProperty(&quot;common.code-cannot-change&quot;));</span>
+<span class="nc" id="L124">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	}
+	
+	@ExceptionHandler({OtherCommonException.class})
+	public ResponseEntity&lt;Object&gt; otherCommonException(OtherCommonException ex, WebRequest request) {
+<span class="nc" id="L129">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L130">		successAndErrorDetailsDataObject.setMessages(ex.getMessage());</span>
+<span class="nc" id="L131">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	}
+	
+	@ExceptionHandler({OtherException.class})
+	public ResponseEntity&lt;Object&gt; otherException(OtherException ex, WebRequest request) {
+<span class="nc" id="L136">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L137">		successAndErrorDetailsDataObject.setMessages(ex.getMessage());</span>
+<span class="nc" id="L138">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	}
+	
+	@ExceptionHandler({ValidateRecordException.class})
+	public ResponseEntity&lt;Object&gt; validateRecordException(ValidateRecordException ex, WebRequest request) {
+		try {
+<span class="nc" id="L144">		ValidateResource typeValidation = new ValidateResource();</span>
+<span class="nc" id="L145">		Class validationDetailClass = typeValidation.getClass();</span>
+<span class="nc" id="L146">		Field sField = validationDetailClass.getDeclaredField(ex.getField());</span>
+<span class="nc" id="L147">		sField.setAccessible(true);</span>
+<span class="nc" id="L148">		sField.set(typeValidation, ex.getMessage());</span>
+		//TenantHolder.clear();
+<span class="nc" id="L150">		return new ResponseEntity&lt;&gt;(typeValidation, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+		}
+<span class="nc" id="L152">		catch (Exception e) {</span>
+			
+<span class="nc" id="L154">			logger_bre.error(MessageFormat.format(environment.getProperty(&quot;common.error&quot;), this.getClass().getSimpleName()).concat(e.getMessage()));</span>
+<span class="nc" id="L155">			SuccessAndErrorDetailsResource successAndErrorDetailsDto = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L156">			successAndErrorDetailsDto.setMessages(environment.getProperty(&quot;common.internal-server-error&quot;));</span>
+<span class="nc" id="L157">			successAndErrorDetailsDto.setDetails(e.getMessage());</span>
+			//TenantHolder.clear();
+<span class="nc" id="L159">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsDto, HttpStatus.INTERNAL_SERVER_ERROR);</span>
+		}
+	}
+	
+	@Override 
+	 protected ResponseEntity&lt;Object&gt; handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) { 
+		
+		try {
+			 //TenantHolder.clear();
+<span class="nc" id="L168">			 Field sField=null;</span>
+<span class="nc" id="L169">			 String fieldName=null;</span>
+<span class="nc" id="L170">			 Integer index=null;</span>
+<span class="nc" id="L171">			 Integer atPoint=null;</span>
+<span class="nc" id="L172">			 Integer index1=null;</span>
+<span class="nc" id="L173">			 Integer atPoint1=null;</span>
+<span class="nc" id="L174">			String className=ex.getBindingResult().getObjectName();</span>
+<span class="nc bnc" id="L175" title="All 10 branches missed.">			switch(className){ </span>
+        		
+        	case &quot;categoryAddResource&quot;: 
+<span class="nc" id="L178">        		CategoryAddResource  categoryAddResource = new CategoryAddResource();</span>
+<span class="nc bnc" id="L179" title="All 2 branches missed.">				for (FieldError error : ex.getBindingResult().getFieldErrors()) {</span>
+<span class="nc" id="L180">					sField =  categoryAddResource.getClass().getDeclaredField(error.getField());</span>
+<span class="nc" id="L181">		            sField.setAccessible(true);</span>
+<span class="nc" id="L182">		            sField.set(categoryAddResource.getClass().cast(categoryAddResource), error.getDefaultMessage());</span>
+<span class="nc" id="L183">				}</span>
+<span class="nc" id="L184">				return new ResponseEntity&lt;&gt;(categoryAddResource, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+        	case &quot;categoryUpdateResource&quot;: 
+<span class="nc" id="L186">        		CategoryUpdateResource categoryUpdateResource = new CategoryUpdateResource();</span>
+<span class="nc bnc" id="L187" title="All 2 branches missed.">				for (FieldError error : ex.getBindingResult().getFieldErrors()) {</span>
+<span class="nc" id="L188">					fieldName=error.getField();</span>
+<span class="nc" id="L189">                            sField =  categoryUpdateResource.getClass().getDeclaredField(error.getField());</span>
+<span class="nc" id="L190">                            sField.setAccessible(true);</span>
+<span class="nc" id="L191">                            sField.set(categoryUpdateResource, error.getDefaultMessage());</span>
+<span class="nc" id="L192">				}</span>
+<span class="nc" id="L193">				return new ResponseEntity&lt;&gt;(categoryUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);</span>
+				
+//        	case &quot;eligibilityAddResource&quot;: 
+//        		EligibilityAddResource  eligibilityAddResource = new EligibilityAddResource();
+//				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+//					sField =  eligibilityAddResource.getClass().getDeclaredField(error.getField());
+//		            sField.setAccessible(true);
+//		            sField.set(eligibilityAddResource.getClass().cast(eligibilityAddResource), error.getDefaultMessage());
+//				}
+//				return new ResponseEntity&lt;&gt;(eligibilityAddResource, HttpStatus.UNPROCESSABLE_ENTITY);
+//        	case &quot;eligibilityUpdateResource&quot;: 
+//        		EligibilityUpdateResource eligibilityUpdateResource = new EligibilityUpdateResource();
+//				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+//					fieldName=error.getField();
+//                            sField =  eligibilityUpdateResource.getClass().getDeclaredField(error.getField());
+//                            sField.setAccessible(true);
+//                            sField.set(eligibilityUpdateResource, error.getDefaultMessage());
+//				}
+//				return new ResponseEntity&lt;&gt;(eligibilityUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);
+//								
+//				//END by SahanAm for FX-3958/FX-4074 on 03-07-2020 
+//				
+	        	default:   
+<span class="nc" id="L216">	        		return new ResponseEntity&lt;&gt;(HttpStatus.UNPROCESSABLE_ENTITY);</span>
+	        }
+<span class="nc" id="L218">		} catch (Exception e) {</span>
+<span class="nc" id="L219">			LoggerRequest.getInstance().logCommonError(e.getMessage());</span>
+<span class="nc" id="L220">			SuccessAndErrorDetailsResource successAndErrorDetailsResource = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L221">			successAndErrorDetailsResource.setMessages(environment.getProperty(commonInternalServerError));</span>
+<span class="nc" id="L222">			successAndErrorDetailsResource.setDetails(e.getMessage());</span>
+			//TenantHolder.clear();
+<span class="nc" id="L224">			return new ResponseEntity&lt;&gt;(successAndErrorDetailsResource, HttpStatus.INTERNAL_SERVER_ERROR);</span>
+		}
+	 }				
+
+	@ExceptionHandler({Exception.class})
+	public ResponseEntity&lt;Object&gt; exception(Exception ex, WebRequest request) {
+<span class="nc" id="L230">		SuccessAndErrorDetailsResource successAndErrorDetailsDataObject = new SuccessAndErrorDetailsResource();</span>
+<span class="nc" id="L231">		logger_bre.error(MessageFormat.format(environment.getProperty(commonError), this.getClass().getSimpleName()).concat(ex.getMessage()));</span>
+<span class="nc" id="L232">		successAndErrorDetailsDataObject.setMessages(environment.getProperty(commonInternalServerError));</span>
+<span class="nc" id="L233">		successAndErrorDetailsDataObject.setDetails(ex.getMessage());</span>
+		//TenantHolder.clear();
+<span class="nc" id="L235">		return new ResponseEntity&lt;&gt;(successAndErrorDetailsDataObject, HttpStatus.INTERNAL_SERVER_ERROR);</span>
+	}
+//	
+//	@ExceptionHandler({InvalidServiceIdException.class})
+//	public ResponseEntity&lt;Object&gt; invalidServiceIdException(InvalidServiceIdException ex, WebRequest request) {
+//		ValidateResource validateResource=new ValidateResource();
+//		/*RecoveryNotificationsResource notificationsResource=null;
+//		RecoveryNotificationsDetailResource notificationsDetailResource=null;
+//		*/
+//		switch(ex.getServiceEntity()) 
+//        { 
+//            		
+//        /*	case RECOVERY_NOTIFICATIONS:
+//        		notificationsResource=new RecoveryNotificationsResource();
+//        		notificationsResource.setNotificationTypeId(ex.getMessage());
+//        		break;
+//        	case ALERT_TYPES:
+//        		notificationsResource=new RecoveryNotificationsResource();
+//        		notificationsResource.setAlertTypeId(ex.getMessage());
+//        		break;
+//        	case PERIOD:
+//        		notificationsResource=new RecoveryNotificationsResource();
+//        		notificationsResource.setPeriodId(ex.getMessage());
+//        		break;
+//        	case MODULEPRIORITY:
+//        		notificationsResource=new RecoveryNotificationsResource();
+//        		notificationsResource.setModulePriority(ex.getMessage());
+//        		break;
+//        	case SUB_PRODUCT_CODE:
+//        		notificationsDetailResource=new RecoveryNotificationsDetailResource();
+//        		notificationsDetailResource.setSubProductId(ex.getMessage());
+//        		break;
+//        		*/
+//            default: 
+// 
+//        }
+//		// ain karapan
+//		return null; 
+//		
+//		/*if(notificationsResource!=null) {
+//			return new ResponseEntity&lt;&gt;(notificationsResource, HttpStatus.UNPROCESSABLE_ENTITY);
+//		}else {
+//			return new ResponseEntity&lt;&gt;(HttpStatus.UNPROCESSABLE_ENTITY);
+//		}*/
+//		
+//    }
+//	
+//	
+//	@ExceptionHandler({OptimisticLockException.class})
+//	public ResponseEntity&lt;Object&gt; optimisticLockException(OptimisticLockException ex, WebRequest request) {
+//		try {
+//			ValidateResource typeValidation = new ValidateResource();
+//			
+//			Class validationDetailClass = typeValidation.getClass();
+//			Field sField = validationDetailClass.getDeclaredField(ex.getField());
+//			sField.setAccessible(true);
+//			sField.set(typeValidation, ex.getMessage());
+//			
+//			//TenantHolder.clear();
+//			return new ResponseEntity&lt;&gt;(typeValidation, HttpStatus.UNPROCESSABLE_ENTITY);
+//		} catch (Exception e) {
+//			logger.error(MessageFormat.format(environment.getProperty(&quot;common.error&quot;), this.getClass().getSimpleName()).concat(e.getMessage()));
+//			
+//			CommonResponseHandler successAndErrorDetailsDto = new CommonResponseHandler();
+//			successAndErrorDetailsDto.setMessages(environment.getProperty(&quot;common.internal-server-error&quot;));
+//			successAndErrorDetailsDto.setDetails(e.getMessage());
+//			
+//			//TenantHolder.clear();
+//			return new ResponseEntity&lt;&gt;(successAndErrorDetailsDto, HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//	}
+	/*
+//	protected RecoveryNotificationsResource addRecoveryNotificationsValidation(List&lt;FieldError&gt; fieldErrors) throws NoSuchFieldException, IllegalAccessException{
+//		Field sField=null;
+//		RecoveryNotificationsResource addNotesRequest=new RecoveryNotificationsResource();
+//		
+//		for (FieldError error : fieldErrors) {
+//			if(error.getField().startsWith(&quot;createdUser&quot;)) {
+//				 sField =  addNotesRequest.getClass().getDeclaredField(error.getField());
+//				 sField.setAccessible(true);
+//				 sField.set(addNotesRequest, error.getDefaultMessage());
+//			 }else {
+//				 sField =  addNotesRequest.getClass().getSuperclass().getDeclaredField(error.getField());
+//				 sField.setAccessible(true);
+//				 sField.set(addNotesRequest.getClass().getSuperclass().cast(addNotesRequest), error.getDefaultMessage());
+//			 }
+//		 }
+//		 
+//		return addNotesRequest;
+//	}
+//	*/
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

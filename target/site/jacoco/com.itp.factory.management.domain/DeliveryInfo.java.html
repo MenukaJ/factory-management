@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DeliveryInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.domain</a> &gt; <span class="el_source">DeliveryInfo.java</span></div><h1>DeliveryInfo.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import lombok.Data;
+/**
+ * DeliveryInfo Domain
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   06-09-2020                            Anushka        Created
+ *    
+ ********************************************************************************************************
+ */
+
+@Entity
+<span class="pc bnc" id="L24" title="All 80 branches missed.">@Data</span>
+@Table(name = &quot;DeliveryInfo&quot;)
+public class DeliveryInfo {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = &quot;common_generator&quot;)
+	@SequenceGenerator(name = &quot;common_generator&quot;, sequenceName = &quot;common_seq&quot;, allocationSize = 1)
+	@Column(name = &quot;Serial_No&quot;, updatable = false, nullable = false)
+	private long id;
+	
+	@Column(name = &quot;Vehicle_No&quot;)
+	private String vehicalNo;
+	
+	@Column(name = &quot;Description&quot;)
+	private String description;
+	
+	@Column(name = &quot;Loading_Place&quot;)
+	private String lodingPlace;
+	
+	@Column(name = &quot;Delivery_Date&quot;)
+	private String deliveryDate;
+	
+	@Column(name = &quot;Materials&quot;)
+	private String materials;
+	
+	@Column(name = &quot;Quantity&quot;)
+	private String qty;
+	
+	@Column(name = &quot;Amount&quot;)
+	private String amount;
+	
+	@Column(name = &quot;Rate&quot;)
+	private String rate;
+	
+	@Column(name = &quot;Remarks&quot;)
+	private String remarks;
+
+	
+
+	
+
+	public long getId() {
+<span class="nc" id="L66">		return id;</span>
+	}
+
+	public void setId(long id) {
+<span class="nc" id="L70">		this.id = id;</span>
+<span class="nc" id="L71">	}</span>
+
+	public String getVehicalNo() {
+<span class="nc" id="L74">		return vehicalNo;</span>
+	}
+
+	public void setVehicalNo(String vehicalNo) {
+<span class="nc" id="L78">		this.vehicalNo = vehicalNo;</span>
+<span class="nc" id="L79">	}</span>
+
+	public String getDescription() {
+<span class="nc" id="L82">		return description;</span>
+	}
+
+	public void setDescription(String description) {
+<span class="nc" id="L86">		this.description = description;</span>
+<span class="nc" id="L87">	}</span>
+
+	public String getLodingPlace() {
+<span class="nc" id="L90">		return lodingPlace;</span>
+	}
+
+	public void setLodingPlace(String lodingPlace) {
+<span class="nc" id="L94">		this.lodingPlace = lodingPlace;</span>
+<span class="nc" id="L95">	}</span>
+
+	public String getDeliveryDate() {
+<span class="nc" id="L98">		return deliveryDate;</span>
+	}
+
+	public void setDeliveryDate(String deliveryDate) {
+<span class="nc" id="L102">		this.deliveryDate = deliveryDate;</span>
+<span class="nc" id="L103">	}</span>
+
+	public String getMaterials() {
+<span class="nc" id="L106">		return materials;</span>
+	}
+
+	public void setMaterials(String materials) {
+<span class="nc" id="L110">		this.materials = materials;</span>
+<span class="nc" id="L111">	}</span>
+
+	public String getQty() {
+<span class="nc" id="L114">		return qty;</span>
+	}
+
+	public void setQty(String qty) {
+<span class="nc" id="L118">		this.qty = qty;</span>
+<span class="nc" id="L119">	}</span>
+
+	public String getAmount() {
+<span class="nc" id="L122">		return amount;</span>
+	}
+
+	public void setAmount(String amount) {
+<span class="nc" id="L126">		this.amount = amount;</span>
+<span class="nc" id="L127">	}</span>
+
+	public String getRate() {
+<span class="nc" id="L130">		return rate;</span>
+	}
+
+	public void setRate(String rate) {
+<span class="nc" id="L134">		this.rate = rate;</span>
+<span class="nc" id="L135">	}</span>
+
+	public String getRemarks() {
+<span class="nc" id="L138">		return remarks;</span>
+	}
+
+	public void setRemarks(String remarks) {
+<span class="nc" id="L142">		this.remarks = remarks;</span>
+<span class="nc" id="L143">	}</span>
+	
+	
+	
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

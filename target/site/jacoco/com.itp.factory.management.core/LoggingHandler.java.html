@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoggingHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.core</a> &gt; <span class="el_source">LoggingHandler.java</span></div><h1>LoggingHandler.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.core;
+
+import java.util.Arrays;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+@Aspect
+@Component
+<span class="fc" id="L18">public class LoggingHandler {</span>
+	
+	@Pointcut(&quot;within(@org.springframework.web.bind.annotation.RestController *)&quot;)
+<span class="nc" id="L21">    private void pointcutController() {}</span>
+	
+	@Before(&quot;pointcutController()&quot;)
+	public void logBeforeController(JoinPoint joinPoint) {
+<span class="nc" id="L25">		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();</span>
+<span class="nc" id="L26">		String userAgent = request.getHeader(&quot;user-agent&quot;);</span>
+<span class="nc" id="L27">		String requestId = request.getHeader(&quot;x-request-id&quot;);</span>
+<span class="nc" id="L28">		String traceId = request.getHeader(&quot;x-b3-traceid&quot;);</span>
+<span class="nc" id="L29">		String spanId = request.getHeader(&quot;x-b3-spanid&quot;);</span>
+<span class="nc" id="L30">		String parentspanId = request.getHeader(&quot;x-b3-parentspanid&quot;);</span>
+<span class="nc" id="L31">		String sampled = request.getHeader(&quot;x-b3-sampled&quot;);</span>
+<span class="nc" id="L32">		String flags = request.getHeader(&quot;x-b3-flags&quot;);</span>
+<span class="nc" id="L33">		String spanContext = request.getHeader(&quot;x-ot-span-context&quot;);</span>
+<span class="nc" id="L34">		String apiName=request.getRequestURI();</span>
+<span class="nc" id="L35">		String username = request.getHeader(&quot;username&quot;);</span>
+
+<span class="nc" id="L37">		DefaultRequestHeaders.getInstance().setHeaders(userAgent, requestId, traceId, spanId, parentspanId, sampled, flags, spanContext);</span>
+		
+<span class="nc" id="L39">		Object[] methodeParams = joinPoint.getArgs();</span>
+<span class="nc" id="L40">		LoggerRequest.getInstance().setRequestId(requestId);</span>
+<span class="nc" id="L41">		LogginAuthentcation.getInstance().setUserName(username);</span>
+<span class="nc" id="L42">		LoggerRequest.getInstance().logControllerBefore(apiName, joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName(), Arrays.deepToString(methodeParams));</span>
+		
+<span class="nc" id="L44">	}</span>
+	@After(&quot;pointcutController()&quot;)
+    public void logAfterController(JoinPoint joinPoint){
+<span class="nc" id="L47">		LoggerRequest.getInstance().logAfter(joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());</span>
+<span class="nc" id="L48">    }</span>
+	
+	@Pointcut(&quot;execution(* com.fusionx.col.collateral.service.*.*(..))&quot;)
+<span class="nc" id="L51">    private void pointcutService() {}</span>
+	
+	@Before(&quot;pointcutService()&quot;)
+	public void logBeforeService(JoinPoint joinPoint) {
+<span class="nc" id="L55">		Object[] methodeParams = joinPoint.getArgs();</span>
+<span class="nc" id="L56">		LoggerRequest.getInstance().logServiceBefore(joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName(), Arrays.deepToString(methodeParams));</span>
+<span class="nc" id="L57">	}</span>
+	@After(&quot;pointcutService()&quot;)
+    public void logAfterService(JoinPoint joinPoint){
+<span class="nc" id="L60">		LoggerRequest.getInstance().logAfter(joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());</span>
+<span class="nc" id="L61">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

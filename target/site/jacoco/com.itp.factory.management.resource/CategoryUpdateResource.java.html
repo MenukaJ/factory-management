@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CategoryUpdateResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.resource</a> &gt; <span class="el_source">CategoryUpdateResource.java</span></div><h1>CategoryUpdateResource.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.resource;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+/**
+ * Common Add Resource
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   02-08-2020          					MenukaJ     Created
+ *    
+ ********************************************************************************************************
+ */
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+<span class="nc" id="L21">public class CategoryUpdateResource {</span>
+	
+	private String id;
+
+	@NotBlank(message = &quot;{common.not-null}&quot;)
+	@Size(max = 70, message = &quot;{common-name.size}&quot;)
+	private String name;
+
+	@NotBlank(message = &quot;{common.not-null}&quot;)
+	@Pattern(regexp = &quot;ACTIVE|INACTIVE&quot;, message = &quot;{common-status.pattern}&quot;)
+	private String status;
+	
+	@NotBlank(message = &quot;{common.not-null}&quot;)
+	@Pattern(regexp = &quot;^$|[0-9]+&quot;, message = &quot;{common-numeric.pattern}&quot;)
+	private String version;
+	
+	@Size(max = 255, message = &quot;{modifiedUser.size}&quot;) 
+	private String modifiedUser;
+
+	public String getModifiedUser() {
+<span class="nc" id="L41">		return modifiedUser;</span>
+	}
+
+	public void setModifiedUser(String modifiedUser) {
+<span class="nc" id="L45">		this.modifiedUser = modifiedUser;</span>
+<span class="nc" id="L46">	}</span>
+
+	public String getId() {
+<span class="nc" id="L49">		return id;</span>
+	}
+
+	public void setId(String id) {
+<span class="nc" id="L53">		this.id = id;</span>
+<span class="nc" id="L54">	}</span>
+
+	public String getName() {
+<span class="nc" id="L57">		return name;</span>
+	}
+
+	public void setName(String name) {
+<span class="nc" id="L61">		this.name = name;</span>
+<span class="nc" id="L62">	}</span>
+
+	public String getStatus() {
+<span class="nc" id="L65">		return status;</span>
+	}
+
+	public void setStatus(String status) {
+<span class="nc" id="L69">		this.status = status;</span>
+<span class="nc" id="L70">	}</span>
+
+	public String getVersion() {
+<span class="nc" id="L73">		return version;</span>
+	}
+
+	public void setVersion(String version) {
+<span class="nc" id="L77">		this.version = version;</span>
+<span class="nc" id="L78">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValidateResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.resource</a> &gt; <span class="el_source">ValidateResource.java</span></div><h1>ValidateResource.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.resource;
+
+import java.sql.Timestamp;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import lombok.Data;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+<span class="nc" id="L11">public class ValidateResource {</span>
+	
+	@JsonProperty(&quot;message&quot;)
+	private String message;
+	
+	@JsonProperty(&quot;username&quot;)
+	private String username;
+	
+	@JsonProperty(&quot;version&quot;)
+	private String version;
+	
+	@JsonProperty(&quot;code&quot;)
+	private String code;
+	
+	@JsonProperty(&quot;name&quot;)
+	private String name;
+	
+	@JsonProperty(&quot;status&quot;)
+	private String status;
+
+	@JsonProperty(&quot;time&quot;)
+	private Timestamp time;
+	
+	@JsonProperty(&quot;branchName&quot;)
+	private String branchName;
+	
+	/******************************/
+
+	public String getBranchName() {
+<span class="nc" id="L40">		return branchName;</span>
+	}
+
+	public String getName() {
+<span class="nc" id="L44">		return name;</span>
+	}
+
+	public void setName(String name) {
+<span class="nc" id="L48">		this.name = name;</span>
+<span class="nc" id="L49">	}</span>
+
+	public void setBranchName(String branchName) {
+<span class="nc" id="L52">		this.branchName = branchName;</span>
+<span class="nc" id="L53">	}</span>
+	
+	public Timestamp getTime() {
+<span class="nc" id="L56">		return time;</span>
+	}
+
+	public void setTime(Timestamp time) {
+<span class="nc" id="L60">		this.time = time;</span>
+<span class="nc" id="L61">	}</span>
+
+	public String getMessage() {
+<span class="nc" id="L64">		return message;</span>
+	}
+
+	public void setMessage(String message) {
+<span class="nc" id="L68">		this.message = message;</span>
+<span class="nc" id="L69">	}</span>
+
+	public String getUsername() {
+<span class="nc" id="L72">		return username;</span>
+	}
+
+	public void setUsername(String username) {
+<span class="nc" id="L76">		this.username = username;</span>
+<span class="nc" id="L77">	}</span>
+
+	public String getVersion() {
+<span class="nc" id="L80">		return version;</span>
+	}
+
+	public void setVersion(String version) {
+<span class="nc" id="L84">		this.version = version;</span>
+<span class="nc" id="L85">	}</span>
+
+	public String getCode() {
+<span class="nc" id="L88">		return code;</span>
+	}
+
+	public void setCode(String code) {
+<span class="nc" id="L92">		this.code = code;</span>
+<span class="nc" id="L93">	}</span>
+
+	public String getStatus() {
+<span class="nc" id="L96">		return status;</span>
+	}
+
+	public void setStatus(String status) {
+<span class="nc" id="L100">		this.status = status;</span>
+<span class="nc" id="L101">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

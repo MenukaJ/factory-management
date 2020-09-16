@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseException.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.core</a> &gt; <span class="el_source">BaseException.java</span></div><h1>BaseException.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (c) 2018. LOLC Technology Services Ltd.
+ * Author: Ranjith Kodikara
+ * Date: 12/12/18 10:45
+ */
+
+package com.itp.factory.management.core;
+
+import java.util.Date;
+
+import javax.persistence.MappedSuperclass;
+
+import org.springframework.http.HttpStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * 
+ * All custom defined Exceptions should inherit this...
+ * 
+ * @author menukaj 
+ * @since   2018-12-13
+ * @version 1.0
+ * 
+ */
+@MappedSuperclass
+public abstract class BaseException extends Exception {
+
+	private static final long serialVersionUID = 6874532513778838448L;
+<span class="fc" id="L30">	private static final Logger logger = LoggerFactory.getLogger(BaseException.class);</span>
+	private String errorCode;
+	private String errorShortDescription;
+	private String errorDescription;
+
+	private Date errorDate;
+	private boolean severity;
+	private HttpStatus httpStatus;
+
+	public BaseException() {
+<span class="nc" id="L40">		super();</span>
+<span class="nc" id="L41">		logger.info(&quot;Exception&quot;,</span>
+<span class="nc" id="L42">				this.getErrorCode() + &quot;-&quot; + this.getErrorShortDescription() + &quot;-&quot; + this.getErrorDescription());</span>
+<span class="nc" id="L43">	}</span>
+
+	protected BaseException(String errorCode, String errorShortDescription, Date errorDate) {
+<span class="nc" id="L46">		super();</span>
+<span class="nc" id="L47">		this.errorCode = errorCode;</span>
+<span class="nc" id="L48">		this.errorShortDescription = errorShortDescription;</span>
+<span class="nc" id="L49">		this.errorDate = errorDate;</span>
+<span class="nc" id="L50">		logger.info(&quot;Exception&quot;,</span>
+<span class="nc" id="L51">				this.getErrorCode() + &quot;-&quot; + this.getErrorShortDescription() + &quot;-&quot; + this.getErrorDescription());</span>
+<span class="nc" id="L52">	}</span>
+
+	protected BaseException(String errorCode, String errorShortDescription, String errorDescription, Date errorDate) {
+<span class="nc" id="L55">		super();</span>
+<span class="nc" id="L56">		this.errorCode = errorCode;</span>
+<span class="nc" id="L57">		this.errorShortDescription = errorShortDescription;</span>
+<span class="nc" id="L58">		this.errorDescription = errorDescription;</span>
+<span class="nc" id="L59">		this.errorDate = errorDate;</span>
+
+<span class="nc" id="L61">		logger.info(&quot;Exception&quot;,</span>
+<span class="nc" id="L62">				this.getErrorCode() + &quot;-&quot; + this.getErrorShortDescription() + &quot;-&quot; + this.getErrorDescription());</span>
+<span class="nc" id="L63">	}</span>
+
+	protected BaseException(String errorCode, String errorShortDescription, String errorDescription, Date errorDate,
+			HttpStatus status) {
+<span class="nc" id="L67">		super();</span>
+<span class="nc" id="L68">		this.errorCode = errorCode;</span>
+<span class="nc" id="L69">		this.errorShortDescription = errorShortDescription;</span>
+<span class="nc" id="L70">		this.errorDescription = errorDescription;</span>
+<span class="nc" id="L71">		this.errorDate = errorDate;</span>
+<span class="nc" id="L72">		this.httpStatus = status;</span>
+
+<span class="nc" id="L74">		logger.info(&quot;Exception&quot;,</span>
+<span class="nc" id="L75">				this.getErrorCode() + &quot;-&quot; + this.getErrorShortDescription() + &quot;-&quot; + this.getErrorDescription());</span>
+<span class="nc" id="L76">	}</span>
+
+	/**
+	 * This method will do whatever required, depending on the severity of the
+	 * exception ...
+	 */
+	private void getActionforException(boolean sev) {
+<span class="nc bnc" id="L83" title="All 2 branches missed.">		if (sev) {</span>
+<span class="nc" id="L84">			System.out.println(&quot;notify the administrator , service desk and operations people ...&quot;);</span>
+			// Relevant code should be inserted here...
+		} else {
+<span class="nc" id="L87">			System.out.println(&quot;notify the user that his operation is not successful..&quot;);</span>
+			// Relevant code should be inserted here...
+		}
+
+<span class="nc" id="L91">	}</span>
+
+	public boolean getSeverity() {
+<span class="nc" id="L94">		return severity;</span>
+	}
+
+	public void setSeverity(boolean severity) {
+<span class="nc" id="L98">		this.severity = severity;</span>
+<span class="nc" id="L99">	}</span>
+
+	/**
+	 * @return the errorCode
+	 */
+	public String getErrorCode() {
+<span class="nc" id="L105">		return errorCode;</span>
+	}
+
+	/**
+	 * @param errorCode the errorCode to set
+	 */
+	public void setErrorCode(String errorCode) {
+<span class="nc" id="L112">		this.errorCode = errorCode;</span>
+<span class="nc" id="L113">	}</span>
+
+	/**
+	 * @return the errorShortDescription
+	 */
+	public String getErrorShortDescription() {
+<span class="nc" id="L119">		return errorShortDescription;</span>
+	}
+
+	/**
+	 * @param errorShortDescription the errorShortDescription to set
+	 */
+	public void setErrorShortDescription(String errorShortDescription) {
+<span class="nc" id="L126">		this.errorShortDescription = errorShortDescription;</span>
+<span class="nc" id="L127">	}</span>
+
+	/**
+	 * @return the errorDescription
+	 */
+	public String getErrorDescription() {
+<span class="nc" id="L133">		return errorDescription;</span>
+	}
+
+	/**
+	 * @param errorDescription the errorDescription to set
+	 */
+	public void setErrorDescription(String errorDescription) {
+<span class="nc" id="L140">		this.errorDescription = errorDescription;</span>
+<span class="nc" id="L141">	}</span>
+
+	/**
+	 * @return the errorDate
+	 */
+	public Date getErrorDate() {
+<span class="nc" id="L147">		return errorDate;</span>
+	}
+
+	/**
+	 * @param errorDate the errorDate to set
+	 */
+	public void setErrorDate(Date errorDate) {
+<span class="nc" id="L154">		this.errorDate = errorDate;</span>
+<span class="nc" id="L155">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SupplierUpdateResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.resource</a> &gt; <span class="el_source">SupplierUpdateResource.java</span></div><h1>SupplierUpdateResource.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.resource;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+/**
+ * Supplier Update Resource
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Story Point   Task No    Author       Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   06-09-2020                            Anushka        Created
+ *    
+ ********************************************************************************************************
+ */
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+<span class="nc" id="L19">public class SupplierUpdateResource {</span>
+	
+	private String id;
+	
+	@NotBlank(message = &quot;{common.not-null}&quot;)
+	@Size(max = 70, message = &quot;{common-name.size}&quot;)
+	private String name;
+	
+	@Size(max = 255, message = &quot;{description.size}&quot;) 
+	private String description;
+	
+	
+	@NotBlank(message = &quot;{common.not-null}&quot;)
+	@Pattern(regexp = &quot;^$|[0-10]+&quot;, message = &quot;{common-numeric.pattern}&quot;)
+	private String contact;
+
+
+	public String getId() {
+<span class="nc" id="L37">		return id;</span>
+	}
+
+
+	public void setId(String id) {
+<span class="nc" id="L42">		this.id = id;</span>
+<span class="nc" id="L43">	}</span>
+
+
+	public String getName() {
+<span class="nc" id="L47">		return name;</span>
+	}
+
+
+	public void setName(String name) {
+<span class="nc" id="L52">		this.name = name;</span>
+<span class="nc" id="L53">	}</span>
+
+
+	public String getDescription() {
+<span class="nc" id="L57">		return description;</span>
+	}
+
+
+	public void setDescription(String description) {
+<span class="nc" id="L62">		this.description = description;</span>
+<span class="nc" id="L63">	}</span>
+
+
+	public String getContact() {
+<span class="nc" id="L67">		return contact;</span>
+	}
+
+
+	public void setContact(String contact) {
+<span class="nc" id="L72">		this.contact = contact;</span>
+<span class="nc" id="L73">	}</span>
+
+
+	
+
+	
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

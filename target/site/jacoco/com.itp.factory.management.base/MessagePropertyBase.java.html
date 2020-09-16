@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MessagePropertyBase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.itp.factory.management.base</a> &gt; <span class="el_source">MessagePropertyBase.java</span></div><h1>MessagePropertyBase.java</h1><pre class="source lang-java linenums">package com.itp.factory.management.base;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+
+<span class="fc" id="L6">public abstract class MessagePropertyBase {</span>
+	
+	@Autowired
+	protected Environment environment;
+
+	public Environment getEnvironment() {
+<span class="nc" id="L12">		return environment;</span>
+	}
+	public void setEnvironment(Environment environment) {
+<span class="nc" id="L15">		this.environment = environment;</span>
+<span class="nc" id="L16">	}</span>
+	
+	/** Common Properties */
+	protected static final String RECORD_CREATED = &quot;common.saved&quot;;
+	protected static final String RECORD_UPDATED = &quot;common.updated&quot;;
+	protected static final String RECORD_DELETED = &quot;common.deleted&quot;;
+	public static final String RECORD_NOT_FOUND = &quot;common.record-not-found&quot;;
+	public static final String TENANT_NOT_FOUND = &quot;common.tenantNotFound&quot;;
+	public static final String COMMON_INTERNAL_SERVER_ERROR = &quot;common.internal-server-error&quot;;
+	public static final String COMMON_ERROR = &quot;common.error&quot;;
+	public static final String COMMON_DUPLICATE = &quot;common.duplicate&quot;;
+	protected static final String COMMON_STATUS_PATTERN = &quot;common.status-pattern&quot;;
+	protected static final String COMMON_STATUS_NOT_NULL = &quot;common.status-not-null&quot;;
+	protected static final String COMMON_CREATEDUSER_NOT_NULL = &quot;common.createduser-not-null&quot;;
+	protected static final String COMMON_MODIFIEDUSER_NOT_NULL = &quot;common.modifieduser-not-null&quot;;
+	protected static final String COMMON_NOT_NULL = &quot;common.not-null&quot;;
+	protected static final String COMMON_NUMERIC_PATTERN = &quot;common.numeric-pattern&quot;;
+	protected static final String COMMON_INVALID_VALUE = &quot;common.invalid-value&quot;;
+	protected static final String BAD_REQUEST = &quot;common.bad-request&quot;;
+	protected static final String SERVICE_NOT_AVAILABLE = &quot;common-service.not-available&quot;;
+	protected static final String CHILD_RECORD = &quot;common-child-record.available&quot;;
+	protected static final String CHILD_RECORD_STATUS = &quot;common-child-record-status.available&quot;;
+	protected static final String PAGEABLE_LENGTH = &quot;common.pageable-length&quot;;
+	protected static final String NO_RECORD_TO_SAVED = &quot;common.no-record&quot;;
+	protected static final String INVALID_VERSION = &quot;common-invalid.version&quot;;
+	
+	/** JSON Properties */
+	
+	
+	/** Message Properties */
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
