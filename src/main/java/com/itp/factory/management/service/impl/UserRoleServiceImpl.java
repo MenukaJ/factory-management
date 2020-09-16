@@ -8,6 +8,7 @@ import com.itp.factory.management.domain.UserRole;
 import com.itp.factory.management.repository.UserRoleRepository;
 import com.itp.factory.management.resource.UserRoleAddResource;
 import com.itp.factory.management.resource.UserRoleUpdateResource;
+import com.itp.factory.management.service.FactoryDetailsService;
 import com.itp.factory.management.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,14 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.itp.factory.management.base.MessagePropertyBase;
 import com.itp.factory.management.core.LogginAuthentcation;
-import com.itp.factory.management.domain.Category;
 import com.itp.factory.management.enums.CommonStatus;
 import com.itp.factory.management.exception.ValidateRecordException;
-import com.itp.factory.management.repository.CategoryRepository;
-import com.itp.factory.management.resource.CategoryAddResource;
-import com.itp.factory.management.resource.CategoryUpdateResource;
-import com.itp.factory.management.service.CategoryService;
-import com.itp.factory.management.repository.UserRoleRepository;
+
 
 /**
  * Insurance Type Service Impl

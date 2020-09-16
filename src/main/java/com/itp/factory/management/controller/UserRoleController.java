@@ -55,7 +55,7 @@ public class UserRoleController extends MessagePropertyBase{
      * @return List
      **/
     @GetMapping("/all")
-    public ResponseEntity<Object> getAllCategory(){
+    public ResponseEntity<Object> getAllUserRole(){
         SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
         List<UserRole>isPresentCategory = UserRoleService.getAll();
         if(!isPresentCategory.isEmpty()) {

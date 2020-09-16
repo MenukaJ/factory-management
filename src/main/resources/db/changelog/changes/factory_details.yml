@@ -4,7 +4,7 @@ databaseChangeLog:
       author: chathura
       changes:
         - createTable:
-            tableName: user_role
+            tableName: factory_details
             columns:
               - column:
                   name: id
@@ -14,15 +14,35 @@ databaseChangeLog:
                     nullable: false
                     primaryKey: true
               - column:
-                  name: role_name
+                  name: company_name
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
                   type: varchar(70)
                   constraints:
                     nullable: false
               - column:
-                  name: status
-                  type: varchar(10)
+                  name: company_logo
+                  type: varchar(70)
                   constraints:
-                    nullable: false
+                    nullable: true
+              - column:
+                  name: product_type
+                  type: varchar(70)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: start_year
+                  type: varchar(70)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: owner_name
+                  type: varchar(70)
+                  constraints:
+                    nullable: true
               - column:
                   name: created_user
                   type: varchar(255)
