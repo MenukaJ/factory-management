@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  */
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class CategoryAddResource {
+public class CommonAddResource {
 	
 	@NotBlank(message = "{common.not-null}")
 	@Size(max = 70, message = "{common-name.size}")

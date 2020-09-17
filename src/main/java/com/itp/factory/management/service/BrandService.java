@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.domain.Brand;
 import com.itp.factory.management.resource.CommonAddResource;
 import com.itp.factory.management.resource.CommonUpdateResource;
 
 
 /**
- * Category Service
+ * Brand Service
  * 
  ********************************************************************************************************
  *  ###   Date         Story Point   Task No    Author       Description
@@ -23,69 +23,69 @@ import com.itp.factory.management.resource.CommonUpdateResource;
 
 
 @Service
-public interface CategoryService {
+public interface BrandService {
 
 	/**
 	 * 
-	 * Find all Category
+	 * Find all Brand
 	 * @author MenukaJ
-	 * @return -JSON array of all Category
+	 * @return -JSON array of all Brand
 	 * 
 	 * */
-	public List<Category> getAll();
+	public List<Brand> getAll();
 	
 	/**
 	 * 
-	 * Find Category by ID
+	 * Find Brand by ID
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Brand
 	 * 
 	 * */
-	public Optional<Category> getById(Long id);
+	public Optional<Brand> getById(Long id);
 	
 	/**
 	 * 
-	 * Find Category by name
+	 * Find Brand by name
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Brand
 	 * 
 	 * */
-	public Optional<Category> getByName(String name);
+	public Optional<Brand> getByName(String name);
 	
 	/**
 	 * 
-	 * Find Category by status
+	 * Find Brand by status
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Brand
 	 * 
 	 * */
-	public List<Category> getByStatus(String status);
+	public List<Brand> getByStatus(String status);
 	
 	/**
 	 * 
-	 * Insert Category
+	 * Insert Brand
 	 * @author MenukaJ
 	 * @param  - CommonAddResource
 	 * @return - Successfully saved
 	 * 
 	 * */
-	public Category addCategory(CommonAddResource commonAddResource);
+	public Brand addBrand(CommonAddResource commonAddResource);
 
 	/**
 	 * 
-	 * Update Category
+	 * Update Brand
 	 * @author MenukaJ
 	 * @param  - CommonUpdateResource
 	 * @return - Successfully saved
 	 * 
 	 * */
-	public Category updateCategory(CommonUpdateResource commonUpdateResource);
+	public Brand updateBrand(CommonUpdateResource commonUpdateResource);
 	
 	/**
 	 * 
-	 * Delete Category
+	 * Delete Brand
 	 * @author MenukaJ
 	 * 
 	 * */
-	public void deleteCategory(Long id);
+	public void deleteBrand(Long id);
 }

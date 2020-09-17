@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.itp.factory.management.core;
 
 import javax.persistence.EntityManager;

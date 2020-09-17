@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.domain.Store;
 import com.itp.factory.management.resource.CommonAddResource;
 import com.itp.factory.management.resource.CommonUpdateResource;
 
 
 /**
- * Category Service
+ * Store Service
  * 
  ********************************************************************************************************
  *  ###   Date         Story Point   Task No    Author       Description
@@ -23,69 +23,69 @@ import com.itp.factory.management.resource.CommonUpdateResource;
 
 
 @Service
-public interface CategoryService {
+public interface StoreService {
 
 	/**
 	 * 
-	 * Find all Category
+	 * Find all Store
 	 * @author MenukaJ
-	 * @return -JSON array of all Category
+	 * @return -JSON array of all Store
 	 * 
 	 * */
-	public List<Category> getAll();
+	public List<Store> getAll();
 	
 	/**
 	 * 
-	 * Find Category by ID
+	 * Find Store by ID
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Store
 	 * 
 	 * */
-	public Optional<Category> getById(Long id);
+	public Optional<Store> getById(Long id);
 	
 	/**
 	 * 
-	 * Find Category by name
+	 * Find Store by name
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Store
 	 * 
 	 * */
-	public Optional<Category> getByName(String name);
+	public Optional<Store> getByName(String name);
 	
 	/**
 	 * 
-	 * Find Category by status
+	 * Find Store by status
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Store
 	 * 
 	 * */
-	public List<Category> getByStatus(String status);
+	public List<Store> getByStatus(String status);
 	
 	/**
 	 * 
-	 * Insert Category
+	 * Insert Store
 	 * @author MenukaJ
 	 * @param  - CommonAddResource
 	 * @return - Successfully saved
 	 * 
 	 * */
-	public Category addCategory(CommonAddResource commonAddResource);
+	public Store addStore(CommonAddResource commonAddResource);
 
 	/**
 	 * 
-	 * Update Category
+	 * Update Store
 	 * @author MenukaJ
 	 * @param  - CommonUpdateResource
 	 * @return - Successfully saved
 	 * 
 	 * */
-	public Category updateCategory(CommonUpdateResource commonUpdateResource);
+	public Store updateStore(CommonUpdateResource commonUpdateResource);
 	
 	/**
 	 * 
-	 * Delete Category
+	 * Delete Store
 	 * @author MenukaJ
 	 * 
 	 * */
-	public void deleteCategory(Long id);
+	public void deleteStore(Long id);
 }

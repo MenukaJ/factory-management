@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.domain.Store;
 import com.itp.factory.management.enums.CommonStatus;
 
 
 /**
- * Category Repository
+ * Store Repository
  * 
  ********************************************************************************************************
  *  ###   Date         Story Point   Task No    Author       Description
@@ -22,11 +22,11 @@ import com.itp.factory.management.enums.CommonStatus;
  */
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface StoreRepository extends JpaRepository<Store, Long> {
 	
-	Optional <Category> findByName(String name);
+	Optional <Store> findByName(String name);
 	
-	List <Category> findByStatus(CommonStatus status);
+	List <Store> findByStatus(CommonStatus status);
 	
-	Optional <Category> findByNameAndId(String name, Long id);
+	Optional <Store> findByNameAndId(String name, Long id);
 }

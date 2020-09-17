@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.domain.Attributes;
 import com.itp.factory.management.resource.CommonAddResource;
 import com.itp.factory.management.resource.CommonUpdateResource;
 
 
 /**
- * Category Service
+ * Attributes Service
  * 
  ********************************************************************************************************
  *  ###   Date         Story Point   Task No    Author       Description
@@ -23,69 +23,69 @@ import com.itp.factory.management.resource.CommonUpdateResource;
 
 
 @Service
-public interface CategoryService {
+public interface AttributesService {
 
 	/**
 	 * 
-	 * Find all Category
+	 * Find all Attributes
 	 * @author MenukaJ
-	 * @return -JSON array of all Category
+	 * @return -JSON array of all Attributes
 	 * 
 	 * */
-	public List<Category> getAll();
+	public List<Attributes> getAll();
 	
 	/**
 	 * 
-	 * Find Category by ID
+	 * Find Attributes by ID
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Attributes
 	 * 
 	 * */
-	public Optional<Category> getById(Long id);
+	public Optional<Attributes> getById(Long id);
 	
 	/**
 	 * 
-	 * Find Category by name
+	 * Find Attributes by name
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Attributes
 	 * 
 	 * */
-	public Optional<Category> getByName(String name);
+	public Optional<Attributes> getByName(String name);
 	
 	/**
 	 * 
-	 * Find Category by status
+	 * Find Attributes by status
 	 * @author MenukaJ
-	 * @return -JSON array of Category
+	 * @return -JSON array of Attributes
 	 * 
 	 * */
-	public List<Category> getByStatus(String status);
+	public List<Attributes> getByStatus(String status);
 	
 	/**
 	 * 
-	 * Insert Category
+	 * Insert Attributes
 	 * @author MenukaJ
 	 * @param  - CommonAddResource
 	 * @return - Successfully saved
 	 * 
 	 * */
-	public Category addCategory(CommonAddResource commonAddResource);
+	public Attributes addAttributes(CommonAddResource commonAddResource);
 
 	/**
 	 * 
-	 * Update Category
+	 * Update Attributes
 	 * @author MenukaJ
 	 * @param  - CommonUpdateResource
 	 * @return - Successfully saved
 	 * 
 	 * */
-	public Category updateCategory(CommonUpdateResource commonUpdateResource);
+	public Attributes updateAttributes(CommonUpdateResource commonUpdateResource);
 	
 	/**
 	 * 
-	 * Delete Category
+	 * Delete Attributes
 	 * @author MenukaJ
 	 * 
 	 * */
-	public void deleteCategory(Long id);
+	public void deleteAttributes(Long id);
 }

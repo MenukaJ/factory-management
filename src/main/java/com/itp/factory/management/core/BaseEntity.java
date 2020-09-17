@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2018. LOLC Technology Services Ltd.
- * Author: Ranjith Kodikara
- * Date: 12/12/18 10:45
- */
-
 package com.itp.factory.management.core;
 
 import java.sql.Timestamp;

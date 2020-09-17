@@ -20,17 +20,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itp.factory.management.base.MessagePropertyBase;
-import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.domain.AttributeValue;
 import com.itp.factory.management.enums.CommonStatus;
 import com.itp.factory.management.exception.ValidateRecordException;
+import com.itp.factory.management.resource.AttributeValueAddResource;
+import com.itp.factory.management.resource.AttributeValueUpdateResource;
 import com.itp.factory.management.resource.CommonAddResource;
 import com.itp.factory.management.resource.CommonUpdateResource;
 import com.itp.factory.management.resource.SuccessAndErrorDetailsResource;
-import com.itp.factory.management.service.CategoryService;
+import com.itp.factory.management.service.AttributeValueService;
 	
 
 /**
- * Category Controller
+ * AttributeValue Controller
  * 
  ********************************************************************************************************
  *  ###   Date         Story Point   Task No    Author       Description
@@ -41,25 +43,25 @@ import com.itp.factory.management.service.CategoryService;
  */
 
 @RestController
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/attribute-alue")
 @CrossOrigin(origins = "*")
-public class CategoryController extends MessagePropertyBase {
+public class AttributeValueController extends MessagePropertyBase {
 	
 	@Autowired
-	private CategoryService categoryService;
+	private AttributeValueService attributeValueService;
 	
 	/*
-	 * get all category
+	 * get all AttributeValue
 	 * @param @PathVariable{tenantId}
 	 * @param @PathVariable{all}
 	 * @return List
 	 **/
 	@GetMapping("/all")
-	public ResponseEntity<Object> getAllCategory(){
+	public ResponseEntity<Object> getAllAttributeValue(){
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		List<Category>isPresentCategory = categoryService.getAll();
-		if(!isPresentCategory.isEmpty()) {
-			return new ResponseEntity<>((Collection<Category>)isPresentCategory,HttpStatus.OK);
+		List<AttributeValue>isPresentAttributeValue = attributeValueService.getAll();
+		if(!isPresentAttributeValue.isEmpty()) {
+			return new ResponseEntity<>((Collection<AttributeValue>)isPresentAttributeValue,HttpStatus.OK);
 		}
 		else {
 			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));
@@ -68,17 +70,17 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-	 * get category by ID
+	 * get AttributeValue by ID
 	 * @param @pathVariable{tenantId}
 	 * @param @pathVariable {id}
 	 * @return Optional
 	 **/
 	@GetMapping(value = "/id/{id}")
-	public ResponseEntity<Object> getCategoryById(@PathVariable(value = "id", required = true) Long id){
+	public ResponseEntity<Object> getAttributeValueById(@PathVariable(value = "id", required = true) Long id){
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		Optional<Category> isPresentCategory = categoryService.getById(id);
-		if(isPresentCategory.isPresent()) {
-			return new ResponseEntity<>(isPresentCategory.get(), HttpStatus.OK);
+		Optional<AttributeValue> isPresentAttributeValue = attributeValueService.getById(id);
+		if(isPresentAttributeValue.isPresent()) {
+			return new ResponseEntity<>(isPresentAttributeValue.get(), HttpStatus.OK);
 		}
 		else {
 			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));
@@ -87,17 +89,17 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-	 * get category by name
+	 * get AttributeValue by value
 	 * @param @pathVariable{tenantId}
-	 * @param @pathVariable {name}
+	 * @param @pathVariable {value}
 	 * @return List
 	 **/
-	@GetMapping(value = "/name/{name}")
-	public ResponseEntity<Object> getCategoryByName(@PathVariable(value = "name", required = true) String name){
+	@GetMapping(value = "/value/{value}")
+	public ResponseEntity<Object> getAttributeValueByName(@PathVariable(value = "value", required = true) String value){
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		Optional<Category> isPresentCategory = categoryService.getByName(name);
-		if(isPresentCategory.isPresent()) {
-			return new ResponseEntity<>(isPresentCategory.get(), HttpStatus.OK);
+		Optional<AttributeValue> isPresentAttributeValue = attributeValueService.getByValue(value);
+		if(isPresentAttributeValue.isPresent()) {
+			return new ResponseEntity<>(isPresentAttributeValue.get(), HttpStatus.OK);
 		}
 		else {
 			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));
@@ -106,18 +108,18 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-	 * get category by status
+	 * get AttributeValue by status
 	 * @param @pathVariable{tenantId}
 	 * @param @pathVariable {status}
 	 * @return List
 	 **/
 	@GetMapping(value = "/status/{status}")
-	public ResponseEntity<Object> getCategoryByStatus(@PathVariable(value = "status", required = true) String status){
+	public ResponseEntity<Object> getAttributeValueByStatus(@PathVariable(value = "status", required = true) String status){
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
 		if(status.equals(CommonStatus.ACTIVE.toString()) || status.equals(CommonStatus.INACTIVE.toString())) {
-			List<Category> isPresentCategory = categoryService.getByStatus(status);
-			if(!isPresentCategory.isEmpty()) {
-				return new ResponseEntity<>(isPresentCategory, HttpStatus.OK);
+			List<AttributeValue> isPresentAttributeValue = attributeValueService.getByStatus(status);
+			if(!isPresentAttributeValue.isEmpty()) {
+				return new ResponseEntity<>(isPresentAttributeValue, HttpStatus.OK);
 			}
 			else {
 				responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));
@@ -131,33 +133,33 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-     * save category
+     * save AttributeValue
      * @param @PathVariable{tenantId}
-     * @param @RequestBody{CommonAddResource}
+     * @param @RequestBody{AttributeValueAddResource}
      * @return SuccessAndErrorDetailsDto
      */
 	@PostMapping("/add")
-	public ResponseEntity<Object> addCategory(@Valid @RequestBody CommonAddResource commonAddResource){
-		Category Category = categoryService.addCategory(commonAddResource);
-		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_CREATED), Long.toString(Category.getId()));
+	public ResponseEntity<Object> addAttributeValue(@Valid @RequestBody AttributeValueAddResource attributeValueAddResource){
+		AttributeValue attributeValue = attributeValueService.addAttributeValue(attributeValueAddResource);
+		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_CREATED), Long.toString(attributeValue.getId()));
 		return new ResponseEntity<>(responseMessage,HttpStatus.CREATED);
 	}
 	
 	/**
-     * update category
+     * update AttributeValue
      * @param @PathVariable{tenantId}
      * @param @RequestBody{CommonUpdateResource}
      * @return SuccessAndErrorDetailsDto
      */
 	@PutMapping(value = "update/{id}")
-	public ResponseEntity<Object> updateCategory(@PathVariable(value = "id", required = true) Long id, 
-												                 @Valid @RequestBody CommonUpdateResource commonUpdateResource){
+	public ResponseEntity<Object> updateAttributeValue(@PathVariable(value = "id", required = true) Long id, 
+												                 @Valid @RequestBody AttributeValueUpdateResource attributeValueUpdateResource){
 		SuccessAndErrorDetailsResource successAndErrorDetailsResource=new SuccessAndErrorDetailsResource();
-		Optional<Category>isPresentCategory = categoryService.getById(id);		
-		if(isPresentCategory.isPresent()) {
-			commonUpdateResource.setId(id.toString());
-			Category Category = categoryService.updateCategory(commonUpdateResource);
-			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_UPDATED), Category.getId().toString());
+		Optional<AttributeValue>isPresentAttributeValue = attributeValueService.getById(id);		
+		if(isPresentAttributeValue.isPresent()) {
+			attributeValueUpdateResource.setId(id.toString());
+			AttributeValue attributeValue = attributeValueService.updateAttributeValue(attributeValueUpdateResource);
+			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_UPDATED), attributeValue.getId().toString());
 			return new ResponseEntity<>(successAndErrorDetailsResource,HttpStatus.OK);
 		}
 		else {
@@ -167,16 +169,16 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-	 * get category by ID
+	 * get AttributeValue by ID
 	 * @param @pathVariable{tenantId}
 	 * @param @pathVariable {id}
 	 **/
 	@DeleteMapping(value = "/id/{id}")
-	public ResponseEntity<Object> deleteCategoryById(@PathVariable(value = "id", required = true) Long id){
+	public ResponseEntity<Object> deleteAttributeValueById(@PathVariable(value = "id", required = true) Long id){
 		SuccessAndErrorDetailsResource successAndErrorDetailsResource=new SuccessAndErrorDetailsResource();
-		Optional<Category>isPresentCategory = categoryService.getById(id);		
-		if(isPresentCategory.isPresent()) {
-			categoryService.deleteCategory(id);
+		Optional<AttributeValue>isPresentAttributeValue = attributeValueService.getById(id);		
+		if(isPresentAttributeValue.isPresent()) {
+			attributeValueService.deleteAttributeValue(id);
 			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_DELETED), id.toString());
 			return new ResponseEntity<>(successAndErrorDetailsResource,HttpStatus.OK);
 		}

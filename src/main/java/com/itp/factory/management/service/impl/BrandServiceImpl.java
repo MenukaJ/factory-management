@@ -10,17 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.itp.factory.management.base.MessagePropertyBase;
 import com.itp.factory.management.core.LogginAuthentcation;
-import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.domain.Brand;
 import com.itp.factory.management.enums.CommonStatus;
 import com.itp.factory.management.exception.ValidateRecordException;
-import com.itp.factory.management.repository.CategoryRepository;
+import com.itp.factory.management.repository.BrandRepository;
 import com.itp.factory.management.resource.CommonAddResource;
 import com.itp.factory.management.resource.CommonUpdateResource;
-import com.itp.factory.management.service.CategoryService;
+import com.itp.factory.management.service.BrandService;
 
 
 /**
- * Category Service Impl
+ * Brand Service Impl
  * 
  ********************************************************************************************************
  *  ###   Date         Story Point   Task No    Author       Description
@@ -32,21 +32,21 @@ import com.itp.factory.management.service.CategoryService;
 
 @Component
 @Transactional(rollbackFor=Exception.class)
-public class CategoryServiceImpl extends MessagePropertyBase implements CategoryService {
+public class BrandServiceImpl extends MessagePropertyBase implements BrandService {
 	
 	@Autowired
-	private CategoryRepository categoryRepository;
+	private BrandRepository brandRepository;
 
 	@Override
-	public List<Category> getAll() {
-		return categoryRepository.findAll();
+	public List<Brand> getAll() {
+		return brandRepository.findAll();
 	}
 
 	@Override
-	public Optional<Category> getById(Long id) {
-		Optional<Category> isPresentCategory = categoryRepository.findById(id);
-		if (isPresentCategory.isPresent()) {
-			return Optional.ofNullable(isPresentCategory.get());
+	public Optional<Brand> getById(Long id) {
+		Optional<Brand> isPresentBrand = brandRepository.findById(id);
+		if (isPresentBrand.isPresent()) {
+			return Optional.ofNullable(isPresentBrand.get());
 		}
 		else {
 			return Optional.empty();
@@ -54,10 +54,10 @@ public class CategoryServiceImpl extends MessagePropertyBase implements Category
 	}
 
 	@Override
-	public Optional<Category> getByName(String name) {
-		Optional<Category> isPresentCategory = categoryRepository.findByName(name);
-		if (isPresentCategory.isPresent()) {
-			return Optional.ofNullable(isPresentCategory.get());
+	public Optional<Brand> getByName(String name) {
+		Optional<Brand> isPresentBrand = brandRepository.findByName(name);
+		if (isPresentBrand.isPresent()) {
+			return Optional.ofNullable(isPresentBrand.get());
 		}
 		else {
 			return Optional.empty();
@@ -65,12 +65,12 @@ public class CategoryServiceImpl extends MessagePropertyBase implements Category
 	}
 
 	@Override
-	public List<Category> getByStatus(String status) {
-		return categoryRepository.findByStatus(CommonStatus.valueOf(status));
+	public List<Brand> getByStatus(String status) {
+		return brandRepository.findByStatus(CommonStatus.valueOf(status));
 	}
 
 	@Override
-	public Category addCategory(CommonAddResource commonAddResource) {
+	public Brand addBrand(CommonAddResource commonAddResource) {
 		Calendar calendar = Calendar.getInstance();
         java.util.Date now = calendar.getTime();
         java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
@@ -78,22 +78,22 @@ public class CategoryServiceImpl extends MessagePropertyBase implements Category
         if(LogginAuthentcation.getInstance().getUserName() == null || LogginAuthentcation.getInstance().getUserName().isEmpty())
         	throw new ValidateRecordException(environment.getProperty("common.not-null"), "username");
         
-        Optional<Category> isPresentCategory = categoryRepository.findByName(commonAddResource.getName());
-        if (isPresentCategory.isPresent()) {
+        Optional<Brand> isPresentBrand = brandRepository.findByName(commonAddResource.getName());
+        if (isPresentBrand.isPresent()) {
         	throw new ValidateRecordException(environment.getProperty("common.unique"), "name");
 		}
         
-        Category category = new Category();
-        category.setName(commonAddResource.getName());
-        category.setStatus(CommonStatus.valueOf(commonAddResource.getStatus()));
-        category.setCreatedDate(currentTimestamp);
-        category.setCreatedUser(LogginAuthentcation.getInstance().getUserName());
-        category = categoryRepository.save(category);
-    	return category;
+        Brand brand = new Brand();
+        brand.setName(commonAddResource.getName());
+        brand.setStatus(CommonStatus.valueOf(commonAddResource.getStatus()));
+        brand.setCreatedDate(currentTimestamp);
+        brand.setCreatedUser(LogginAuthentcation.getInstance().getUserName());
+        brand = brandRepository.save(brand);
+    	return brand;
 	}
 
 	@Override
-	public Category updateCategory(CommonUpdateResource commonUpdateResource) {
+	public Brand updateBrand(CommonUpdateResource commonUpdateResource) {
 		Calendar calendar = Calendar.getInstance();
 		java.util.Date now = calendar.getTime();
 		java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
@@ -101,33 +101,33 @@ public class CategoryServiceImpl extends MessagePropertyBase implements Category
 		if (LogginAuthentcation.getInstance().getUserName()==null || LogginAuthentcation.getInstance().getUserName().isEmpty())
 			throw new ValidateRecordException(getEnvironment().getProperty(COMMON_NOT_NULL), "username");
 		
-		Optional<Category> isPresentCategory = categoryRepository.findById(Long.parseLong(commonUpdateResource.getId()));
-		if (!isPresentCategory.isPresent()) 
+		Optional<Brand> isPresentBrand = brandRepository.findById(Long.parseLong(commonUpdateResource.getId()));
+		if (!isPresentBrand.isPresent()) 
 			throw new ValidateRecordException(getEnvironment().getProperty(RECORD_NOT_FOUND), "message");
 		
-		if(!isPresentCategory.get().getVersion().equals(Long.parseLong(commonUpdateResource.getVersion())))
+		if(!isPresentBrand.get().getVersion().equals(Long.parseLong(commonUpdateResource.getVersion())))
 			throw new ValidateRecordException(environment.getProperty("common.invalid-value"), "version");
 		
-		Optional<Category> isPresentCategoryName = categoryRepository.findByName(commonUpdateResource.getName());
-		if (isPresentCategoryName.isPresent() && isPresentCategoryName.get().getId() != isPresentCategory.get().getId())			
+		Optional<Brand> isPresentBrandName = brandRepository.findByName(commonUpdateResource.getName());
+		if (isPresentBrandName.isPresent() && isPresentBrandName.get().getId() != isPresentBrand.get().getId())			
 			throw new ValidateRecordException(environment.getProperty("common.unique"), "name");
 		
-		Category category = isPresentCategory.get();
-		category.setName(commonUpdateResource.getName());
-		category.setStatus(CommonStatus.valueOf(commonUpdateResource.getStatus()));
-		category.setModifiedDate(currentTimestamp);
-		category.setModifiedUser(LogginAuthentcation.getInstance().getUserName());
-		category = categoryRepository.saveAndFlush(category);
-    	return category;
+		Brand brand = isPresentBrand.get();
+		brand.setName(commonUpdateResource.getName());
+		brand.setStatus(CommonStatus.valueOf(commonUpdateResource.getStatus()));
+		brand.setModifiedDate(currentTimestamp);
+		brand.setModifiedUser(LogginAuthentcation.getInstance().getUserName());
+		brand = brandRepository.saveAndFlush(brand);
+    	return brand;
 	}
 
 	@Override
-	public void deleteCategory(Long id) {
-		Optional<Category> isPresentCategory = categoryRepository.findById(id);
-		if (!isPresentCategory.isPresent()) 
+	public void deleteBrand(Long id) {
+		Optional<Brand> isPresentBrand = brandRepository.findById(id);
+		if (!isPresentBrand.isPresent()) 
 			throw new ValidateRecordException(getEnvironment().getProperty(RECORD_NOT_FOUND), "message");
 		else
-			categoryRepository.deleteById(id);	
+			brandRepository.deleteById(id);	
 	}
 	
 }

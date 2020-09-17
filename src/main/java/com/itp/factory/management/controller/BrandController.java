@@ -20,17 +20,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itp.factory.management.base.MessagePropertyBase;
-import com.itp.factory.management.domain.Category;
+import com.itp.factory.management.domain.Brand;
 import com.itp.factory.management.enums.CommonStatus;
 import com.itp.factory.management.exception.ValidateRecordException;
 import com.itp.factory.management.resource.CommonAddResource;
 import com.itp.factory.management.resource.CommonUpdateResource;
 import com.itp.factory.management.resource.SuccessAndErrorDetailsResource;
-import com.itp.factory.management.service.CategoryService;
+import com.itp.factory.management.service.BrandService;
 	
 
 /**
- * Category Controller
+ * Brand Controller
  * 
  ********************************************************************************************************
  *  ###   Date         Story Point   Task No    Author       Description
@@ -41,25 +41,25 @@ import com.itp.factory.management.service.CategoryService;
  */
 
 @RestController
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/brand")
 @CrossOrigin(origins = "*")
-public class CategoryController extends MessagePropertyBase {
+public class BrandController extends MessagePropertyBase {
 	
 	@Autowired
-	private CategoryService categoryService;
+	private BrandService brandService;
 	
 	/*
-	 * get all category
+	 * get all Brand
 	 * @param @PathVariable{tenantId}
 	 * @param @PathVariable{all}
 	 * @return List
 	 **/
 	@GetMapping("/all")
-	public ResponseEntity<Object> getAllCategory(){
+	public ResponseEntity<Object> getAllBrand(){
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		List<Category>isPresentCategory = categoryService.getAll();
-		if(!isPresentCategory.isEmpty()) {
-			return new ResponseEntity<>((Collection<Category>)isPresentCategory,HttpStatus.OK);
+		List<Brand>isPresentBrand = brandService.getAll();
+		if(!isPresentBrand.isEmpty()) {
+			return new ResponseEntity<>((Collection<Brand>)isPresentBrand,HttpStatus.OK);
 		}
 		else {
 			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));
@@ -68,17 +68,17 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-	 * get category by ID
+	 * get Brand by ID
 	 * @param @pathVariable{tenantId}
 	 * @param @pathVariable {id}
 	 * @return Optional
 	 **/
 	@GetMapping(value = "/id/{id}")
-	public ResponseEntity<Object> getCategoryById(@PathVariable(value = "id", required = true) Long id){
+	public ResponseEntity<Object> getBrandById(@PathVariable(value = "id", required = true) Long id){
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		Optional<Category> isPresentCategory = categoryService.getById(id);
-		if(isPresentCategory.isPresent()) {
-			return new ResponseEntity<>(isPresentCategory.get(), HttpStatus.OK);
+		Optional<Brand> isPresentBrand = brandService.getById(id);
+		if(isPresentBrand.isPresent()) {
+			return new ResponseEntity<>(isPresentBrand.get(), HttpStatus.OK);
 		}
 		else {
 			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));
@@ -87,17 +87,17 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-	 * get category by name
+	 * get Brand by name
 	 * @param @pathVariable{tenantId}
 	 * @param @pathVariable {name}
 	 * @return List
 	 **/
 	@GetMapping(value = "/name/{name}")
-	public ResponseEntity<Object> getCategoryByName(@PathVariable(value = "name", required = true) String name){
+	public ResponseEntity<Object> getBrandByName(@PathVariable(value = "name", required = true) String name){
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		Optional<Category> isPresentCategory = categoryService.getByName(name);
-		if(isPresentCategory.isPresent()) {
-			return new ResponseEntity<>(isPresentCategory.get(), HttpStatus.OK);
+		Optional<Brand> isPresentBrand = brandService.getByName(name);
+		if(isPresentBrand.isPresent()) {
+			return new ResponseEntity<>(isPresentBrand.get(), HttpStatus.OK);
 		}
 		else {
 			responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));
@@ -106,18 +106,18 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-	 * get category by status
+	 * get Brand by status
 	 * @param @pathVariable{tenantId}
 	 * @param @pathVariable {status}
 	 * @return List
 	 **/
 	@GetMapping(value = "/status/{status}")
-	public ResponseEntity<Object> getCategoryByStatus(@PathVariable(value = "status", required = true) String status){
+	public ResponseEntity<Object> getBrandByStatus(@PathVariable(value = "status", required = true) String status){
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
 		if(status.equals(CommonStatus.ACTIVE.toString()) || status.equals(CommonStatus.INACTIVE.toString())) {
-			List<Category> isPresentCategory = categoryService.getByStatus(status);
-			if(!isPresentCategory.isEmpty()) {
-				return new ResponseEntity<>(isPresentCategory, HttpStatus.OK);
+			List<Brand> isPresentBrand = brandService.getByStatus(status);
+			if(!isPresentBrand.isEmpty()) {
+				return new ResponseEntity<>(isPresentBrand, HttpStatus.OK);
 			}
 			else {
 				responseMessage.setMessages(getEnvironment().getProperty(RECORD_NOT_FOUND));
@@ -131,33 +131,33 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-     * save category
+     * save Brand
      * @param @PathVariable{tenantId}
      * @param @RequestBody{CommonAddResource}
      * @return SuccessAndErrorDetailsDto
      */
 	@PostMapping("/add")
-	public ResponseEntity<Object> addCategory(@Valid @RequestBody CommonAddResource commonAddResource){
-		Category Category = categoryService.addCategory(commonAddResource);
-		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_CREATED), Long.toString(Category.getId()));
+	public ResponseEntity<Object> addBrand(@Valid @RequestBody CommonAddResource commonAddResource){
+		Brand Brand = brandService.addBrand(commonAddResource);
+		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_CREATED), Long.toString(Brand.getId()));
 		return new ResponseEntity<>(responseMessage,HttpStatus.CREATED);
 	}
 	
 	/**
-     * update category
+     * update Brand
      * @param @PathVariable{tenantId}
      * @param @RequestBody{CommonUpdateResource}
      * @return SuccessAndErrorDetailsDto
      */
 	@PutMapping(value = "update/{id}")
-	public ResponseEntity<Object> updateCategory(@PathVariable(value = "id", required = true) Long id, 
+	public ResponseEntity<Object> updateBrand(@PathVariable(value = "id", required = true) Long id, 
 												                 @Valid @RequestBody CommonUpdateResource commonUpdateResource){
 		SuccessAndErrorDetailsResource successAndErrorDetailsResource=new SuccessAndErrorDetailsResource();
-		Optional<Category>isPresentCategory = categoryService.getById(id);		
-		if(isPresentCategory.isPresent()) {
+		Optional<Brand>isPresentBrand = brandService.getById(id);		
+		if(isPresentBrand.isPresent()) {
 			commonUpdateResource.setId(id.toString());
-			Category Category = categoryService.updateCategory(commonUpdateResource);
-			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_UPDATED), Category.getId().toString());
+			Brand Brand = brandService.updateBrand(commonUpdateResource);
+			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_UPDATED), Brand.getId().toString());
 			return new ResponseEntity<>(successAndErrorDetailsResource,HttpStatus.OK);
 		}
 		else {
@@ -167,16 +167,16 @@ public class CategoryController extends MessagePropertyBase {
 	}
 	
 	/**
-	 * get category by ID
+	 * get Brand by ID
 	 * @param @pathVariable{tenantId}
 	 * @param @pathVariable {id}
 	 **/
 	@DeleteMapping(value = "/id/{id}")
-	public ResponseEntity<Object> deleteCategoryById(@PathVariable(value = "id", required = true) Long id){
+	public ResponseEntity<Object> deleteBrandById(@PathVariable(value = "id", required = true) Long id){
 		SuccessAndErrorDetailsResource successAndErrorDetailsResource=new SuccessAndErrorDetailsResource();
-		Optional<Category>isPresentCategory = categoryService.getById(id);		
-		if(isPresentCategory.isPresent()) {
-			categoryService.deleteCategory(id);
+		Optional<Brand>isPresentBrand = brandService.getById(id);		
+		if(isPresentBrand.isPresent()) {
+			brandService.deleteBrand(id);
 			successAndErrorDetailsResource = new SuccessAndErrorDetailsResource(getEnvironment().getProperty(RECORD_DELETED), id.toString());
 			return new ResponseEntity<>(successAndErrorDetailsResource,HttpStatus.OK);
 		}

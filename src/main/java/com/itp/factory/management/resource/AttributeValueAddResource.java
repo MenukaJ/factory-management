@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
- * Common Add Resource
+ * Attribute Value Add Resource
  * 
  ********************************************************************************************************
  *  ###   Date         Story Point   Task No    Author       Description
@@ -18,47 +18,36 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  */
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class CategoryUpdateResource {
+public class AttributeValueAddResource {
 	
-	private String id;
-
+	@NotBlank(message = "{common.not-null}")
+	@Pattern(regexp = "^$|[0-9]+", message = "{common-numeric.pattern}")
+	private String attributesId;
+	
 	@NotBlank(message = "{common.not-null}")
 	@Size(max = 70, message = "{common-name.size}")
-	private String name;
-
+	private String value;
+	
 	@NotBlank(message = "{common.not-null}")
 	@Pattern(regexp = "ACTIVE|INACTIVE", message = "{common-status.pattern}")
 	private String status;
 	
-	@NotBlank(message = "{common.not-null}")
-	@Pattern(regexp = "^$|[0-9]+", message = "{common-numeric.pattern}")
-	private String version;
-	
-	@Size(max = 255, message = "{modifiedUser.size}") 
-	private String modifiedUser;
+	private String tenantId;
 
-	public String getModifiedUser() {
-		return modifiedUser;
+	public String getAttributesId() {
+		return attributesId;
 	}
 
-	public void setModifiedUser(String modifiedUser) {
-		this.modifiedUser = modifiedUser;
+	public void setAttributesId(String attributesId) {
+		this.attributesId = attributesId;
 	}
 
-	public String getId() {
-		return id;
+	public String getValue() {
+		return value;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 	public String getStatus() {
@@ -69,12 +58,15 @@ public class CategoryUpdateResource {
 		this.status = status;
 	}
 
-	public String getVersion() {
-		return version;
+	public String getTenantId() {
+		return tenantId;
 	}
 
-	public void setVersion(String version) {
-		this.version = version;
+	public void setTenantId(String tenantId) {
+		this.tenantId = tenantId;
 	}
-	
+
+
 }
+	
+	

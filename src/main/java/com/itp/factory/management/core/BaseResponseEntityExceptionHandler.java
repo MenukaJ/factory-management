@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2018. LOLC Technology Services Ltd.
- * Author: Ranjith Kodikara
- * Date: 12/12/18 10:45
- */
-
 package com.itp.factory.management.core;
 
 import java.lang.reflect.Field;
@@ -34,8 +28,8 @@ import com.itp.factory.management.exception.OtherException;
 import com.itp.factory.management.exception.TenantNotFoundException;
 import com.itp.factory.management.exception.UserNotFound;
 import com.itp.factory.management.exception.ValidateRecordException;
-import com.itp.factory.management.resource.CategoryAddResource;
-import com.itp.factory.management.resource.CategoryUpdateResource;
+import com.itp.factory.management.resource.CommonAddResource;
+import com.itp.factory.management.resource.CommonUpdateResource;
 import com.itp.factory.management.resource.SuccessAndErrorDetailsResource;
 import com.itp.factory.management.resource.ValidateResource;
 
@@ -174,23 +168,23 @@ public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionH
 			String className=ex.getBindingResult().getObjectName();
 			switch(className){ 
         		
-        	case "categoryAddResource": 
-        		CategoryAddResource  categoryAddResource = new CategoryAddResource();
+        	case "commonAddResource": 
+        		CommonAddResource  commonAddResource = new CommonAddResource();
 				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
-					sField =  categoryAddResource.getClass().getDeclaredField(error.getField());
+					sField =  commonAddResource.getClass().getDeclaredField(error.getField());
 		            sField.setAccessible(true);
-		            sField.set(categoryAddResource.getClass().cast(categoryAddResource), error.getDefaultMessage());
+		            sField.set(commonAddResource.getClass().cast(commonAddResource), error.getDefaultMessage());
 				}
-				return new ResponseEntity<>(categoryAddResource, HttpStatus.UNPROCESSABLE_ENTITY);
-        	case "categoryUpdateResource": 
-        		CategoryUpdateResource categoryUpdateResource = new CategoryUpdateResource();
+				return new ResponseEntity<>(commonAddResource, HttpStatus.UNPROCESSABLE_ENTITY);
+        	case "commonUpdateResource": 
+        		CommonUpdateResource commonUpdateResource = new CommonUpdateResource();
 				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
 					fieldName=error.getField();
-                            sField =  categoryUpdateResource.getClass().getDeclaredField(error.getField());
+                            sField =  commonUpdateResource.getClass().getDeclaredField(error.getField());
                             sField.setAccessible(true);
-                            sField.set(categoryUpdateResource, error.getDefaultMessage());
+                            sField.set(commonUpdateResource, error.getDefaultMessage());
 				}
-				return new ResponseEntity<>(categoryUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);
+				return new ResponseEntity<>(commonUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);
 				
 //        	case "eligibilityAddResource": 
 //        		EligibilityAddResource  eligibilityAddResource = new EligibilityAddResource();
