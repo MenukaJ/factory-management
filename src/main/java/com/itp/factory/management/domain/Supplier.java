@@ -36,16 +36,19 @@ public class Supplier {
 	@Column(name = "Id", updatable = false, nullable = false)
 	private long id;
 	
-	@Column(name = "Client_Name")
+	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "Address")
+	@Column(name = "address")
 	private String address;
 	
-	@Column(name = "Contact")
+	@Column(name = "contact")
 	private String contact;
 	
-	@Column(name = "Date")
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "date")
 	private Timestamp date;
 	
 	@OneToMany(targetEntity = DeliveryInfo.class,cascade = CascadeType.ALL)
@@ -76,6 +79,13 @@ public class Supplier {
 	}
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public Timestamp getDate() {
 		return date;
