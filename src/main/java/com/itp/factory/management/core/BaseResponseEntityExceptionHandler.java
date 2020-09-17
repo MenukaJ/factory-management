@@ -28,6 +28,8 @@ import com.itp.factory.management.exception.OtherException;
 import com.itp.factory.management.exception.TenantNotFoundException;
 import com.itp.factory.management.exception.UserNotFound;
 import com.itp.factory.management.exception.ValidateRecordException;
+import com.itp.factory.management.resource.AttributeValueAddResource;
+import com.itp.factory.management.resource.AttributeValueUpdateResource;
 import com.itp.factory.management.resource.CommonAddResource;
 import com.itp.factory.management.resource.CommonUpdateResource;
 import com.itp.factory.management.resource.SuccessAndErrorDetailsResource;
@@ -185,6 +187,23 @@ public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionH
                             sField.set(commonUpdateResource, error.getDefaultMessage());
 				}
 				return new ResponseEntity<>(commonUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);
+        	case "attributeValueAddResource": 
+        		AttributeValueAddResource  attributeValueAddResource = new AttributeValueAddResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField =  attributeValueAddResource.getClass().getDeclaredField(error.getField());
+		            sField.setAccessible(true);
+		            sField.set(attributeValueAddResource.getClass().cast(attributeValueAddResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(attributeValueAddResource, HttpStatus.UNPROCESSABLE_ENTITY);
+        	case "attributeValueUpdateResource": 
+        		AttributeValueUpdateResource attributeValueUpdateResource = new AttributeValueUpdateResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					fieldName=error.getField();
+                            sField =  attributeValueUpdateResource.getClass().getDeclaredField(error.getField());
+                            sField.setAccessible(true);
+                            sField.set(attributeValueUpdateResource, error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(attributeValueUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);				
 				
 //        	case "eligibilityAddResource": 
 //        		EligibilityAddResource  eligibilityAddResource = new EligibilityAddResource();
