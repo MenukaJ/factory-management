@@ -7,3 +7,5 @@ databaseChangeLog:
         file: "/db/changelog/changes/factory_details.yml"
     - include:
         file: "/db/changelog/changes/user_role.yml"
+    - include:
+        file: "/db/changelog/changes/user.yml"
